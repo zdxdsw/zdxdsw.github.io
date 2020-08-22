@@ -143,6 +143,44 @@
 				<section id="project">
 					<h2>Selected Course Projects</h2>
 					<div class="row">
+					<!-- Internet Computing -->		
+					<article class="col-6 col-12-xsmall work-item">
+							<a class="image fit thumb"><img src="images/thumbs/ml.jpg" alt="" /></a>
+							<h3>Internet Computing</h3>
+							<p>HKUST COMP4021<span style="color:#49bf9d;"> &emsp;Fall 2019 </span></p>
+							
+							<ul id="myUL">
+								<li><span id="btn_ml" class="caret">Read more</span></li>
+							</ul>
+							<div id="myModal_ml" class="modal">
+								<ul class="modal-content">
+									<span id="close_ml" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp;<strong>Overview</strong>
+										The project's name is "World Travel". It's a game that borrows some ideas from "monopoly". The player can select an icon on the menu page to represent the player. On the map page, the player rolls a die and then walks around a map according to the die outcome. Then a card will show up and describe about a destination (a city). Once a city is visited, the corresponding cell on the map will disappear. This means, the player cannot repeatly visit the same cell. The game is finished when all cities are visited. 
+									
+									<li style="line-height:1.5">&#9656;&emsp;<strong>Client Side Techniques</strong>
+										HTML, Javascript, jQuery, timer, bootstrap, animation
+										
+									<li style="line-height:1.5">&#9656;&emsp;<strong>Server Side Techniques</strong>
+										PHP, jQuery ajax, XML & txt file for storage and "memory"
+										
+									<li style="line-height:1.5">&#9656;&emsp;<strong>Client Side Functions</strong>
+										Choose player icon, play the game, switch between menu page and main page, reload unfinished trip</li>
+									<li style="line-height:1.5">&#9656;&emsp;<strong>Server Side Functions</strong>
+										Store game status, check game status upon page reloading</li>
+									<li><a href="https://github.com/zdxdsw/COMP4021/tree/master/world-travel">&#9656;&emsp;View Github</a></li>
+								</ul>
+							</div>
+							<script>
+								var btn_ml = document.getElementById("btn_ml");
+								var modal_ml = document.getElementById("myModal_ml");
+								var span_ml = document.getElementById("close_ml");
+								btn_ml.onclick = function() {modal_ml.style.display="block";}
+								span_ml.onclick = function() {modal_ml.style.display="none";}
+							</script>
+							
+						</article>
+					
 					<!-- ML -->		
 						<article class="col-6 col-12-xsmall work-item">
 							<a class="image fit thumb"><img src="images/thumbs/ml.jpg" alt="" /></a>

@@ -1,0 +1,2088 @@
+<!-- You must include this JavaScript file -->
+<script src="https://assets.crowd.aws/crowd-html-elements.js"></script>
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet" />
+    <section class="container">
+        <!-- Instructions -->
+        <script
+                type='text/javascript'
+                src='https://s3.amazonaws.com/mturk-public/externalHIT_v1.js'>
+        </script>
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous">
+        </script>
+        <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous">
+        </script>
+        <script
+                src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous">
+        </script>
+
+        <script type="text/javascript">
+            function lengthCheck(confirmation_div_class) {
+                var ischecked= $("."+confirmation_div_class+" .confirmation-1").is(':checked');
+                if(!ischecked){
+                    $("."+confirmation_div_class+" .lengthcheckmsg1").hide();
+                    $("."+confirmation_div_class+" .lengthcheckmsg2").hide();
+                    $("."+confirmation_div_class+" .lengthcheckmsg3").hide();
+                    return;
+                }
+                var sol1 =$(".Annotation_div_1 .annotation-question").val().length;
+                if (sol1 < 10 ) {
+                    $("."+confirmation_div_class+" .lengthcheckmsg1").html("<font color=red><b>FYI</b> Your question in the <b>first</b> annotation block is pretty short, is it complicated enough?</font>");
+                    $("."+confirmation_div_class+" .lengthcheckmsg1").show();
+                } else {
+                    $("."+confirmation_div_class+" .lengthcheckmsg1").hide();
+                }
+
+                var sol2 =$(".Annotation_div_2 .annotation-question").val().length;
+                if (sol2 < 10 ) {
+                    $("."+confirmation_div_class+" .lengthcheckmsg2").html("<font color=red><b>FYI</b> Your question <b>second</b> annotation block is pretty short, is it complicated enough?</font>");
+                    $("."+confirmation_div_class+" .lengthcheckmsg2").show();
+                } else {
+                    $("."+confirmation_div_class+" .lengthcheckmsg2").hide();
+                }
+
+                var sol3 =$(".Annotation_div_3 .annotation-question").val().length;
+                if (sol3 < 10 ) {
+                    $("."+confirmation_div_class+" .lengthcheckmsg3").html("<font color=red><b>FYI</b> Your question <b>third</b> annotation block is pretty short, is it complicated enough?</font>");
+                    $("."+confirmation_div_class+" .lengthcheckmsg3").show();
+                } else {
+                    $("."+confirmation_div_class+" .lengthcheckmsg3").hide();
+                }
+            }
+
+            function ResetLengthCheck(confirmation_div_class, lengthcheckmsg_class){
+                $("."+confirmation_div_class+" .confirmation-1").prop('checked', false);
+                $("."+confirmation_div_class+" ."+lengthcheckmsg_class).hide();
+            }
+
+            function count_selected_img(Annotation_div_class) {
+                var c = 0;
+                if ($('.'+Annotation_div_class+' .image-selection-1').is(':checked')){ c += 1; }
+                if ($('.'+Annotation_div_class+' .image-selection-2').is(':checked')){ c += 1; }
+                if ($('.'+Annotation_div_class+' .image-selection-3').is(':checked')){ c += 1; }
+                if ($('.'+Annotation_div_class+' .image-selection-4').is(':checked')){ c += 1; }
+                return c;
+            }
+
+            function sin_img_Check(Annotation_div_class, confirmation_div_class) {
+                var ischecked= $("."+confirmation_div_class+" .confirmation-2").is(':checked');
+                if(!ischecked){
+                    $("."+confirmation_div_class+" .count2").hide();
+                    return;
+                }
+                var c = count_selected_img(Annotation_div_class);
+                if (c==0){
+                    $("."+confirmation_div_class+" .count2").html("<font color=red><b>FYI</b> You need to select at least one image in the <b>Image Selection</b> step</font>");
+                    $("."+confirmation_div_class+" .count2").show(); 
+                }
+                else{
+                    $("."+confirmation_div_class+" .count2").hide(); 
+                }
+            }
+
+            function mul_img_Check(Annotation_div_class, confirmation_div_class) {
+                var ischecked= $("."+confirmation_div_class+" .confirmation-3").is(':checked');
+                if(!ischecked){
+                    $("."+confirmation_div_class+" .count3").hide();
+                    return;
+                }
+                var c = count_selected_img(Annotation_div_class);
+                if (c<=1){
+                    $("."+confirmation_div_class+" .count3").html("<font color=red><b>FYI</b> You indicated that your question requires information from two images, but you only selected one in the <b>Image Selection</b> step</font>");
+                    $("."+confirmation_div_class+" .count3").show();
+                }
+                
+                else{
+                    $("."+confirmation_div_class+" .count3").hide();
+                }
+            }
+
+            function ResetConfirmation(confirmation_div_class) {
+                console.log("reset!");
+                $("."+confirmation_div_class+" .confirmation-2").prop('checked', false);
+                $("."+confirmation_div_class+" .confirmation-3").prop('checked', false);
+                $("."+confirmation_div_class+" .count2").hide();
+                $("."+confirmation_div_class+" .count3").hide();
+            }
+
+            function toggle_img_info(c, btnid) {
+                $("."+c+" .cateInfo").toggle();
+                $("."+c+" .imageInfo").toggle();
+                if ($("#"+btnid).text()=="Show more image info"){
+                  $("#"+btnid).text("Hide image info");
+                }else{
+                  $("#"+btnid).text("Show more image info");
+                }
+            }
+
+            function expandHint(){
+              if ($("#hint-body").is(":visible")){
+                return;}
+              else { $("#expand_hint").click();}
+                
+            }
+        </script>
+
+        <script>
+            function checkIfImg(image_query_id){
+                a = document.getElementById(image_query_id);
+                console.log("a,src ", a.src);
+                if(a.src != "")
+                    document.getElementById(image_query_id).setAttribute("style","display:inline;max-width: 500px;");
+                else
+                    document.getElementById(image_query_id).setAttribute("style","display:none");
+            }
+     
+        </script>
+
+    </section>
+
+
+
+
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet" />
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h1>Writing textual queries whose answers lie in images</h1>
+
+          <div class="alert alert-warning alert-dismissable" role="alert">
+            <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Hi!</strong>
+            <ol>
+                <li>Thank you for your help! Please let us know if any aspect of this HIT is unclear. We will try and iterate together. </li>
+                <li>We are still experimenting with pricing. </li>
+                <li>Based on the first pilot we are currently assuming <b>10 min / task</b>, but we will try and adjust appropriately!</li>
+            </ol>
+            <strong>Thanks!</strong>
+          </div>
+          
+          <!-- ============================================== Instruction Section ======================================================= -->
+          <section class="row" id="instructions">
+            <div class="col-12">
+              <div class="card mb-1">
+                <div class="card-header" style="height: 40px;padding:5">
+                  <h4 class="card-sm-title" >What is this HIT about? <a aria-controls="instructions-body" aria-expanded="false" class="btn-sm-primary text-dark" data-toggle="collapse" href="#instructions-body" style="float:right; text-decoration:none;"> <b>+-</b> </a>
+                  </h4>
+                </div>
+
+                <div class="card-body collapse" id="instructions-body" style="font-size: 14px;">
+                    
+                    <p >We are trying to build a question-answering system which is able to retrieve one or more images to answer a user's query.<br /></p>
+                    
+                    <p><b>To do this, in the first place we are going to investigate what type of query can potentially be answered by images.</b></p>
+                    
+                    <p>
+                      For example, the following quries can be answered by one or more images given below:
+                      <ul>
+                          <li>Do MIT use the same animal on their "MIT Engineers" logo as their mascot?</li>
+                          <li>Do MIT and Caltech use the same animal as their mascot?</li>
+                          <li>Which other schools use the same animal as their mascot as Caltech?</li>
+                      </ul>
+                    </p>
+
+                    <div class="row instruction_img_row" id="instruction_img_row1">
+                        <div class="cell col-4" id="start" height="100%">
+                            <img src="https://zdxdsw.github.io/HIT/hit_img/MIT_mascot.jpg" alt='map_img' id="start-cell" width="100%"/>
+                            <p style="text-align:center;">1</p>
+                        </div>
+                        <div class="cell col-4" id="order3" height=100%>
+                            <img src="https://zdxdsw.github.io/HIT/hit_img/MIT_Eng_logo.jpg" alt='map_img' class="clip" width="100%"/>
+                            <p style="text-align:center">2</p>
+                        </div>
+                        <div class="cell col-4" id="order2" height="100%">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Balles-%C3%A0-leunettes_Fa%C3%AEs%27sie_d%27Cidre_2011_02.jpg/380px-Balles-%C3%A0-leunettes_Fa%C3%AEs%27sie_d%27Cidre_2011_02.jpg" alt='map_img' class="clip" width="100%"/>
+                          <p style="text-align:center">3</p>
+                        </div>
+                              
+                    </div>
+
+                    <div class="row instruction_img_row" id="instruction_img_row2">
+                        <div class="cell col-4" id="order2" height="100%">
+                            <img src="https://zdxdsw.github.io/HIT/hit_img/Caltech_Mascot.jpg" alt='map_img' class="clip" width="100%"/>
+                            <p style="text-align:center">3</p>
+                        </div>
+                        <div class="cell col-4" id="order11" height="100%">
+                            <img src="https://zdxdsw.github.io/HIT/hit_img/OSU_Mascot.jpg" alt='map_img' class="clip" width="100%"/>
+                            <p style="text-align:center">4</p>
+                        </div>
+                        <div class="cell col-4" id="order11" height="100%">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Carved_Pumpkins.jpg/800px-Carved_Pumpkins.jpg" alt='map_img' class="clip" width="100%"/>
+                          <p style="text-align:center">4</p>
+                        </div>
+                    </div>
+
+
+                      
+                    <p>
+                      Unfortunately, current question-answering systems largely depend on textual search and seldom try to find an answer supported by visual information. 
+                      For example, search engines like Google and Bing are looking for exact match between the input query and large textual corpora. 
+                      However, some queries do not necessarily have answers lying in text. 
+                      And we are interested in such queries because we believe that the next generation of search engines should be able to find answers to user queries from visual data.
+                      Therefore, this HIT is designed to collect queries whose answers happen to lie in some image(s). We appreciate your help!
+                    </p>
+
+                    <p>
+                      <font size=3><b>Format:</b></font> Each HIT starts with a group of 4 images from which we would like to get <b>3 queries</b> such that answering the quries need to utilize information provided by one or more of those images.
+                    </p>
+
+                    <p>
+                      <font size=3><b>A valid annotation should include:</b></font>
+                      <ol>
+                          <li>Select one or more images from the given group.</li>
+                          <li>Ask a question about the image(s) you select.</li>
+                          <li>Write down the correction answer of your query. The answer should lie in the image(s) you select.</li>
+                      </ol>
+                      <font size=3><b>Required properties of the query:</b></font>
+                      <ul style="line-height:150%">
+                          <li style="padding-top:5px;"><span style="color: blue">More easy to be answered by image(s) than by text: </span>Since we are interested in queries that are NOT well handled by current search engines, if a query can be easily answered by Google/Bing/Wikipedia, it is not a good one! 
+                            Some bad examples are provided below. If you type those queries in Google or Bing, you may find that the search engine already highlighted in answer on top of the result page.</li>
+                          <ul class="bad_examples_instruction" style="list-style-type: '\2718';">
+                            <li><span>Which street is Times Square located?</span></li>
+                            <li><span>Who is the champion of 2018 world cup?</span></li>
+                          </ul>
+                          
+                          <li style="padding-top:5px;"><span style="color: blue">No referential phrases directly referring to image regions: </span>Importantly, it is only for the convenience of this annotation task that we provide images before you come up with queries. 
+                            However, in the testing setting of the question-answering system we are going to build, queries come before images. This means we would like to have systems figure out which image contains the answer after it sees the query. 
+                            Therefore, please avoid phrases in the question that assume knowledge of which image to use, for example, "in this image", "this place", "the object on the right", "the person in blue shoes" etc. 
+                            <b>An easy way to check whether a question satisfies this requirement is to imagine someone asks you the question without providing any images, then think about whether you are able to fully understand what it is asking.</b>
+                            In the following bad examples, we highlight the unclear references that should be avoided:</li>
+                          <ul class="bad_examples_instruction" style="list-style-type: '\2718';">
+                            <li><span><span style="background-color:#EBEBEB">The statue at the center</span> is located at which park?</span></li>
+                            <li><span>Is there a bus station <span style="background-color:#EBEBEB">on the street</span>?</span></li>
+                          </ul>
+                          
+                          <li style="padding-top:5px;"><span style="color: blue">Has definitive answer: </span>The answer to your query cannot be too subjective or change from time to time.</li>
+                          <ul class="bad_examples_instruction" style="list-style-type: '\2718';">
+                            <li><span>How good is the view of Chicage from Willis Tower skydeck? &nbsp;(Too subjective)</span></li>
+                            <li><span>What is the weather in Manhattan? &nbsp;(Time sensitive)</span></li>
+                          </ul>
+                          
+                          <li style="padding-top:5px;"><span style="color: blue">Not about simple facts: </span>The query cannot be answered blindly based on common sense (i.e. without using visual contents)</li>
+                          <ul class="bad_examples_instruction" style="list-style-type: '\2718';">
+                            <li><span>Can a boat float on the water?</span></li>
+                            <li><span>How many wheels does a car have?</span></li>
+                          </ul>
+
+                          <li style="padding-top:5px;"><span style="color: blue">Associated with multiple image regions: </span>Answering the question requires attention to multiple image regions</li>
+                          <li style="padding-top:5px; padding-bottom: 10px;"><span style="color: blue">Associated with more than one image: </span>Information presented by <b>different images</b> complements each other to infer the answer. 
+                            (This is <b>only required in the third annotation</b>, but also recommended in the first two)</li>
+
+                      </ul>
+                      <font size=3><b>Not required but highly recommended properties of the query: </b></font>
+                      <ul>
+                          <li style="padding-top:10px; padding-bottom: 10px;"><span style="color: blue">Non-binary: </span>A binary question has only yes/no answer. We prefer questions that start with "what", "where", "which", etc., to binary questions.</li>
+                      </ul>
+                      We highly recommend that you check the examples for a better sense what is a good response.
+                      
+                    </p>
+                    Thanks for participating! :)
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============================================== FAQ Section ======================================================= -->
+          <section class="row" id="faq">
+            <div class="col-12">
+              <div class="card mb-1">
+                <div class="card-header" style="height: 40px;padding:5">
+                  <h4 class="card-sm-title" >Frequently Asked Questions<a aria-controls="faq-body" aria-expanded="false" class="btn-sm-primary text-dark" data-toggle="collapse" href="#faq-body" style="float:right; text-decoration:none;"> <b>+-</b> </a>
+                  </h4>
+                </div>
+                <div class="card-body collapse" id="faq-body" >
+                  <iframe src="https://zdxdsw.github.io/HIT/FAQ.html" frameBorder="0" width="100%" height="210">FAQ also available at <a href="FAQ.html">url</a></iframe>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <!-- ============================================== Example Section ======================================================= -->
+          <section class="row" id="examples">
+            <div class="col-12">
+              <div class="card mb-1">
+                <div class="card-header" style="height: 40px;padding:5">
+                  <h4 class="card-title">Examples<a aria-controls="examples-body" aria-expanded="false" class="btn-sm-primary text-dark" data-toggle="collapse" href="#examples-body" style="float:right;text-decoration:none;"> <b>+-</b> </a>
+                  </h4>
+                </div>
+
+                <div class="card-body collapse" id="examples-body">
+
+                  <br />
+                  <b>We are targeting questions that can be more easily answered by images than by text ! :)</b>
+                  <br />
+                  &nbsp;
+                  <br />
+                  <center>
+                    <h4 style="display: inline-block;"><strong>Example 1:</strong>&nbsp;&nbsp;&nbsp;&nbsp;<a aria-controls="example1_div" aria-expanded="true" class="btn-sm-primary text-dark" data-toggle="collapse" href="#example1_div" style="float:right;text-decoration:none;"> <b>+-</b> </a></h4>
+                  </center>
+                  <div id = "example1_div" class="collapse">
+                    <center>  
+                    <div class="row example-instruction_img_row1" id="instruction_img_row1" style="margin-top:30px;">
+                          <div class="cell col-5 offset-1" id="start" height="100%">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/LondonDuckWater.JPG/800px-LondonDuckWater.JPG" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">1</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: LondonDuckWater.JPG</p>
+                                <p><b>Description</b>: Duck Boat in the City of London. Amphibian vehicle used for sightseeing tours.</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:LondonDuckWater.JPG">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                          <div class="cell col-5" id="order3" height=100%>
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Au_Morandarte_Flickr_DSC01526_%2813762318223%29.jpg/800px-Au_Morandarte_Flickr_DSC01526_%2813762318223%29.jpg" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">2</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: Au Morandarte Flickr DSC01526 (13762318223).jpg</p>
+                                <p><b>Description</b>: Golden Tours 119, an MCV DD103 bus.</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:Au_Morandarte_Flickr_DSC01526_(13762318223).jpg">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row example-instruction_img_row1" id="instruction_img_row2">
+                          <div class="cell col-5 offset-1" id="order2" height="100%">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Big_Bus_Company_10-5-07.jpg/800px-Big_Bus_Company_10-5-07.jpg" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">3</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: Big Bus Company 10-5-07.jpg</p>
+                                <p><b>Description</b>:  The Big Bus Company bus HD939 (reg. G939 FVX), a 1989 Dennis Condor double-decker with Duple Metsec W bodywork, pictured at Cannon Street in the City of London operating one of the company's sightseeing tours. It's a high capacity tri-axle 12m long bus, delivered new to Hong Kong operator China Motor Bus as their fleet no. DL16 (reg. EG 857). See Second-hand Hong Kong tri-axle buses imported to the United Kingdom for a full vehicle history.</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:Big_Bus_Company_10-5-07.jpg">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                          <div class="cell col-5" id="order11" height="100%">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/London_Eye_and_aquarium.JPG/800px-London_Eye_and_aquarium.JPG" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">4</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: London Eye and aquarium.JPG</p>
+                                <p><b>Description</b>: London eye and the Aquarium</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:London_Eye_and_aquarium.JPG">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                          <br>
+                          <div class= "cateInfo col-12" style="display:none; text-align: center; padding-top:10px; padding-bottom:20px;">
+                            <p style="display:inline-block;background-color:rgb(215, 237, 252);">&nbsp;&nbsp;This group is from Wiki Commons image category: <strong>Sightseeing in London</strong>&nbsp;&nbsp;</p>
+                          </div>
+                      </div>
+
+                      <div id="Example1-btn" style="cursor: pointer; display:inline-block; padding:2px 6px; background-color:rgb(225, 225, 228);margin-bottom: 20px;" onclick="toggle_img_info('example-instruction_img_row1', 'Example1-btn');">Show more image info</div>
+                    </center>
+                    <br />
+
+                    <div class="card mb-2 border-success">
+                      <div class="card-header text-success" style="height: 30px; padding-top:5px; padding-bottom:5px">
+                        <b>Good</b>
+                      </div>
+                      <div class="card-body">
+                        <table style="width:100%">
+                          <tbody>
+                              <tr>
+                                  <td width="10">&nbsp;</td>
+                                  <td width="100">&nbsp;</td>
+                                  <td>&nbsp;</td>
+                              </tr>
+
+                              <tr valign="top">
+                                  <td>&nbsp;</td>
+                                  <td>
+                                      <font color="green">Image Selection:</font>
+                                  </td>
+                                  <td>
+                                      <span style="border-bottom: 1px solid green;">1</span>
+                                  </td>
+                              </tr>
+
+                              <tr valign="top">
+                                  <td>&nbsp;</td>
+                                  <td>
+                                      <font color="blue">Question:</font>
+                                  </td>
+                                  <td>
+                                      <span style="border-bottom: 1px solid blue;">Which boat cruise tour in London provides "bus in water" experience?</span>
+                                  </td>
+                              </tr>
+                            
+                              <tr valign="top">
+                                  <td>&nbsp;</td>
+                                  <td>
+                                      <font color="red">Answer</font>
+                                  </td>
+                                  <td>
+                                      <span style="border-bottom: 1px solid red;">London Duck Tour</span>.
+                                  </td>
+                              </tr>
+
+                              <tr>
+                                  <td width="10">&nbsp;</td>
+                                  <td width="100">&nbsp;</td>
+                                  <td>&nbsp;</td>
+                              </tr>
+
+                              <tr valign="top">
+                                  <td>&nbsp;</td>
+                                  <td>
+                                      <font color="green">Image Selection:</font>
+                                  </td>
+                                  <td>
+                                      <span style="border-bottom: 1px solid green;">4</span>
+                                  </td>
+                              </tr>
+                            
+                              <tr valign="top">
+                                  <td>&nbsp;</td>
+                                  <td>
+                                      <font color="blue">Question:</font>
+                                  </td>
+                                  <td>
+                                      <span style="border-bottom: 1px solid blue;">Is London Eye taller than London Aquarium's Spiky roof?</span>.
+                                  </td>
+                              </tr>
+
+                              <tr valign="top">
+                                  <td>&nbsp;</td>
+                                  <td>
+                                      <font color="red">Answer:</font>
+                                  </td>
+                                  <td>
+                                      <span style="border-bottom: 1px solid red;">Yes</span>
+                                  </td>
+                              </tr>
+
+                              <tr>
+                                  <td width="10">&nbsp;</td>
+                                  <td width="100">&nbsp;</td>
+                                  <td>&nbsp;</td>
+                              </tr>
+                              
+                              <tr valign="top">
+                                  <td>&nbsp;</td>
+                                  <td>
+                                      <font color="green">Image Selection:</font>
+                                  </td>
+                                  <td>
+                                      <span style="border-bottom: 1px solid green;">2, 3</span>
+                                  </td>
+                              </tr>
+                            
+                              <tr valign="top">
+                                  <td>&nbsp;</td>
+                                  <td>
+                                      <font color="blue">Question:</font>
+                                  </td>
+                                  <td>
+                                      <span style="border-bottom: 1px solid blue;">Do both Golden Tour and Big Bus company have open-top sightseeing buses in London?</span>.
+                                  </td>
+                                  <td>
+                                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="gold" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                      </svg>
+                                      <span>Multiple images !</span>
+                                  </td>
+                              </tr>
+
+                              <tr valign="top">
+                                  <td>&nbsp;</td>
+                                  <td>
+                                      <font color="red">Answer:</font>
+                                  </td>
+                                  <td>
+                                      <span style="border-bottom: 1px solid red;">Yes</span>
+                                  </td>
+                              </tr>
+
+                              
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+
+                    <div class="card mb-2 border-danger">
+                      <div class="card-header text-danger" style="height: 30px; padding-top:5px; padding-bottom:5px">
+                        <b>Bad</b>
+                      </div>
+                      <div class="card-body">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">3</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">What does the Big Bus Company do?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>Easy for text search! </strong> The answer to the question is more likely to be found in text.</div>
+                              </td>
+                            </tr>
+                            
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">1</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Which city has Duck Boat sightseeing tour?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>Easy for text search!</strong> The answer to the question is more likely to be found in text.</div>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">4</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">How many floors does this building have?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>Unclear reference!</strong> The question does not specify what is "this building". You should avoid using referencial phrases if the object is not mentioned in the previous context of the question!</div>
+                              </td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  
+                  </div>
+                  <br>
+                  <br>
+
+                  <center>
+                    <h4 style="display: inline-block;"><strong>Example 2:</strong>&nbsp;&nbsp;&nbsp;&nbsp;<a aria-controls="example2_div" aria-expanded="true" class="btn-sm-primary text-dark" data-toggle="collapse" href="#example2_div" style="float:right;text-decoration:none;"> <b>+-</b> </a></h4>
+                  </center>
+                  <div id="example2_div" class="collapse">
+                    <center>
+                      <div class="row example-instruction_img_row2" id="instruction_img_row1" style="margin-top:30px;">
+                          <div class="cell col-5 offset-1" id="start" height="100%">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Boston_%282019%29_-_086.jpg/800px-Boston_%282019%29_-_086.jpg" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">1</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: Boston (2019) - 086.jpg</p>
+                                <p><b>Description</b>: Boston (2019)</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:Boston_(2019)_-_086.jpg">Wikipedia page</a></p>
+                              </div>
+                          </div>
+
+                          <div class="cell col-5" id="order3" height=100%>
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Boston_public_garden_very_green.jpg/800px-Boston_public_garden_very_green.jpg" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">2</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: Boston public garden very green.jpg</p>
+                                <p><b>Description</b>: </p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:Boston_public_garden_very_green.jpg">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row example-instruction_img_row2" id="instruction_img_row2">
+                          <div class="cell col-5 offset-1" id="order2" height="100%">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Public_Garden_Lagoon_9.jpg/800px-Public_Garden_Lagoon_9.jpg" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">3</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: Public Garden Lagoon 9.jpg</p>
+                                <p><b>Description</b>: View of the Boston Public Gardens from a Swan Boat</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:Public_Garden_Lagoon_9.jpg">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                          <div class="cell col-5" id="order11" height="100%">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Swan_Boats_at_the_Public_Garden_in_Boston%2C_Massachusetts%2C_USA.jpg/800px-Swan_Boats_at_the_Public_Garden_in_Boston%2C_Massachusetts%2C_USA.jpg" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">4</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: Swan Boats at the Public Garden in Boston, Massachusetts, USA.jpg</p>
+                                <p><b>Description</b>: Swan Boats at the Public Garden in Boston, Massachusetts, USA</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:Swan_Boats_at_the_Public_Garden_in_Boston,_Massachusetts,_USA.jpg">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                          <div class= "col-12 cateInfo" style="display:none; text-align: center; padding-top:10px; padding-bottom:20px; ">
+                            <p style="display:inline-block;background-color:rgb(215, 237, 252);">&nbsp;&nbsp;This group is from Wiki Commons image category: <strong>Boston Public Garden</strong>&nbsp;&nbsp;</p>
+                          </div>
+                      </div>
+                      <br>
+
+                      <div id="Example2-btn" style="cursor: pointer; display:inline-block; padding:2px 6px; background-color:rgb(225, 225, 228);margin-bottom: 20px;" onclick="toggle_img_info('example-instruction_img_row2', 'Example2-btn');">Show more image info</div>
+                    </center>
+                    <br />
+                    <div class="card mb-2 border-success">
+                      <div class="card-header text-success" style="height: 30px; padding-top:5px; padding-bottom:5px">
+                        <b>Good</b>
+                      </div>
+                      <div class="card-body">
+                        <table style="width:100%">
+                          <tbody>
+
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">1</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">What shape are the trees trimmed into in Boston public garden?</span>
+                              </td>
+                            </tr>
+                          
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">Bell shape / Triangle</span></td>
+                            </tr>
+
+                            
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">2</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Q1. Can I find bench under tree shades in Boston public garden?</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue"></font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Q2. Do people sit on the lawns in Boston public garden?</span>
+                              </td>
+                            </tr>
+                          
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">A1. Yes</span></td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red"></font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">A2. Yes</span></td>
+                            </tr>
+
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">4</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue"></font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Q1. Are passengers required to wear a life jacket on the swan boat in Boston Public Garden?</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue"></font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Q2. Does the swan boat in Boston Common have a swan on the bow or stern?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">A1. No</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red"></font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">A2. On the stern</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">3, 4</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Does the Boston Public Garden have both lagoons and blooming flowers?</span>
+                              </td>
+                              <td>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="gold" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                                <span>Multiple images!</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red"></font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">Yes</span>
+                              </td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="card mb-2 border-danger">
+                      <div class="card-header text-danger" style="height: 30px; padding-top:5px; padding-bottom:5px">
+                        <b>Bad</b>
+                      </div>
+                      <div class="card-body">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">3</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Is the swan located at the bow or stern?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>Unclear reference! </strong> The question does not specify where is "the swan".
+                                </div>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">1</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">How is the weather in Boston?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>No definitive answer! </strong> The answer to this question changes from time to time.
+                                </div>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">4</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Where is the pier for the swan boat in Boston Public Garden?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>Answer does not lie in the given image! </strong> This question itself is great, but it cannot be answered by the provided image.
+                                </div>
+                              </td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+                  <br>
+
+                  <center>
+                    <h4 style="display: inline-block;"><strong>Example 3:</strong>&nbsp;&nbsp;&nbsp;&nbsp;<a aria-controls="example3_div" aria-expanded="true" class="btn-sm-primary text-dark" data-toggle="collapse" href="#example3_div" style="float:right;text-decoration:none;"> <b>+-</b> </a></h4>
+                  </center>
+                  <div id="example3_div" class="collapse">
+                    <center>
+                      <div class="row example-instruction_img_row3" id="instruction_img_row1" style="margin-top:30px;">
+                          <div class="cell col-5 offset-1" id="start" height="100%">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Boston_Public_Garden_Foot_Bridge_%2836007%29.jpg/800px-Boston_Public_Garden_Foot_Bridge_%2836007%29.jpg
+                            " alt='map_img' width="100%"/>
+                            <p style="text-align:center;">1</p>
+                            <div class="imageInfo" style="display:none;">
+                              <p><b>Title</b>: Boston Public Garden Foot Bridge (36007).jpg</p>
+                              <p><b>Description</b>: Boston Public Garden in November 2019</p>
+                              <p><a href="https://commons.wikimedia.org/wiki/File:Boston_Public_Garden_Foot_Bridge_(36007).jpg">Wikipedia page</a></p>
+                            </div>
+                          </div>
+                          <div class="cell col-5" id="order3" height=100%>
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Boston_Public_Garden_-_Boston%2C_MA_-_DSC01502.JPG/800px-Boston_Public_Garden_-_Boston%2C_MA_-_DSC01502.JPG" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">2</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: Boston Public Garden - Boston, MA - DSC01502.JPG</p>
+                                <p><b>Description</b>: Boston Public Garden, Boston, Massachusetts, USA.</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:Boston_Public_Garden_-_Boston,_MA_-_DSC01502.JPG">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row example-instruction_img_row3" id="instruction_img_row2">
+                          <div class="cell col-5 offset-1" id="order2" height="100%">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/2017_Old_State_House_top.jpg/800px-2017_Old_State_House_top.jpg" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">3</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: 2017 Old State House top.jpg</p>
+                                <p><b>Description</b>: The Old State House (Boston) is a historic building at the intersection of Washington, State Streets and Devonshire Streets in Boston, Massachusetts. Built in 1713 in the Georgian style, it was the seat of the Massachusetts General Court until 1798, and is one of the oldest public buildings in the United States. One of the landmarks on Boston's Freedom Trail, it is the oldest surviving public building in Boston, and now serves as a history museum operated by the Bostonian Society. It was designated a National Historic Landmark in 1960 and a Boston Landmark by the Boston Landmarks Commission in 1994.</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:2017_Old_State_House_top.jpg">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                          <div class="cell col-5" id="order11" height="100%">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Old_State_House%2C_Boston.jpg/800px-Old_State_House%2C_Boston.jpg" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">4</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: Old State House, Boston.jpg</p>
+                                <p><b>Description</b>: </p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:Old_State_House,_Boston.jpg">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                          <div class= "col-12 cateInfo" style="display:none; text-align: center; padding-top:10px; padding-bottom:20px; ">
+                            <p style="display:inline-block;background-color:rgb(215, 237, 252);">&nbsp;&nbsp;This group is from Wiki Commons image category: <strong>National Historic Landmarks in Massachusetts</strong>&nbsp;&nbsp;</p>
+                          </div>
+                      </div>
+                      <br>
+
+                      <div id="Example3-btn" style="cursor: pointer; display:inline-block; padding:2px 6px; background-color:rgb(225, 225, 228);margin-bottom: 20px;" onclick="toggle_img_info('example-instruction_img_row3', 'Example3-btn');">Show more image info</div>
+                    </center>
+                    <br />
+                    <div class="card mb-2 border-success">
+                      <div class="card-header text-success" style="height: 30px; padding-top:5px; padding-bottom:5px">
+                        <b>Good</b>
+                      </div>
+                      <div class="card-body">
+                        <table style="width:100%">
+                          <tbody>
+
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">1</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Does the foot bridge in Boston Common have fences higher than people?</span>
+                              </td>
+                            </tr>
+                          
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">No</span></td>
+                            </tr>
+
+                            
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">2</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">At the equestrian statue in Boston public garden, does that horse stand on all four feet?</span>
+                              </td>
+                            </tr>
+                          
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">No</span></td>
+                            </tr>
+                            
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">3</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Does the clock on the roof of Boston Old State House use Roman numerals?</span>
+                              </td>
+                            </tr>
+                          
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">Yes</span></td>
+                            </tr>
+                            
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">3, 4</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Q1. Are the Golden Lion, Golden Unicorn and Golden Eagle statues on the same side of the Old State House?</span>
+                              </td>
+                              <td>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="gold" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                                <span>Multiple images !</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue"></font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Q2. Does the Old State House in Boston have animal statues on all four corners of its roof?</span>
+                              </td>
+                              <td>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="gold" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                                <span>Multiple images !</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">A1. No</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red"></font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">A2. No</span>
+                              </td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="card mb-2 border-danger">
+                      <div class="card-header text-danger" style="height: 30px; padding-top:5px; padding-bottom:5px">
+                        <b>Bad</b>
+                      </div>
+                      <div class="card-body">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">1</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">What color is the sky?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>Simple facts! </strong> This question can be answered just by commonsense.</div>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">2</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">What name is the equestrian statue in Boston Public Garden?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>Easy for text search! </strong> The answer to the question is more likely to be found in text.
+
+                                </div>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">3</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">What color is the Unicorn statue on the roof of the Old State House in Boston?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>Not associated with multiple regions! </strong> This question is not complex enough because attending to a single region is sufficient to answer it.
+
+                                </div>
+                              </td>
+                            </tr>
+
+                            
+
+                          </tbody>
+                        </table>
+
+                      </div>
+                    </div>
+                  
+                  </div>
+                  <br>
+                  <br>
+
+                  <center>
+                    <h4 style="display: inline-block;"><strong>Example 4:</strong>&nbsp;&nbsp;&nbsp;&nbsp;<a aria-controls="example4_div" aria-expanded="true" class="btn-sm-primary text-dark" data-toggle="collapse" href="#example4_div" style="float:right;text-decoration:none;"> <b>+-</b> </a></h4>
+                  </center>
+                  <div id="example4_div" class="collapse">
+                    <center>
+                      <div class="row example-instruction_img_row4" id="instruction_img_row1" style="margin-top:30px;">
+                          <div class="cell col-5 offset-1" id="start" height="100%">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Social_Distancing_Guide_Markings_on_Subway_Platform_%2849890890403%29.jpg/800px-Social_Distancing_Guide_Markings_on_Subway_Platform_%2849890890403%29.jpg" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">1</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: Social Distancing Guide Markings on Subway Platform (49890890403).jpg</p>
+                                <p><b>Description</b>: Blue Xs on the platform at 51 St on the 6 line encourage subway customers to follow social distancing guidelines on Wed., May 13, 2020.</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:Social_Distancing_Guide_Markings_on_Subway_Platform_(49890890403).jpg">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                          <div class="cell col-5" id="order3" height=100%>
+                              <img src="
+                              https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/E59th_3d_Av_stair_jeh.JPG/800px-E59th_3d_Av_stair_jeh.JPG" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">2</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: E59th 3d Av stair jeh.JPG</p>
+                                <p><b>Description</b>: Looking south across 59th at en:Lexington Avenue/59th Street (New York City Subway) station on a cloudy afternoon</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:E59th_3d_Av_stair_jeh.JPG">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row example-instruction_img_row4" id="instruction_img_row2">
+                          <div class="cell col-5 offset-1" id="order2" height="100%">
+                              <img src="
+                              https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Time_marches_Times_%28Juan_Luis_Rocha_G%29.JPG/800px-Time_marches_Times_%28Juan_Luis_Rocha_G%29.JPG" alt='map_img' width="100%"/>
+                              <p style="text-align:center;">3</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: Time marches Times (Juan Luis Rocha G).JPG</p>
+                                <p><b>Description</b>:</p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:Time_marches_Times_(Juan_Luis_Rocha_G).JPG">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                          <div class="cell col-5" id="order11" height="100%">
+                              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/New_York_2015_-_panoramio_%288%29.jpg/800px-New_York_2015_-_panoramio_%288%29.jpg
+                              " alt='map_img' width="100%"/>
+                              <p style="text-align:center;">4</p>
+                              <div class="imageInfo" style="display:none;">
+                                <p><b>Title</b>: New York 2015 - panoramio (8).jpg</p>
+                                <p><b>Description</b>: New York 2015
+                                </p>
+                                <p><a href="https://commons.wikimedia.org/wiki/File:New_York_2015_-_panoramio_(8).jpg">Wikipedia page</a></p>
+                              </div>
+                          </div>
+                          <div class= "cateInfo col-12" style="display:none; text-align: center; padding-top:10px; padding-bottom:20px;">
+                            <p style="display:inline-block;background-color:rgb(215, 237, 252);">&nbsp;&nbsp;This group is from Wiki Commons image category: <strong>Neighborhoods in Midtown Manhattan</strong>&nbsp;&nbsp;</p>
+                          </div>
+                      </div>
+                      <br>
+
+                      <div id="Example4-btn" style="cursor: pointer; display:inline-block; padding:2px 6px; background-color:rgb(225, 225, 228);margin-bottom: 20px;" onclick="toggle_img_info('example-instruction_img_row4', 'Example4-btn');">Show more image info</div>
+                    </center>
+                    <br />
+                    <div class="card mb-2 border-success">
+                      <div class="card-header text-success" style="height: 30px; padding-top:5px; padding-bottom:5px">
+                        <b>Good</b>
+                      </div>
+                      <div class="card-body">
+                        <table style="width:100%">
+                          <tbody>
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">1</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">What marks on subway platform encourage social distancing?</span>
+                              </td>
+                            </tr>
+                        
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">Blue X marks</span></td>
+                            </tr>
+
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">2</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Where can I find an H&M in New York City near a subway entrance?</span>
+                              </td>
+                            </tr>
+                          
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">59 St-Lexington Av</span></td>
+                            </tr>
+
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">4</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Do billboards at the Times Square light up during the day?</span>
+                              </td>
+                            </tr>
+                          
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">Yes</span></td>
+                            </tr>
+
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+                            
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">3, 4</span>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Which company(s)'s billboards show up at the Times Square?</span>
+                              </td>
+                              <td>
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="gold" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                                </svg>
+                                <span>Multiple images !</span>
+                              </td>
+                            </tr>
+
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="red">Answer:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid red;">Pepsi; Sumsung; XINHUA News Agency; Hyundai; Coke Cola; GREE; ...</span></td>
+                            </tr>
+
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+
+                    <div class="card mb-2 border-danger">
+                      <div class="card-header text-danger" style="height: 30px; padding-top:5px; padding-bottom:5px">
+                        <b>Bad</b>
+                      </div>
+                      <div class="card-body">
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td width="10">&nbsp;</td>
+                              <td width="100">&nbsp;</td>
+                              <td>&nbsp;</td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">1</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Are there any passengers waiting on the platform?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>No definitive answer! </strong>The answer to this question may change from time to time.
+                                </div>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">2</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Which subway station is it in the picture?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>Unclear reference! </strong> "In the picture" is a bad attributive phrase. In the question you need to explicitly mention entities without referring to the image.
+                                </div>
+                              </td>
+                            </tr>
+
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">3</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">How crowded is Times Square?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-danger alert-dismissable text-dark" role="alert">
+                                  <strong>No definitive answer! </strong> The answer to this question may change from time to time, and it is subjective.
+
+                                </div>
+                              </td>
+                            </tr>
+
+                            <!--
+                            <tr valign="top">
+                              <td>&nbsp;</td>
+                              <td>
+                                  <font color="green">Image Selection:</font>
+                              </td>
+                              <td>
+                                  <span style="border-bottom: 1px solid green;">2, 4</span>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>&nbsp;</td>
+                              <td>
+                                <font color="blue">Question:</font>
+                              </td>
+                              <td>
+                                <span style="border-bottom: 1px solid blue;">Does the lagoon in Boston Public Garden freeze in winter?</span>
+                              </td>
+                            </tr>
+                            
+                            <tr>
+                              <td colspan="3">&nbsp;
+                                <div class="alert alert-warning alert-dismissable text-dark" role="alert">
+                                  <strong>Answer does not lie in the given image:</strong>This question itself is great, but it's answer does not lie in the provided image!
+
+                                </div>
+                              </td>
+                            </tr>
+                            -->
+
+                          </tbody>
+                        </table>
+
+
+                      </div>
+                    </div>
+                  
+                  
+                  </div>
+                  <br>
+                  <br>
+
+
+
+
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+
+
+          <!-- ============================================== Hint Section ======================================================= -->
+          <section class="row" id="hint">
+            <div class="col-12">
+              <div class="card mb-1">
+                <div class="card-header" style="height: 40px;padding:5">
+                  <h4 class="card-sm-title" >Hints for asking a "multi-image" question<a id="expand_hint" aria-controls="hint-body" aria-expanded="false" class="btn-sm-primary text-dark" data-toggle="collapse" href="#hint-body" style="float:right; text-decoration:none;"> <b>+-</b> </a>
+                  </h4>
+                </div>
+                <div class="card-body collapse" id="hint-body" >
+                  We understand that the "multi-image" requirement for Annotation 3 is slightly difficult and time consuming. Here are some hints for you to do this task quickly. 
+                  The key to doing this is <b>"compare and linking"</b>.
+                  <ul style="margin-top:10px; list-style-type: '\1F4A1';">
+                    <li>&nbsp;If you identify the same object in two different images, think about how you can use that object as a "pivot" to <b>link</b> two images.</li>
+                    <li>&nbsp;Find out whether two images share something in common, while there are still differences, so that you can ask a question to <b>compare</b> them.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+
+
+          <!-- ================================================== Annotation Section ============================================================== -->
+          <section class="row" id="hit">
+              <div class="col-12">
+
+                <br />
+                <font size="5">Instructions</font>
+                <div class="alert alert-info alert-dismissable" role="alert">
+                  <strong>Desired Properties</strong> of a good question:
+                  <ul>
+                    <li style="padding-top:5px;"><span style="color: blue">Not easy to be answered by pure text</span></li>
+                    <li><span style="color: blue">No referential phrases directly referring to image regions</span></li>
+                    <li><span style="color: blue">Has definitive answer</span></li>
+                    <li><span style="color: blue">Not about simple facts</span></li>
+                    <li><span style="color: blue">Associated with multiple image regions</span></li>
+                    <li><span style="color: blue">Associated with more than one image </span>(**required for Annotation 3, optional for Annotation 1&2**) </li>
+                    <li style="padding-bottom: 10px;"><span style="color: blue">Non binary</span>(**optional**) </li>
+                     
+                  </ul>
+                  <p>Check more information by clicking "Show more image info". Feel free to look at the Wikipedia page or search online for the place/object/event related to that image. This is helpful for coming up with a complex question!
+                  </p>
+                  <p>
+                  Also note that each group is extracted under a same Wikimedia Commons category. We show the image category just FYI. Your responses are not necessarily related to the category name.
+                  </p>
+                </div>
+
+                <center>
+                  <div class="card">
+                      <h3><font color="blue"><b>Prompt:</b></font></h3>
+                      
+                        <center>
+                            <div class="row prompt_img_row" id="prompt_img_row1">
+                              <div class="cell col-5 offset-1" height="100%">
+                                  <img src=${url1} alt='img1' width="100%" id="image-query1" style="display:none;max-width: 500px;" onload="checkIfImg('image-query1');"><br>
+                                  <p style="text-align:center;">1</p>
+                                  <div class="imageInfo" style="display:none;">
+                                    <p><b>Title</b>: ${title1}</p>
+                                    <p><b>Description</b>: ${description1}</p>
+                                    <p><a href=${descriptionurl1}>Wikipedia page</a></p>
+                                  </div>
+                              </div>
+                              <div class="cell col-5" height=100%>
+                                  <img src=${url2} alt='img2' width="100%" id="image-query2" style="display:none;max-width: 500px;" onload="checkIfImg('image-query2');"><br>
+                                  <p style="text-align:center;">2</p>
+                                  <div class="imageInfo" style="display:none;">
+                                    <p><b>Title</b>: ${title2}</p>
+                                    <p><b>Description</b>: ${description2}</p>
+                                    <p><a href=${descriptionurl2}>Wikipedia page</a></p>
+                                  </div>
+                              </div>
+                            </div>
+        
+                            <div class="row prompt_img_row" id="prompt_img_row2">
+                                <div class="cell col-5 offset-1" height="100%">
+                                    <img src=${url3} alt='img3' width="100%" id="image-query3" style="display:none;max-width: 500px;" onload="checkIfImg('image-query3');"><br>
+                                    <p style="text-align:center;">3</p>
+                                    <div class="imageInfo" style="display:none;">
+                                      <p><b>Title</b>: ${title3}</p>
+                                      <p><b>Description</b>: ${description3}</p>
+                                      <p><a href=${descriptionurl3}>Wikipedia page</a></p>
+                                    </div>
+                                </div>
+                                <div class="cell col-5" height="100%">
+                                    <img src=${url4} alt='img4' width="100%" id="image-query4" style="display:none;max-width: 500px;" onload="checkIfImg('image-query4');"><br>
+                                    <p style="text-align:center;">4</p>
+                                    <div class="imageInfo" style="display:none;">
+                                      <p><b>Title</b>: ${title4}</p>
+                                      <p><b>Description</b>: ${description4}</p>
+                                      <p><a href=${descriptionurl4}>Wikipedia page</a></p>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class= "cateInfo col-12" style="display:none; text-align: center; padding-top:10px; padding-bottom:20px;">
+                                  <p style="display:inline-block;background-color:rgb(215, 237, 252);">&nbsp;&nbsp;This group is from Wiki Commons image category: <strong>${category}</strong>&nbsp;&nbsp;</p>
+                                </div>
+                              </div>
+
+                            
+      
+                            <div id="prompt-btn" style="cursor: pointer; display:inline-block; padding:2px 6px; background-color:rgb(224, 243, 252);" onclick="toggle_img_info('prompt_img_row', 'prompt-btn');">Show more image info</div>
+                        
+                        </center>
+                      
+                      
+                      <br>
+                  </div>
+                </center>
+                <div style="margin-top:30px; margin-bottom:10px;"><font size="4"><b>Steps</b></font></div>
+
+                <ol>
+                  <li><b><font color="green">Image Selection</font></b>: Index of the image(s) you choose</li>
+                  <li><b><font color="blue">Question</font></b>: Your question </li>
+                  <li><b><font color="red">Answer</font></b>: Your answer to the question. Keep it short.</li>
+                </ol>
+
+                <!-- ....................................... Annotation 1  ............................................... -->
+                <div style="margin-top:50px; margin-bottom:10px;"><font size="4"><b>Annotation 1</b></font></div>
+
+                <table class="table table-striped table-responsive px-0 Annotation_div_1" id="Annotation_div_1">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <b>
+                                <font color="green">Image Selection</font>
+                                </b>
+                            </td>
+                            <td width="90%">
+                                <label><input onclick="ResetConfirmation('confirmation_div_1');" class="image-selection-1" name="image-selection1" type="checkbox" value="1" /> 1 </label>
+                                &nbsp;&nbsp;&nbsp;<label><input onclick="ResetConfirmation('confirmation_div_1');" class="image-selection-2" name="image-selection2" type="checkbox" value="1" /> 2 </label>
+                                &nbsp;&nbsp;&nbsp;<label><input onclick="ResetConfirmation('confirmation_div_1');" class="image-selection-3" name="image-selection3" type="checkbox" value="1" /> 3 </label>
+                                &nbsp;&nbsp;&nbsp;<label><input onclick="ResetConfirmation('confirmation_div_1');" class="image-selection-4" name="image-selection4" type="checkbox" value="1" /> 4 </label>
+                            </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                              <b><font color="blue">Question</font></b>
+                          </td>
+                          <td width="90%">
+                              <textarea onclick="ResetLengthCheck('confirmation', 'lengthcheckmsg1');" class="form-control annotation-question" id="annotation-question" name="annotation-question.1" value="1" required="" rows="2" type="text"></textarea>
+                          </td>
+                        </tr>
+
+                        <tr>
+                          <td>
+                              <b><font color="red">Answer:</font></b>
+                          </td>
+                          <td>
+                              <textarea class="form-control" id="annotation-anwswer" name="annotation-anwswer.1" value="1" required="" rows="2" type="text"></textarea>
+                          </td>
+                        </tr>
+                        
+                        
+                    </tbody>
+                </table>
+
+                <div class="alert alert-warning alert-dismissable" role="alert">
+                  <b>Search Engine</b>: Is the answer already found in pure text by current search engines?</div>
+                <div class="alert alert-warning alert-dismissable" role="alert">
+                  <strong>Multi-hop</strong>: We are paticularly interested in questions that requires looking at multiple image regions. We also strongly encourage you to ask a question that involves reasoning over two different images.
+                </div>
+
+                <div class="col-12 confirmation_div_1" style="margin-bottom:50px;" id="confirmation_div_1">
+                  <br />
+                  
+                  <label>
+                      <input name="sin_img_confirmation" onclick="sin_img_Check('Annotation_div_1', 'confirmation_div_1');" required="" type="checkbox" value="1" class="confirmation-2"/> My question requires information pieces coming from multiple regions in the selected image(s) </label>
+                  <br>
+                  <label>
+                      <input name="mul_img_confirmation" onclick="mul_img_Check('Annotation_div_1', 'confirmation_div_1');" type="checkbox" value="1" class="confirmation-3"/> My question requires information pieces coming from two different images </label>
+                  <br>
+
+                  
+                  
+                  <div class="count2" style="display:none;">&nbsp;</div>
+                  <div class="count3" style="display:none;">&nbsp;</div>
+  
+                </div>
+
+
+                <!-- ....................................... Annotation 2  ............................................... -->
+                <div style="margin-bottom:10px;"><font size="4"><b>Annotation 2</b></font></div>
+
+                <table class="table table-striped table-responsive px-0 Annotation_div_2" id="Annotation_div_2">
+                  <tbody>
+                      <tr>
+                          <td>
+                              <b>
+                              <font color="green">Image Selection</font>
+                              </b>
+                          </td>
+                          <td width="90%">
+                              <label><input onclick="ResetConfirmation('confirmation_div_2');" class ="image-selection-1" name="image-selection1" type="checkbox" value="2" /> 1 </label>
+                              &nbsp;&nbsp;&nbsp;<label><input onclick="ResetConfirmation('confirmation_div_2');" class="image-selection-2" name="image-selection2" type="checkbox" value="2" /> 2 </label>
+                              &nbsp;&nbsp;&nbsp;<label><input onclick="ResetConfirmation('confirmation_div_2');" class="image-selection-3" name="image-selection3" type="checkbox" value="2" /> 3 </label>
+                              &nbsp;&nbsp;&nbsp;<label><input onclick="ResetConfirmation('confirmation_div_2');" class="image-selection-4" name="image-selection4" type="checkbox" value="2" /> 4 </label>
+                          </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                            <b><font color="blue">Question</font></b>
+                        </td>
+                        <td width="90%">
+                            <textarea onclick="ResetLengthCheck('confirmation', 'lengthcheckmsg2');" class="form-control annotation-question" id="annotation-question" name="annotation-question.2" value="2" required="" rows="2" type="text"></textarea>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                            <b><font color="red">Answer:</font></b>
+                        </td>
+                        <td>
+                            <textarea class="form-control" id="annotation-anwswer" name="annotation-anwswer.2" value="2" required="" rows="2" type="text"></textarea>
+                        </td>
+                      </tr>
+                      
+                      
+                  </tbody>
+                </table>
+
+                <div class="alert alert-warning alert-dismissable" role="alert">
+                  <b>Search Engine</b>: Is the answer already found in pure text by current search engines?</div>
+                <div class="alert alert-warning alert-dismissable" role="alert">
+                  <strong>Multi-hop</strong>: We are paticularly interested in questions that requires looking at multiple image regions. We also strongly encourage you to ask a question that involves reasoning over two different images.
+                </div>
+
+                <div class="col-12 confirmation_div_2" style="margin-bottom:50px;" id="confirmation_div_2">
+                  <br />
+                  
+                  <label>
+                      <input name="sin_img_confirmation" onclick="sin_img_Check('Annotation_div_2', 'confirmation_div_2');" required="" type="checkbox" value="2" class="confirmation-2"/> My question requires information pieces coming from multiple regions in the selected image(s) </label>
+                  <br>
+                  <label>
+                      <input name="mul_img_confirmation" onclick="mul_img_Check('Annotation_div_2', 'confirmation_div_2');" type="checkbox" value="2" class="confirmation-3"/> My question requires information pieces coming from two different images </label>
+                  <br>
+                  <div class="count2" style="display:none;">&nbsp;</div>
+                  <div class="count3" style="display:none;">&nbsp;</div>
+  
+                </div>
+
+
+                <!-- ....................................... Annotation 3  ............................................... -->
+                <div style="margin-bottom:10px;"><font size="4"><b>Annotation 3</b></font></div>
+
+                <table class="table table-striped table-responsive px-0 Annotation_div_3" id="Annotation_div_3">
+                  <tbody>
+                      <tr>
+                          <td>
+                              <b>
+                              <font color="green">Image Selection</font>
+                              </b>
+                          </td>
+                          <td width="90%">
+                              <label><input onclick="ResetConfirmation('confirmation_div_3');" class ="image-selection-1" name="image-selection1" type="checkbox" value="3" /> 1 </label>
+                              &nbsp;&nbsp;&nbsp;<label><input onclick="ResetConfirmation('confirmation_div_3');" class="image-selection-2" name="image-selection2" type="checkbox" value="3" /> 2 </label>
+                              &nbsp;&nbsp;&nbsp;<label><input onclick="ResetConfirmation('confirmation_div_3');" class="image-selection-3" name="image-selection3" type="checkbox" value="3" /> 3 </label>
+                              &nbsp;&nbsp;&nbsp;<label><input onclick="ResetConfirmation('confirmation_div_3');" class="image-selection-4" name="image-selection4" type="checkbox" value="3" /> 4 </label>
+                          </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                            <b><font color="blue">Question</font></b>
+                        </td>
+                        <td width="90%">
+                            <textarea onclick="ResetLengthCheck('confirmation', 'lengthcheckmsg3');" class="form-control annotation-question" id="annotation-question" name="annotation-question.3" value="3" required="" rows="2" type="text"></textarea>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                            <b><font color="red">Answer:</font></b>
+                        </td>
+                        <td>
+                            <textarea class="form-control" id="annotation-anwswer" name="annotation-anwswer.3" value="3" required="" rows="2" type="text"></textarea>
+                        </td>
+                      </tr>
+                      
+                      
+                  </tbody>
+                </table>
+
+                <div class="alert alert-warning alert-dismissable" role="alert">
+                  <b>Search Engine</b>: Is the answer already found in pure text by current search engines?</div>
+                <div class="alert alert-warning alert-dismissable" role="alert">
+                  <strong>Multi-hop</strong>: We are paticularly interested in questions that requires looking at multiple image regions. We also strongly encourage you to ask a question that involves reasoning over two different images.
+                </div>
+                <div class="alert alert-warning alert-dismissable" role="alert">
+                  <strong>Multi-image</strong>: The last annotation block requires you to provide a question that involves reasoning over two different images. &nbsp; <a href="#hint" onclick="expandHint();"> Hint</a>
+                </div>
+
+                <div class="col-12 confirmation_div_3" style="margin-bottom:40px;" id="confirmation_div_3">
+                  <br />
+                  
+                  <label>
+                      <input name="sin_img_confirmation" onclick="sin_img_Check('Annotation_div_3', 'confirmation_div_3');" required="" type="checkbox" value="3" class="confirmation-2"/> My question requires information pieces coming from multiple regions in the selected image(s) </label>
+                  <br>
+                  <label>
+                      <input name="mul_img_confirmation" onclick="mul_img_Check('Annotation_div_3', 'confirmation_div_3');" required="" type="checkbox" value="3" class="confirmation-3"/> My question requires information pieces coming from two different images </label>
+                  <br>
+                  <div class="count2" style="display:none;">&nbsp;</div>
+                  <div class="count3" style="display:none;">&nbsp;</div>
+  
+                  <div class="form-group" style="margin-top: 10px;">
+                      <label for="feedback">Optional Feedback:</label>
+                      <textarea class="form-control" id="feedback" name="feedback" rows="2" type="text">
+                      </textarea>
+                      
+                  </div>
+                </div>
+              
+              
+              </div>
+          </section>
+
+
+
+          <!-- ============================================== Confirmation Section ======================================================= -->
+          <section class="row confirmation" id="confirmation" style="margin-bottom: 60px;">
+            <div style="width: 100%;">
+              <br>
+              <label>
+                  <input name="length_confirmation" onclick="lengthCheck('confirmation');" required="" type="checkbox" class="confirmation-1"/> My questions isn't answered by Bing/Google's text search </label>
+            </div>
+            <br>
+            <div class="lengthcheckmsg1" style="display:none;width: 100%;">&nbsp;</div>
+            <div class="lengthcheckmsg2" style="display:none;width: 100%;">&nbsp;</div>
+            <div class="lengthcheckmsg3" style="display:none;width: 100%;">&nbsp;</div>
+            <div style="margin: 20px auto;">
+              <input class="btn btn-primary" id="submitButton" type="submit" value="Submit" />
+            </div>
+          </section>
+
+
+          <!-- End input from Worker -->
+          <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" integrity="sha384-IS73LIqjtYesmURkDE9MXKbXqYA8rvKEp/ghicjem7Vc3mGRdQRptJSz60tvrB6+" rel="stylesheet" />
+        
+
+          <style type="text/css">
+              #collapseTrigger{ 
+                color:#fff; 
+                display: block; 
+                text-decoration: none; 
+              } 
+
+              #submitButton{ 
+                white-space: normal; 
+              } 
+
+              .image{ 
+                margin-bottom: 15px; 
+              } 
+
+              /* CSS for breaking long words/urls */ 
+              .dont-break-out { 
+                overflow-wrap: break-word; 
+                word-wrap: break-word; 
+                -ms-word-break: break-all; 
+                word-break: break-all; 
+                word-break: break-word; 
+                -ms-hyphens: auto; 
+                -moz-hyphens: auto; 
+                -webkit-hyphens: auto; 
+                hyphens: auto; 
+              }
+
+              ul.bad_examples_instruction{
+                list-style: none;
+              }
+              ul.bad_examples_instruction li{
+                color: red;
+              }
+              ul.bad_examples_instruction span{
+                color: black;
+              }
+          </style>
+
+        </div>
+      </div>
+    </div>
+</crowd-form>

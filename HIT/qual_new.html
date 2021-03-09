@@ -31,94 +31,7 @@
         </script>
 
         <script type="text/javascript">
-            function lengthCheck(confirmation_div_class) {
-                var ischecked= $("."+confirmation_div_class+" .confirmation-1").is(':checked');
-                if(!ischecked){
-                    $("."+confirmation_div_class+" .lengthcheckmsg1").hide();
-                    $("."+confirmation_div_class+" .lengthcheckmsg2").hide();
-                    $("."+confirmation_div_class+" .lengthcheckmsg3").hide();
-                    return;
-                }
-                var sol1 =$(".Annotation_div_1 .annotation-question").val().length;
-                if (sol1 < 10 ) {
-                    $("."+confirmation_div_class+" .lengthcheckmsg1").html("<font color=red><b>FYI</b> Your question in the <b>first</b> annotation block is pretty short, is it complicated enough?</font>");
-                    $("."+confirmation_div_class+" .lengthcheckmsg1").show();
-                } else {
-                    $("."+confirmation_div_class+" .lengthcheckmsg1").hide();
-                }
-
-                var sol2 =$(".Annotation_div_2 .annotation-question").val().length;
-                if (sol2 < 10 ) {
-                    $("."+confirmation_div_class+" .lengthcheckmsg2").html("<font color=red><b>FYI</b> Your question <b>second</b> annotation block is pretty short, is it complicated enough?</font>");
-                    $("."+confirmation_div_class+" .lengthcheckmsg2").show();
-                } else {
-                    $("."+confirmation_div_class+" .lengthcheckmsg2").hide();
-                }
-
-                var sol3 =$(".Annotation_div_3 .annotation-question").val().length;
-                if (sol3 < 10 ) {
-                    $("."+confirmation_div_class+" .lengthcheckmsg3").html("<font color=red><b>FYI</b> Your question <b>third</b> annotation block is pretty short, is it complicated enough?</font>");
-                    $("."+confirmation_div_class+" .lengthcheckmsg3").show();
-                } else {
-                    $("."+confirmation_div_class+" .lengthcheckmsg3").hide();
-                }
-            }
-
-            function ResetLengthCheck(confirmation_div_class, lengthcheckmsg_class){
-                $("."+confirmation_div_class+" .confirmation-1").prop('checked', false);
-                $("."+confirmation_div_class+" ."+lengthcheckmsg_class).hide();
-            }
-
-            function count_selected_img(Annotation_div_class) {
-                var c = 0;
-                if ($('.'+Annotation_div_class+' .image-selection-1').is(':checked')){ c += 1; }
-                if ($('.'+Annotation_div_class+' .image-selection-2').is(':checked')){ c += 1; }
-                if ($('.'+Annotation_div_class+' .image-selection-3').is(':checked')){ c += 1; }
-                if ($('.'+Annotation_div_class+' .image-selection-4').is(':checked')){ c += 1; }
-                return c;
-            }
-
-            function sin_img_Check(Annotation_div_class, confirmation_div_class) {
-                var ischecked= $("."+confirmation_div_class+" .confirmation-2").is(':checked');
-                if(!ischecked){
-                    $("."+confirmation_div_class+" .count2").hide();
-                    return;
-                }
-                var c = count_selected_img(Annotation_div_class);
-                if (c==0){
-                    $("."+confirmation_div_class+" .count2").html("<font color=red><b>FYI</b> You need to select at least one image in the <b>Image Selection</b> step</font>");
-                    $("."+confirmation_div_class+" .count2").show(); 
-                }
-                else{
-                    $("."+confirmation_div_class+" .count2").hide(); 
-                }
-            }
-
-            function mul_img_Check(Annotation_div_class, confirmation_div_class) {
-                var ischecked= $("."+confirmation_div_class+" .confirmation-3").is(':checked');
-                if(!ischecked){
-                    $("."+confirmation_div_class+" .count3").hide();
-                    return;
-                }
-                var c = count_selected_img(Annotation_div_class);
-                if (c<=1){
-                    $("."+confirmation_div_class+" .count3").html("<font color=red><b>FYI</b> You indicated that your question requires information from two images, but you only selected one in the <b>Image Selection</b> step</font>");
-                    $("."+confirmation_div_class+" .count3").show();
-                }
-                
-                else{
-                    $("."+confirmation_div_class+" .count3").hide();
-                }
-            }
-
-            function ResetConfirmation(confirmation_div_class) {
-                console.log("reset!");
-                $("."+confirmation_div_class+" .confirmation-2").prop('checked', false);
-                $("."+confirmation_div_class+" .confirmation-3").prop('checked', false);
-                $("."+confirmation_div_class+" .count2").hide();
-                $("."+confirmation_div_class+" .count3").hide();
-            }
-
+            
             function toggle_img_info(c, btnid) {
                 $("."+c+" .cateInfo").toggle();
                 $("."+c+" .imageInfo").toggle();
@@ -127,13 +40,6 @@
                 }else{
                   $("#"+btnid).text("Show more image info");
                 }
-            }
-
-            function expandHint(){
-              if ($("#hint-body").is(":visible")){
-                return;}
-              else { $("#expand_hint").click();}
-                
             }
 
             function Expand_newexample03(){
@@ -148,6 +54,15 @@
               if ($("#newexample4_div").is(":visible")){}
               else { $("#expand_newexample4_div").click();}
             }
+
+            function toggle_iframe(){
+              $('#tuto_iframe').toggle();
+              $('#iframe_toggle_btn').html(function(i, html){
+                return html === "Hide tutorial page"? "<strong>Click me ^-^</strong> We've made a mini-tutorial page to help you pass the qual :)" : "Hide tutorial page"
+              })
+            }
+            
+            
         </script>
 
     </section>
@@ -1902,6 +1817,13 @@
           </section>
 
 
+          <iframe src="https://zdxdsw.github.io/HIT/qual_tuto.html" style="display: none;", frameBorder="0" width="100%" height="3100" id="tuto_iframe">Optional Survey Prompt also available at <a href="https://zdxdsw.github.io/HIT/QAoptionalSurvey.html" target="_blank">url</a></iframe>
+          <center>
+            <div id="iframe_toggle_btn" style="cursor: pointer; display:inline-block; margin-top: 20px; padding:3px 10px; border-radius: 10px; background-color:rgb(255, 253, 157);" onclick="toggle_iframe();"><strong>Click me ^-^</strong> We've made a mini-tutorial page to help you pass the qual :)</div>
+          </center>
+          <br>
+          <br>
+
           <!-- ================================================== Exam Section ===========================================================-->
           <section class="row" id="hit">
             <div class="col-12">
@@ -1925,34 +1847,38 @@
                 <tr>
                   <td width="5%">1.</td>
                   <td width="50%" colspan=2>
-                    <a href="https://commons.wikimedia.org/wiki/File:Ferris_Wheel_Ain_Dubai_in_Dubai_02.jpg" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Ferris_Wheel_Ain_Dubai_in_Dubai_02.jpg/800px-Ferris_Wheel_Ain_Dubai_in_Dubai_02.jpg">
+                    <a href="https://commons.wikimedia.org/wiki/File:Seattle_Cap_Hill_Vita_05A.jpg" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Seattle_Cap_Hill_Vita_05A.jpg/800px-Seattle_Cap_Hill_Vita_05A.jpg">
                     </a>
                   </td>
-                  <td width="20%">In which country is the Ferris Wheel Ain located?</td>
+                  <td width="20%">What do the bags inside Capitol Hill Cafe Vita in Seattle contain?</td>
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-1" name="correct-1">
-                      <option value="Bad">Bad</option>
-                      </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">Image does not contain the answer / The answer to this question lies in textual data given by Wiki / Also it's too easy with Google search.</div>
+                      <option disabled="disabled" selected="selected" value="">--</option>
+                      <option value="Good">Good</option>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation1" name="explanation1" rows="2"></textarea>
                   </td>
                 </tr>
 
                 <tr>
                   <td width="5%">2.</td>
                   <td width="50%" colspan=2>
-                    <a href="https://commons.wikimedia.org/wiki/File:200331-N-EV253-1008_(49727676462).jpg" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/200331-N-EV253-1008_%2849727676462%29.jpg/800px-200331-N-EV253-1008_%2849727676462%29.jpg">
+                    <a href="https://commons.wikimedia.org/wiki/File:Al-Imam_As-Sadiq_Mosque_Dome_and_Minerate.jpg" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Al-Imam_As-Sadiq_Mosque_Dome_and_Minerate.jpg/469px-Al-Imam_As-Sadiq_Mosque_Dome_and_Minerate.jpg">
                     </a>
                   </td>
-                  <td width="20%">Does an operator need to wear gloves when operating on the touch screen of a ventilator?</td>
+                  <td width="20%">What is the shape at the top of both the Al-Imam As-Sadiq Mosque Dome and the Minerate next to it?</td>
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-2" name="correct-2">
+                      <option disabled="disabled" selected="selected" value="">--</option>
                       <option value="Good">Good</option>
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd"></div>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation2" name="explanation2" rows="2"></textarea>
                   </td>
                 </tr>
 
@@ -1969,9 +1895,11 @@
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-3" name="correct-3">
-                      <option value="Bad">Bad</option> 
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">Bad referential phrase "this room". We can't tell what does it refer to without looking at the image.</div>
+                      <option disabled="disabled" selected="selected" value="">--</option>
+                      <option value="Good">Good</option>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation3" name="explanation3" rows="2"></textarea>
                   </td>
                 </tr>
 
@@ -1986,96 +1914,104 @@
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-4" name="correct-4">
+                      <option disabled="disabled" selected="selected" value="">--</option>
                       <option value="Good">Good</option>
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd"></div>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation4" name="explanation4" rows="2"></textarea>
                   </td>
                 </tr>
 
                 <tr>
                   <td width="5%">5.</td>
                   <td width="50%" colspan=2>
-                    <a href="https://commons.wikimedia.org/wiki/File:Seattle_Cap_Hill_Vita_05A.jpg" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Seattle_Cap_Hill_Vita_05A.jpg/800px-Seattle_Cap_Hill_Vita_05A.jpg">
+                    <a href="https://commons.wikimedia.org/wiki/File:Seattle_-_The_Pink_Door_interior_-_bar.jpg" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Seattle_-_The_Pink_Door_interior_-_bar.jpg/800px-Seattle_-_The_Pink_Door_interior_-_bar.jpg">
                     </a>
                   </td>
-                  <td width="20%">Does Capitol Hill Cafe Vita in Seattle have a welcoming ambience?</td>
+                  <td width="20%">Does the bar of the Pink Door in Seattle have a welcoming ambience?</td>
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-5" name="correct-5">
-                      <option value="Bad">Bad</option> 
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">The question is too subjective. Different people might have different feelings about "a welcoming ambience".</div>
+                      <option disabled="disabled" selected="selected" value="">--</option>
+                      <option value="Good">Good</option>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation5" name="explanation5" rows="2"></textarea>
                   </td>
                 </tr>
 
                 <tr>
                   <td width="5%">6.</td>
                   <td width="25%">
-                    <a href="https://commons.wikimedia.org/wiki/File:Interior_of_the_National_Council_of_the_Austrian_Parliament_Building_03.jpg" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Interior_of_the_National_Council_of_the_Austrian_Parliament_Building_03.jpg/800px-Interior_of_the_National_Council_of_the_Austrian_Parliament_Building_03.jpg">
+                    <a href="https://commons.wikimedia.org/wiki/File:La_fonda_portal.jpg" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/La_fonda_portal.jpg/800px-La_fonda_portal.jpg">
                     </a>
                   </td>
                   <td width="25%">
-                    <a href="https://commons.wikimedia.org/wiki/File:Parlament_-_B%C3%A9cs%2C_2014.12.03_(31).JPG" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Parlament_-_B%C3%A9cs%2C_2014.12.03_%2831%29.JPG/768px-Parlament_-_B%C3%A9cs%2C_2014.12.03_%2831%29.JPG">
+                    <a href="https://commons.wikimedia.org/wiki/File:R%C3%B6nnebeck_at_La_Fonda%2C_SF_NM.jpg" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/R%C3%B6nnebeck_at_La_Fonda%2C_SF_NM.jpg/442px-R%C3%B6nnebeck_at_La_Fonda%2C_SF_NM.jpg">
                     </a>
                   </td>
-                  <td width="20%">Are there human statues of both genders inside the Austrian Parliament Building?
+                  <td width="20%">How many creatures can be found on the wall decoration above the fire place at the the portal of La Fonda Hotel in Santa Fe?
                   </td>
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-6" name="correct-6">
-                      <option value="Bad">Bad</option> 
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">The two images are not complementary. The question can be answered using only one image.</div>
+                      <option disabled="disabled" selected="selected" value="">--</option>
+                      <option value="Good">Good</option>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation6" name="explanation6" rows="2"></textarea>
                   </td>
                 </tr>
 
                 <tr>
                   <td width="5%">7.</td>
                   <td width="25%">
-                    <a href="https://commons.wikimedia.org/wiki/File:Blind_Poet_Exterior.jpg" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Blind_Poet_Exterior.jpg/800px-Blind_Poet_Exterior.jpg">
+                    <a href="https://commons.wikimedia.org/wiki/File:Alexander_Holley_monument_WSP_jeh.jpg" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Alexander_Holley_monument_WSP_jeh.jpg/636px-Alexander_Holley_monument_WSP_jeh.jpg">
                     </a>
                   </td>
                   <td width="25%">
-                    <a href="https://commons.wikimedia.org/wiki/File:Belushi%27s_Bar_%26_Hostel_(1231288115).jpg" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Belushi%27s_Bar_%26_Hostel_%281231288115%29.jpg/798px-Belushi%27s_Bar_%26_Hostel_%281231288115%29.jpg">
+                    <a href="https://commons.wikimedia.org/wiki/File:John_Barry_statue%2C_Franklin_Park_-_Washington%2C_DC.jpg" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/John_Barry_statue%2C_Franklin_Park_-_Washington%2C_DC.jpg/749px-John_Barry_statue%2C_Franklin_Park_-_Washington%2C_DC.jpg">
                     </a>
                   </td>
-                  <td width="20%">Which pubs in Edinburgh have both blue doors and blue boards?</td>
+                  <td width="20%">Between the Washington Square Park monument of Alexander Holley and the John Barry monument in Franklin Square, which one has more of the individual's body in the monument?</td>
                   <td width="25%">
                     <p>Is this a good question?</p>
-                    <select required id="correct-7" name="correct-7" style="margin-top: 20px; border-color:#ddd">
+                    <select required id="correct-7" name="correct-7">
+                      <option disabled="disabled" selected="selected" value="">--</option>
                       <option value="Good">Good</option>
-                    </select>
-                    <div class="alert alert-light" role="alert">One may say that two images are not enough for answering this question since there might be more than two pubs
-                      with blue doors and blue boards. However we would say it is acceptable that images provide clues to a <strong>subset</strong> of correct answers. See FAQ #5 for more details. 
-                    </div>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation7" name="explanation7" rows="2"></textarea>
                   </td>
                 </tr>
 
                 <tr>
                   <td width="5%">8.</td>
                   <td width="25%">
-                    <a href="https://commons.wikimedia.org/wiki/File:SouthBeachMiamiBeach.jpg" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/SouthBeachMiamiBeach.jpg/800px-SouthBeachMiamiBeach.jpg">
+                    <a href="https://commons.wikimedia.org/wiki/File:Castro_Theatre,_San_Francisco.jpg" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Castro_Theatre%2C_San_Francisco.jpg/669px-Castro_Theatre%2C_San_Francisco.jpg">
                     </a>
                   </td>
                   <td width="25%">
-                    <a href="https://commons.wikimedia.org/wiki/File:Night_architecture_-_South_Beach%2C_Miami.jpg" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Night_architecture_-_South_Beach%2C_Miami.jpg/800px-Night_architecture_-_South_Beach%2C_Miami.jpg">
+                    <a href="https://commons.wikimedia.org/wiki/File:Castro_Street_SF.jpg" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/8/86/Castro_Street_SF.jpg">
                     </a>
                   </td>
-                  <td width="20%">Are palm trees lit up at night and are palm trees taller than all buildings along Ocean Drive in Miami Beach?
+                  <td width="20%">What kind of flags are hanging on the street light poles along Castro Street SF and what is the predominant color on the sign of the Castro Theatre SF?
                   </td>
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-8" name="correct-8">
-                      <option value="Bad">Bad</option> 
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">It is a "fake multi-image question" because it's using two seperate questions to connect the images.</div>
+                      <option disabled="disabled" selected="selected" value="">--</option>
+                      <option value="Good">Good</option>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation8" name="explanation8" rows="2"></textarea>
                   </td>
                 </tr>
 
@@ -2095,38 +2031,43 @@
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-9" name="correct-9">
-                      <option value="Bad">Bad</option> 
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">Bad referential phrase. "Which image" is a image-specific term. You can't understand the query without looking at images.</div>
+                      <option disabled="disabled" selected="selected" value="">--</option>
+                      <option value="Good">Good</option>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation9" name="explanation9" rows="2"></textarea>
                   </td>
                 </tr>
 
                 <tr>
                   <td width="5%">10.</td>
                   <td width="25%">
-                    <a href="https://commons.wikimedia.org/wiki/File:Seattle_Zeitgeist_1.jpg" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Seattle_Zeitgeist_1.jpg/800px-Seattle_Zeitgeist_1.jpg">
+                    <a href="https://commons.wikimedia.org/wiki/File:1976_Montreal_Olympic_Games%2C_Gold_Medal.jpg" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/1976_Montreal_Olympic_Games%2C_Gold_Medal.jpg/399px-1976_Montreal_Olympic_Games%2C_Gold_Medal.jpg">
                     </a>
                   </td>
                   <td width="25%">
-                    <a href="https://commons.wikimedia.org/wiki/File:Seattle_B%26O_4.jpg" target="_blank">
-                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Seattle_B%26O_4.jpg/800px-Seattle_B%26O_4.jpg">
+                    <a href="https://commons.wikimedia.org/wiki/File:1980_Summer_Olympics_bronze_medal.JPG" target="_blank">
+                      <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/1980_Summer_Olympics_bronze_medal.JPG/800px-1980_Summer_Olympics_bronze_medal.JPG">
                     </a>
                   </td>
-                  <td width="20%">Do both B&O and Zeitgeist coffeehouses in Seattle have tablecloths?</td>
+                  <td width="20%">Can the Goddess of Victory's bare foot be seen more clearly on the 1976 or the 1980 Olympic gold medal?
+                  </td>
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-10" name="correct-10">
+                      <option disabled="disabled" selected="selected" value="">--</option>
                       <option value="Good">Good</option>
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd"></div>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation10" name="explanation10" rows="2"></textarea>
                   </td>
                 </tr>
 
                 <tr>
                   <td width="5%">11.</td>
                   <td width="25%">
-                    <a href="https://commons.wikimedia.org/wiki/File:Spain_Pavilion_of_Expo_2010_2.jpg" target="_blank">
+                    <a href="https://commons.wikimedia.org/wiki/File:France_Pavilion_of_Shanghai_Expo.jpg" target="_blank">
                       <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/France_Pavilion_of_Shanghai_Expo.jpg/800px-France_Pavilion_of_Shanghai_Expo.jpg">
                     </a>
                   </td>
@@ -2135,17 +2076,16 @@
                       <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Spain_Pavilion_of_Expo_2010_2.jpg/800px-Spain_Pavilion_of_Expo_2010_2.jpg">
                     </a>
                   </td>
-                  <td width="20%">Which countries have pavilions with a woven facade at Shanghai Expo?
+                  <td width="20%">Which countries have pavilions with a woven facade at Shanghai Expo 2010?
                   </td>
                   <td width="25%">
                     <p>Is this a good question?</p>
-                    <select required id="correct-10" name="correct-10">
+                    <select required id="correct-11" name="correct-11">
+                      <option disabled="disabled" selected="selected" value="">--</option>
                       <option value="Good">Good</option>
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">This question is very tricky. Originally we designed it as a Bad one 
-                      because the final answers "French" and "Spain" lie in textual metadata, although "woven facade" is related to visual clues. <br>
-                      However, one can argue that a system can infer "French" from the French flag in front of the French pavilion and it can infer "Spain" because the country name is written on the building, althrough it is very blurry.<br>
-                      Both viewpoints are correct as long as the explanation is reasonable.</div>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation11" name="explanation11" rows="2"></textarea>
                   </td>
                 </tr>
 
@@ -2166,10 +2106,12 @@
                   </td>
                   <td width="25%">
                     <p>Is this a good question?</p>
-                    <select required id="correct-10" name="correct-10">
+                    <select required id="correct-12" name="correct-12">
+                      <option disabled="disabled" selected="selected" value="">--</option>
                       <option value="Good">Good</option>
-                      </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd"></div>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation12" name="explanation12" rows="2"></textarea>
                   </td>
                 </tr>
 
@@ -2189,9 +2131,11 @@
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-13" name="correct-13">
-                      <option value="Bad">Bad</option> 
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">Bad referential phrase: "the McDonald's shown in the pictures". One cannot understand which restaurants are being asked about without the images.</div>
+                      <option disabled="disabled" selected="selected" value="">--</option>
+                      <option value="Good">Good</option>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation13" name="explanation13" rows="2"></textarea>
                   </td>
                 </tr>
 
@@ -2212,9 +2156,11 @@
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-14" name="correct-14">
-                      <option value="Bad">Bad</option> 
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">The two images are not complementary. The question can be answered using only one image.</div>
+                      <option disabled="disabled" selected="selected" value="">--</option>
+                      <option value="Good">Good</option>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation14" name="explanation14" rows="2"></textarea>
                   </td>
                 </tr>
 
@@ -2230,14 +2176,16 @@
                       <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Quatchi_%28mascot%29.jpg/401px-Quatchi_%28mascot%29.jpg">
                     </a>
                   </td>
-                  <td width="20%">Do both mascot Miga and mascot Quatchi have symmetric faces?
+                  <td width="20%">Do both mascot Miga and mascot Quatchi have faces symmetric about the vertical axis?
                   </td>
                   <td width="25%">
                     <p>Is this a good question?</p>
                     <select required id="correct-15" name="correct-15">
+                      <option disabled="disabled" selected="selected" value="">--</option>
                       <option value="Good">Good</option>
-                    </select>
-                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd"></div>
+                      <option value="Bad">Bad</option> </select>
+                    <p style="padding-top: 20px;">Write down the reasons if your answer was "Bad"</p>
+                    <textarea class="form-control" cols="300" id="explanation15" name="explanation15" rows="2"></textarea>
                   </td>
                 </tr>
 
@@ -2263,12 +2211,7 @@
         
 
           <style type="text/css">
-              #collapseTrigger{ 
-                color:#fff; 
-                display: block; 
-                text-decoration: none; 
-              } 
-
+              
               #submitButton{ 
                 white-space: normal; 
               } 
@@ -2276,19 +2219,6 @@
               .image{ 
                 margin-bottom: 15px; 
               } 
-
-              /* CSS for breaking long words/urls */ 
-              .dont-break-out { 
-                overflow-wrap: break-word; 
-                word-wrap: break-word; 
-                -ms-word-break: break-all; 
-                word-break: break-all; 
-                word-break: break-word; 
-                -ms-hyphens: auto; 
-                -moz-hyphens: auto; 
-                -webkit-hyphens: auto; 
-                hyphens: auto; 
-              }
 
               ul.bad_examples_instruction{
                 list-style: none;

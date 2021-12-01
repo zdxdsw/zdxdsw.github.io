@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Cys Homepage</title>
+		<title>Yingshan's Homepage</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -17,15 +17,17 @@
 			<header id="header">
 				<div class="inner">
 					<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
-					<h1 style="line-height:2.5">Hi! I'm CHANG Yingshan</h1>
+					<h1 style="line-height:2.5">Hi! I'm Yingshan Chang</h1>
 					<!-- <h1><strong>Hi! I'm CHANG Yingshan</strong>, a super simple<br />
 					responsive site template freebie<br />
 					crafted by <a href="http://html5up.net">HTML5 UP</a>.</h1> -->
 					<ul class="icons">
-							<li><a href="https://www.facebook.com/profile.php?id=100015368941548" class="icon brands fa-facebook-square"><span class="label">Twitter</span></a></li>
+							<li><a href="https://www.facebook.com/profile.php?id=100015368941548" class="icon brands fa-facebook-square"><span class="label">Facebook</span></a></li>
 							<li><a href="https://github.com/zdxdsw" class="icon brands fa-github"><span class="label">Github</span></a></li>
-							<!-- <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-							<li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li> -->
+							<li><a href="https://twitter.com/_Yingshan" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="https://www.linkedin.com/in/yingshanchang/" class="icon brands fa-linkedin-square"><span class="label">LinkedIn</span></a></li>
+
+							<li><a href="yingshac@cs.cmu.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 					</ul>
 				</div>
 			</header>
@@ -45,7 +47,6 @@
 							<li><span><a href="#research">Research</a></span></li>
 							<li><span><a href="#project">Projects</a></span></li>
 							<li><span><a href="#edu">Education</a></span></li>
-							<li><span><a href="#contact">Contact</a></span></li>
 							<li><span><a href="#hobby">Hobbies</a></span></li>
 							<li><span><a href="#community">Community Service</a></span></li>
 							<li><a href="YingshanChang_resume.pdf">Download CV</a></li>
@@ -59,28 +60,31 @@
 					<div class="row">
 					<!-- WebQA -->		
 					<article class="col-6 col-12-xsmall work-item">
-						<a href="https://v.qq.com/x/page/a0969ywbcu5.html" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
+						<a href="https://v.qq.com/x/page/a0969ywbcu5.html" class="image fit thumb"><img src="images/thumbs/webqa.png" alt="" /></a>
 						<h3>Low-Light Video Enhancement Using Deep Learning</h3>
-						<p>Final Year Project in HKUST<span style="color:#49bf9d;"> &emsp;Aug 2019 - May 2020 </span><br /> Advised by Professor CHEN Qifeng</p>
+						<p>Final Year Project in HKUST<span style="color:#49bf9d;"> &emsp;Aug 2020 - Present </span><br /> Advised by Professor Yonatan Bisk</p>
 						<ul id="myUL">
-							<li><span id="btn_fyp" class="caret">Read more</span></li>
+							<li><span id="btn_webqa" class="caret">Read more</span></li>
 						</ul>
-						<div id="myModal_fyp" class="modal">
+						<div id="myModal_webqa" class="modal">
 							<ul class="modal-content">
-								<span id="close_fyp" class="close">&times;</span>
-								<li style="line-height:1.5">This project explored possibilities of reducing noises and motion blurs in low-light RGB video frames using deep learning. Our contributions are three-folds:</li>
-								<li style="line-height:1.5">&#9656;&emsp;A novel approach to collect data of dark and blurry video frames with corresponding bright and sharp ground-truth images. Video frames are collected in video mode with short exposure time while ground-truth images are collected in image mode with long exposure time.</li>
-								<li style="line-height:1.5">&#9656;&emsp;An end-to-end fully convolutional network pipeline with a fine-tuning strategy for low-light video enhancement.</li>
-								<li style="line-height:1.5">&#9656;&emsp;Experiments show that, on the newly-collected dataset, our proposed pipeline outperforms previous video enhancement methods in terms of both numerical evaluation metrics and human perceptual evaluation.</li>
-								<li><a href="https://v.qq.com/x/page/a0969ywbcu5.html">&#9656;&emsp;Project Video</a></li>
-								<li><a href="HKUST_FYP_Report_Cys.pdf">&#9656;&emsp;Project Report</a></li>
-								<li><a href="https://github.com/zdxdsw/FYP-git">&#9656;&emsp;View Github</a></li>
+								<span id="close_webqa" class="close">&times;</span>
+								<li style="line-height:1.5">I curated a dataset (as the first author) for open-domain, multihop and multimodal question answering. On WebQA, I evaluated the extent to which models can answer web search queries leveraging both explicit knowledge via retrieved sources and implicit knowledge stored in parameters.</li>
+								<li style="line-height:1.5">&#9656;&emsp;Crowdsourced a dataset with knowledge-seeking QA pairs and multimodal (image+snippets) knowledge sources.</li>
+								<li style="line-height:1.5">&#9656;&emsp;Mined hard negatives which have high lexical overlap with the question or positive sources, while lacking reference to the answer.</li>
+								<li style="line-height:1.5">&#9656;&emsp;Adversarially created the train/test split such that the majority answers concluded from the training set cannot carry over to testing, thus suppressing purely statistical approaches.</li>
+								<li style="line-height:1.5">&#9656;&emsp;Implemented baseline models for WebQA under both fine-tuning (finetune a vision-and-language Transformer) and few-shot (prompt GPT-3 with engineered prefixes) settings.</li>
+								<li style="line-height:1.5">&#9656;&emsp;Designed a metric for WebQA that measures both fluency and accuracy, and is hard to game by guessing a long list of entities.</li>
+								<li style="line-height:1.5">&#9656;&emsp;Accepted to NeurIPS 2021 Competition Track. In submission to CVPR2022. (First Author)</li>
+								<li><a href="https://arxiv.org/abs/2109.00590">&#9656;&emsp;Paper</a></li>
+								<li><a href="https://eval.ai/web/challenges/challenge-page/1255/overview">&#9656;&emsp;Leaderboard</a></li>
+								<li><a href="https://webqna.github.io/">&#9656;&emsp;Website</a></li>
 							</ul>
 						</div>
 						<script>
-							var btn_fyp = document.getElementById("btn_fyp");
-							var modal_fyp = document.getElementById("myModal_fyp");
-							var span_fyp = document.getElementById("close_fyp");
+							var btn_fyp = document.getElementById("btn_webqa");
+							var modal_fyp = document.getElementById("myModal_webqa");
+							var span_fyp = document.getElementById("close_webqa");
 							btn_fyp.onclick = function() {modal_fyp.style.display="block";}
 							span_fyp.onclick = function() {modal_fyp.style.display="none";}
 						</script>
@@ -90,7 +94,7 @@
 						<article class="col-6 col-12-xsmall work-item">
 							<a href="https://v.qq.com/x/page/a0969ywbcu5.html" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
 							<h3>Low-Light Video Enhancement Using Deep Learning</h3>
-							<p>Final Year Project in HKUST<span style="color:#49bf9d;"> &emsp;Aug 2019 - May 2020 </span><br /> Advised by Professor CHEN Qifeng</p>
+							<p>Final Year Project in HKUST<span style="color:#49bf9d;"> &emsp;Aug 2019 - May 2020 </span><br /> Advised by Professor Qifeng Chen</p>
 							<ul id="myUL">
 								<li><span id="btn_fyp" class="caret">Read more</span></li>
 							</ul>
@@ -145,7 +149,7 @@
 						<article class="col-6 col-12-xsmall work-item">
 							<a class="image fit thumb"><img src="images/thumbs/scc.jpg" alt="" /></a>
 							<h3>Building a Blockchain and Smart Contract Application</h3>
-							<p>Undergraduate Research Program in HKUST<span style="color:#49bf9d;"> &emsp;Fall 2018 </span><br /> Advised by Professor CHEUNG Shing Chi</p>
+							<p>Undergraduate Research Program in HKUST<span style="color:#49bf9d;"> &emsp;Fall 2018 </span><br /> Advised by Professor Shing-Chi Cheung</p>
 							<ul id="myUL">
 								<li><span id="btn_scc" class="caret">Read more</span></li>
 							</ul>
@@ -367,7 +371,7 @@
 							<hr /> -->
 							<header>
 								<h4>Carnegie Mellon University</h4>
-								<p><span style="color:#797979;">Master of Language Technologies&emsp;&emsp;</span><span style="color:#49bf9d;">Aug 2020 - Present</span></p>
+								<p><span style="color:#797979;">Master of Language Technologies&emsp;&emsp;</span><span style="color:#49bf9d;">Aug 2020 - Aug 2022</span></p>
 							</header>
 							<header>
 								<h4>Hong Kong University of Science and Technology</h4>
@@ -424,7 +428,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre> -->
 					</section>
 				</section>
 
-				<!-- Four -->
+				<!-- 
 				<section id="contact">
 					
 					<h2>Contact</h2>
@@ -451,7 +455,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre> -->
 						<ul id="myUL">
 							<li>	
 								<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
-								+852 67230833<br />+86 18600230728
+								+1 4128070419<br />+86 18600230728
 							</li>
 						</ul>
 					</article>
@@ -459,11 +463,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre> -->
 						<ul id="myUL">
 							<li>	
 								<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
-								<a>ychangad@connect.ust.hk</a>
 								<a>yingshac@andrew.cmu.edu</a>
+								<a>ychangad@connect.ust.hk</a>
 							</li>
 						</ul>
 					</article>
+				-->
 
 						<!-- <div class="row">
 							<div class="col-8 col-12-small">

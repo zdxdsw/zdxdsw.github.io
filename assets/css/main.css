@@ -2368,26 +2368,26 @@ input, select, textarea {
 		overflow-x: auto;
 	}
 
-	table {
+	table.activities {
 		margin: 0 0 2em 0;
 		width: 100%;
 	}
 
-		table tbody tr {
+		table.activities tbody tr {
 			border: solid 1px #efefef;
 			border-left: 0;
 			border-right: 0;
 		}
 
-			table tbody tr:nth-child(2n + 1) {
+			table.activities tbody tr:nth-child(2n + 1) {
 				background-color: #f7f7f7;
 			}
 
-		table td {
+		table.activities td {
 			padding: 0.75em 0.75em;
 		}
 
-		table th {
+		table.activities th {
 			color: #787878;
 			font-size: 0.9em;
 			font-weight: 400;
@@ -2395,11 +2395,11 @@ input, select, textarea {
 			text-align: left;
 		}
 
-		table thead {
+		table.activities thead {
 			border-bottom: solid 2px #efefef;
 		}
 
-		table tfoot {
+		table.activities tfoot {
 			border-top: solid 2px #efefef;
 		}
 

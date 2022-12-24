@@ -34,10 +34,12 @@
 							<li><a href="https://www.facebook.com/profile.php?id=100015368941548" class="icon brands fa-facebook-square"><span class="label">Facebook</span></a></li>
 							<li><a href="https://github.com/zdxdsw" class="icon brands fa-github"><span class="label">Github</span></a></li>
 							<li><a href="https://twitter.com/_Yingshan" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="https://www.linkedin.com/in/yingshanchang/" class="icon brands fa-linkedin-square"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://www.linkedin.com/in/yingshanchang/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="https://www.instagram.com/whimsicalyingshan/?hl=en" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 
 							<li><a href="mailto:yingshac@cs.cmu.edu" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 					</ul>
+					<h1 style="line-height:2.5; font-size:20px;"><a href="gallery.html">Gallery</a></h1>
 					
 				</div>
 			</header>
@@ -50,7 +52,7 @@
 						<header class="major">
 							<h2>About Me</h2>
 						</header>
-						<p>Greetings! I am a second-year graduate student studying <strong>Master of Language Technology</strong> at <strong>Carnegie Mellon University</strong>, where I am very fortunate to be advised by Dr. Yonatan Bisk. I received my Bachelor's degree in Computer Science & Mathematics with first class honors from Hong Kong University of Science and Technology.<br />
+						<p>Greetings! I am a first-year PhD student from the Language Technology Institute at Carnegie Mellon University. I am very fortunate to be advised by Prof. Yonatan Bisk. I received my Bachelor's degree in Computer Science & Mathematics with first class honors from Hong Kong University of Science and Technology.<br />
 						</p>
 						<p><strong>Research Keywords: </strong>Natural Language Processing, Reasoning, Compositionality, Multimodal Knowledge Aggregation</p>
 						Key to my research goal is answering the following questions: 
@@ -66,7 +68,7 @@
 								</li>
 							</ol>
 						
-						&#10024; I'll be attending CVPR in person this year! See you in New Orleans! &#10024; <br>
+						&#10024; I'm actively looking for the summer 2023 internships. I'm interesting in mechanistic interpretion of how neural networks perform multimodal reasoning/grounding. (Keywords: Transformer circuits, how composing circuits develop, multimodal neurons, modality gap) &#10024; <br>
 						&#10024; I'll begin my PhD at CMU in 2022Fall! &#10024;
 						<br>
 						<br>
@@ -78,7 +80,7 @@
 							<li><span><a href="#edu">Education</a></span></li>
 							<li><span><a href="#hobby">Hobbies</a></span></li>
 							<li><span><a href="#community">Community Services</a></span></li>
-							<li><a href="Yingshan_resume.pdf">Download CV</a></li>
+							<li><a href="files/Yingshan_resume.pdf">Download CV</a></li>
 						</ul>
 					</section>
 
@@ -128,12 +130,36 @@
 				<section id="research">
 					
 					<h2>Research</h2>
+
 					<div class="row">
+					<!-- Affinity maps -->		
+						<article class="col-6 col-12-xsmall work-item">
+							<a href="" class="image fit thumb"><img src="images/thumbs/push_alg.jpg" alt="" style="padding: 21px 0px;"/></a>
+							<h3>Efficient Visual Grounding via Patch Affinities</h3>
+							<p>Advised by Prof. Yonatan Bisk <span style="color:#49bf9d;">2022 </span></p>
+							<ul id="myUL">
+								<li><span id="btn_webqa" class="caret">Read more</span></li>
+							</ul>
+							<div id="myModal_webqa" class="modal">
+								<ul class="modal-content">
+									<span id="close_webqa" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp;</li>
+								</ul>
+							</div>
+							<script>
+								var btn_webqa = document.getElementById("btn_webqa");
+								var modal_webqa = document.getElementById("myModal_webqa");
+								var span_webqa = document.getElementById("close_webqa");
+								btn_webqa.onclick = function() {modal_webqa.style.display="block";}
+								span_webqa.onclick = function() {modal_webqa.style.display="none";}
+							</script>
+						</article>
+
 					<!-- WebQA -->		
 					<article class="col-6 col-12-xsmall work-item">
 						<a href="https://webqna.github.io/" class="image fit thumb"><img src="images/thumbs/Webqa_logo_wide.jpg" alt="" /></a>
 						<h3>WebQA: Multihop and Multimodal QA</h3>
-						<p>Accepted by <a href="https://neurips.cc/Conferences/2021/CompetitionTrack">NeurIPS2021 Competition Track</a><span style="color:#49bf9d;"> &emsp;Aug 2020 - Present </span><br /> Advised by Professor Yonatan Bisk</p>
+						<p>Advised by Prof. Yonatan Bisk <span style="color:#49bf9d;">2020 - 2022 </span></p>
 						<ul id="myUL">
 							<li><span id="btn_webqa" class="caret">Read more</span></li>
 						</ul>
@@ -146,7 +172,7 @@
 								<li style="line-height:1.5">&#9656;&emsp;Adversarially created the train/test split such that the majority answers concluded from the training set cannot carry over to testing, thus suppressing purely statistical approaches.</li>
 								<li style="line-height:1.5">&#9656;&emsp;Implemented baseline models for WebQA under both fine-tuning (finetune a vision-and-language Transformer) and few-shot (prompt GPT-3 with engineered prefixes) settings.</li>
 								<li style="line-height:1.5">&#9656;&emsp;Designed a metric for WebQA that measures both fluency and accuracy, and is hard to game by guessing a long list of entities.</li>
-								<li style="line-height:1.5">&#9656;&emsp;Accepted to NeurIPS 2021 Competition Track.</li>
+								<li style="line-height:1.5">&#9656;&emsp;Accepted to <a href="https://neurips.cc/Conferences/2021/CompetitionTrack"></a>NeurIPS 2021 Competition Track</a>.</li>
 								<li style="line-height:1.5">&#9656;&emsp;Accepted to CVPR2022 (Oral)</li>
 								<li><a href="https://arxiv.org/abs/2109.00590">&#9656;&emsp;Paper</a></li>
 								<li><a href="https://eval.ai/web/challenges/challenge-page/1255/overview">&#9656;&emsp;Leaderboard</a></li>
@@ -166,7 +192,7 @@
 						<article class="col-6 col-12-xsmall work-item">
 							<a href="https://v.qq.com/x/page/a0969ywbcu5.html" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
 							<h3>Low-Light Video Enhancement Using Deep Learning</h3>
-							<p>Final Year Project in HKUST<span style="color:#49bf9d;"> &emsp;Aug 2019 - May 2020 </span><br /> Advised by Professor Qifeng Chen</p>
+							<p>Advised by Prof. Qifeng Chen <span style="color:#49bf9d;">2019 - 2020 </span></p>
 							<ul id="myUL">
 								<li><span id="btn_fyp" class="caret">Read more</span></li>
 							</ul>
@@ -178,7 +204,7 @@
                                     <li style="line-height:1.5">&#9656;&emsp;An end-to-end fully convolutional network pipeline with a fine-tuning strategy for low-light video enhancement.</li>
                                     <li style="line-height:1.5">&#9656;&emsp;Experiments show that, on the newly-collected dataset, our proposed pipeline outperforms previous video enhancement methods in terms of both numerical evaluation metrics and human perceptual evaluation.</li>
                                     <li><a href="https://v.qq.com/x/page/a0969ywbcu5.html">&#9656;&emsp;Project Video</a></li>
-                                    <li><a href="HKUST_FYP_Report_Cys.pdf">&#9656;&emsp;Project Report</a></li>
+                                    <li><a href="files/HKUST_FYP_Report_Cys.pdf">&#9656;&emsp;Project Report</a></li>
                                     <li><a href="https://github.com/zdxdsw/FYP-git">&#9656;&emsp;View Github</a></li>
 								</ul>
 							</div>
@@ -195,7 +221,7 @@
 						<article class="col-6 col-12-xsmall work-item">
 							<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/bert.jpg" alt="" /></a>
 							<h3>Event-to-Sentence Using BERT in Automated Story Generation</h3>
-							<p>Summer Research in Georgia Tech<span style="color:#49bf9d;"> &emsp;May 2019 - Aug 2019 </span><br /> Advised by Professor Mark Riedl</p>
+							<p>Advised by Prof. Mark Riedl <span style="color:#49bf9d;">Summer 2019 </span></p>
 							<ul id="myUL">
 								<li><span id="btn_bert" class="caret">Read more</span></li>
 							</ul>
@@ -221,7 +247,7 @@
 						<article class="col-6 col-12-xsmall work-item">
 							<a class="image fit thumb"><img src="images/thumbs/scc.jpg" alt="" /></a>
 							<h3>Building a Blockchain and Smart Contract Application</h3>
-							<p>Undergraduate Research Program in HKUST<span style="color:#49bf9d;"> &emsp;Fall 2018 </span><br /> Advised by Professor Shing-Chi Cheung</p>
+							<p>Advised by Prof. Shing-Chi Cheung <span style="color:#49bf9d;">&emsp;Fall 2018 </span></p>
 							<ul id="myUL">
 								<li><span id="btn_scc" class="caret">Read more</span></li>
 							</ul>
@@ -248,6 +274,90 @@
 				<section id="project">
 					<h2>Selected Course Projects</h2>
 					<div class="row">
+					<!-- Neuroconcepts -->		
+					<article class="col-6 col-12-xsmall work-item">
+						<a class="image fit thumb"><img src="images/NeuroConcepts.svg" alt="" /></a>
+						<h3>Neuro-Concepts</h3>
+						<p>CMU 85707<span style="color:#49bf9d;"> &emsp;Spring 2022 </span></p>
+						
+						<ul id="myUL">
+							<li><span id="btn_4021" class="caret">Read more</span></li>
+						</ul>
+						<div id="myModal_4021" class="modal">
+							<ul class="modal-content">
+								<span id="close_4021" class="close">&times;</span>
+								<li style="line-height:1.5">
+								</li>
+								
+								<li><a href="files/NeuroConcepts_Paper_ToM.pdf">&#9656;&emsp;Final Paper</a></li>							</ul>
+						</div>
+						<script>
+							var btn_4021 = document.getElementById("btn_4021");
+							var modal_4021 = document.getElementById("myModal_4021");
+							var span_4021 = document.getElementById("close_4021");
+							btn_4021.onclick = function() {modal_4021.style.display="block";}
+							span_4021.onclick = function() {modal_4021.style.display="none";}
+						</script>
+						
+					</article>
+
+					<!-- Conlanging -->		
+					<article class="col-6 col-12-xsmall work-item">
+						<a class="image fit thumb"><img src="images/Conlanging.svg" alt="" /></a>
+						<h3>Conlanging</h3>
+						<p>CMU 11823<span style="color:#49bf9d;"> &emsp;Spring 2022 </span></p>
+						
+						<ul id="myUL">
+							<li><span id="btn_4021" class="caret">Read more</span></li>
+						</ul>
+						<div id="myModal_4021" class="modal">
+							<ul class="modal-content">
+								<span id="close_4021" class="close">&times;</span>
+								<li style="line-height:1.5">
+									The project's name is "World Travel". It's a game that borrows some ideas from "monopoly". The player can select an icon on the menu page to represent the player. On the map page, the player rolls a die and then walks around a map according to the die outcome. Then a card will show up and describe about a destination (a city). Once a city is visited, the corresponding cell on the map will disappear. This means, the player cannot repeatly visit the same cell. The game is finished when all cities are visited. 
+								</li>
+								
+								<li><a href="files/11823Grammar.pdf">&#9656;&emsp;Reference Grammar</a></li>
+							</ul>
+						</div>
+						<script>
+							var btn_4021 = document.getElementById("btn_4021");
+							var modal_4021 = document.getElementById("myModal_4021");
+							var span_4021 = document.getElementById("close_4021");
+							btn_4021.onclick = function() {modal_4021.style.display="block";}
+							span_4021.onclick = function() {modal_4021.style.display="none";}
+						</script>
+						
+					</article>
+
+					<!-- Sociolinguistics -->		
+					<article class="col-6 col-12-xsmall work-item">
+						<a class="image fit thumb"><img src="images/sociolinguistics.jpg" alt="" /></a>
+						<h3>Sociolinguistics</h3>
+						<p>CMU 11724<span style="color:#49bf9d;"> &emsp;Fall 2021 </span></p>
+						
+						<ul id="myUL">
+							<li><span id="btn_4021" class="caret">Read more</span></li>
+						</ul>
+						<div id="myModal_4021" class="modal">
+							<ul class="modal-content">
+								<span id="close_4021" class="close">&times;</span>
+								<li style="line-height:1.5">
+									The project's name is "World Travel". It's a game that borrows some ideas from "monopoly". The player can select an icon on the menu page to represent the player. On the map page, the player rolls a die and then walks around a map according to the die outcome. Then a card will show up and describe about a destination (a city). Once a city is visited, the corresponding cell on the map will disappear. This means, the player cannot repeatly visit the same cell. The game is finished when all cities are visited. 
+								</li>
+								
+								<li><a href="https://github.com/zdxdsw/COMP4021/tree/master/world-travel">&#9656;&emsp;View Github</a></li>
+							</ul>
+						</div>
+						<script>
+							var btn_4021 = document.getElementById("btn_4021");
+							var modal_4021 = document.getElementById("myModal_4021");
+							var span_4021 = document.getElementById("close_4021");
+							btn_4021.onclick = function() {modal_4021.style.display="block";}
+							span_4021.onclick = function() {modal_4021.style.display="none";}
+						</script>
+						
+					</article>
 					<!-- Internet Computing -->		
 					<article class="col-6 col-12-xsmall work-item">
 							<a class="image fit thumb"><img src="images/thumbs/4021.jpg" alt="" /></a>
@@ -443,23 +553,23 @@
 							<hr /> -->
 							<header>
 								<h4>Carnegie Mellon University</h4>
-								<p><span style="color:#797979;">PhD in Language Technologies&emsp;&emsp;</span><span style="color:#49bf9d;">Aug 2022 - </span></p>
+								<p><span style="color:#797979;">PhD in Language Technologies&emsp;&emsp;</span><span style="color:#49bf9d;">2022 - </span></p>
 							</header>
 							<header>
 								<h4>Carnegie Mellon University</h4>
-								<p><span style="color:#797979;">Master of Language Technologies&emsp;&emsp;</span><span style="color:#49bf9d;">Aug 2020 - Aug 2022</span></p>
+								<p><span style="color:#797979;">MS in Language Technologies&emsp;&emsp;</span><span style="color:#49bf9d;">2020 - 2022</span></p>
 							</header>
 							<header>
 								<h4>Hong Kong University of Science and Technology</h4>
-								<p><span style="color:#797979;">Bachelor of Science in Computer Science & Mathematics&emsp;&emsp;</span><span style="color:#49bf9d;">Sep 2016 - July 2020</span></p>
+								<p><span style="color:#797979;">BS in Computer Science & Mathematics&emsp;&emsp;</span><span style="color:#49bf9d;">2016 - 2020</span></p>
 							</header>
 							<header>
 								<h4>Georgia Institute of Technology</h4>
-								<p><span style="color:#797979;">Study Abroad&emsp;&emsp;</span><span style="color:#49bf9d;">Jan 2019 - Aug 2019</span></p>
+								<p><span style="color:#797979;">Exchange&emsp;&emsp;</span><span style="color:#49bf9d;">Spring 2019</span></p>
 							</header>
 							<header>
 								<h4>Peking University</h4>
-								<p><span style="color:#797979;">AEARU Summer Camp&emsp;&emsp;</span><span style="color:#49bf9d;">July 2018</span></p>
+								<p><span style="color:#797979;">AEARU Summer Camp&emsp;&emsp;</span><span style="color:#49bf9d;">Summer 2018</span></p>
 							</header>
 							
 							<!-- <header>

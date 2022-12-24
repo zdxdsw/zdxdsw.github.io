@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/daterangepicker.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+</head>
+
+<style>
+  .handhover:hover {
+    cursor:pointer;
+  }
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+
+<script>
+  function toggle(id, btnid) {
+    var div = document.getElementById(id);
+    div.style.display = div.style.display == "none" ? "block" : "none";
+    //var btn = document.getElementById(btnid);
+    //btn.innerHTML = btn.innerHTML == "Show" ? "Hide" : "Show";
+    $('.'+id+'-child').hide();
+  }
+
+  function slidetoggle(id, cls) {
+    if($('#'+id).is(":visible")) {$('#'+id).hide();}
+    else{$('.'+cls).hide();
+    $('#'+id).toggle()}
+  }
+</script>>
+
+
+<div class="untree_co-section">
+  <div class="container">
+    <div class="row mb-5 justify-content-center">
+        <div class="col-lg-6 text-center">
+          <h2 class="section-title text-center mb-3">Pictures of the Season</h2>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col-6 col-md-6 col-lg-6">
+        <div class="media-1">
+          <a href="#" class="d-block mb-6"><img src="homepage_gallery/Garfield_water_tower.jpg" alt="Image" class="img-fluid"></a>
+          <div class="d-flex">
+            <div>
+              <p>Garfield Community Farm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-6 col-lg-6">
+        <div class="media-1">
+          <a href="#" class="d-block mb-6"><img src="homepage_gallery/Garfield_snow.jpg" alt="Image" class="img-fluid"></a>
+          <div class="d-flex">
+            <div>
+              <p>Garfield</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+<!-- Pittsburgh -->
+    <div class="container">
+        <div class="row mb-5 justify-content-center" style="margin-top:50px;">
+            <div class="col-lg-6 text-center handhover">
+              <h2 class="section-title text-center mb-3" id="btn-collapsePittsburgh" 45yersgfdxc onclick="toggle('collapsePittsburgh', 'btn-collapsePittsburgh')">Pittsburgh</h2>
+            </div>
+        </div>
+
+
+        <div id="collapsePittsburgh" style="display: none; margin-bottom: 60px;">
+          <div class="row justify-content-center">
+            <div style="margin:auto">
+              <button class="btn btn-light" id="btn-collapsePittsburgh-bridge" 45yersgfdxc onclick="slidetoggle('collapsePittsburgh-bridge', 'collapsePittsburgh-child')">Pittsburgh Bridges</button>
+            </div>
+            <div style="margin:auto">
+              <button class="btn btn-light" id="btn-collapsePittsburgh-neighborhood" 45yersgfdxc onclick="slidetoggle('collapsePittsburgh-neighborhood', 'collapsePittsburgh-child')">Pittsburgh Neighborhoods</button>
+            </div>
+            <div style="margin:auto">
+              <button class="btn btn-light" id="btn-collapsePittsburgh-attraction" 45yersgfdxc onclick="slidetoggle('collapsePittsburgh-attraction', 'collapsePittsburgh-child')">Pittsburgh Attractions</button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Pittsburgh-bridge -->
+        <div class="collapsePittsburgh-child" id="collapsePittsburgh-bridge" style="display: none;">
+          <div class="row" >
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/31th_st_workers_in_the_sky.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>31st St Bridge</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/the_concrete_beach_looking_west.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>31st St Bridge</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/fort_pitt_bridge_bunny.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Fort Pitt Bridge</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/16th_st_bridge_lookup.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>16th St Bridge</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+                
+          </div>
+        </div>
+          
+        <!-- Pittsburgh-neighborhood -->
+        <div class="collapsePittsburgh-child" id="collapsePittsburgh-neighborhood" style="display: none;">
+          <div class="row">
+            <div class="col-6 col-md-6 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/homewood_great_day.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Homewood</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/downtown_flying_bird.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Downtown</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="homepage_gallery/graffiti_way_foliage.jpg" class="d-block mb-3"><img src="homepage_gallery/graffiti_way_foliage.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Lower Lawrenceville</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/fineview_heart_fence.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Fineview</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/church_and_moon.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>East Liberty</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/troy_hill_steps_skyline.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Troy Hill</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/highlandave_chipotle.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Shadyside</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/strip_primanti.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Strip District</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-6 col-md-6 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/beltzhoover_foliage.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Beltzhoover</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Pittsburgh-attraction -->
+        <div class="collapsePittsburgh-child" id="collapsePittsburgh-attraction" style="display: none;">
+          <div class="row">
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/umbrella_sky.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Umbrella Sky Project</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/frank_concrete.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Frank Bryan Inc</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-6 col-md-6 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/randyland.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Randyland</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-6 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/homewood_busway_overcross.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>M.L.K. East Busway</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/cmu_steps.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>CMU</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/colorpark.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>The Color Park</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+    
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/duquesne_incline.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Duquesne Incline</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/306forbes.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>306 Forbes Boutique</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/mellon_park.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Mellon Park</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-6 col-md-3 col-lg-3">
+              <div class="media-1">
+                <a href="#" class="d-block mb-3"><img src="homepage_gallery/CoL_yellow.jpg" alt="Image" class="img-fluid"></a>
+                <div class="d-flex">
+                  <div>
+                    <p>Cathedral of Learning</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>        
+        
+    </div>
+
+<!-- Railroads -->
+    <div class="container">
+      <div class="row mb-5 justify-content-center" style="margin-top:50px;">
+        <div class="col-lg-6 text-center handhover">
+          <h2 class="section-title text-center mb-3" id="btn-collapseRailroads" 45yersgfdxc onclick="toggle('collapseRailroads', 'btn-collapseRailroads')">Railroads</h2>
+        </div>
+      </div>
+
+      <div id="collapseRailroads" style="display: none; margin-bottom: 60px;">
+        <div class="row justify-content-center">
+          <div style="margin:auto">
+            <button class="btn btn-light" id="btn-collapseRailroads-traintrack" 45yersgfdxc onclick="slidetoggle('collapseRailroads-traintrack', 'collapseRailroads-child')">Train Tracks</button>
+          </div>
+          <div style="margin:auto">
+            <button class="btn btn-light" id="btn-collapseRailroads-train" 45yersgfdxc onclick="slidetoggle('collapseRailroads-train', 'collapseRailroads-child')">Trains</button>
+          </div>
+          <div style="margin:auto">
+            <button class="btn btn-light" id="btn-collapseRailroads-railbridge" 45yersgfdxc onclick="slidetoggle('collapseRailroads-railbridge', 'collapseRailroads-child')">Rail Bridges</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapseRailroads-child" id="collapseRailroads-traintrack" style="display: none;">
+        <div class="row">
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/strip_railtrack.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>35th St</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/sharpsburg_through_highland_bridge.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Sharpsburg</p>
+                </div>
+              </div>
+            </div>
+          </div> 
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/Aspinwall_railtrack.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Aspinwall</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/threecrossing_railtrack.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>The Yards at 3 Crossings</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/lawrenceville_shuttle_by_railtrack.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Upper Lawrenceville</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-6 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/fort_pitt_bridge_from_station_sq.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Station Square</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/warehouse_train_track.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>South Side Flats</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+      </div>
+
+      <div class="collapseRailroads-child" id="collapseRailroads-train" style="display: none;">
+        <div class="row">
+          <div class="col-6 col-md-6 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/mt_washington_iron_city_beer_and_train.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Mt Washington</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/Aspinwall_train_top.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Aspinwall</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/Allegeny_commons_train.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Allegeny Commons Park West</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/homestead_grays_bridge_train.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Homestead</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="collapseRailroads-child" id="collapseRailroads-railbridge" style="display: none;">
+
+        <div class="row">
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/31th_st_railtrack.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>33rd St Railroad Bridge</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/the_concrete_beach_steel.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>35th St</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/Brilliant_branch_bridge.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Brilliant Branch Railroad Bridge</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+
+
+    </div>
+
+<!-- Abandoned Beauty -->
+    <div class="container">
+      <div class="row mb-5 justify-content-center" style="margin-top:50px;">
+        <div class="col-lg-6 text-center handhover">
+          <h2 class="section-title text-center mb-3" id="btn-collapseAbandoned" 45yersgfdxc onclick="toggle('collapseAbandoned', 'btn-collapseAbandoned')">The Abandoned Beauty</h2>
+        </div>
+      </div>
+
+      <div id="collapseAbandoned" style="display: none; margin-bottom: 60px;">
+        <div class="row justify-content-center">
+          <div style="margin:auto">
+            <button class="btn btn-light" id="btn-collapseAbandoned-ironcitygarage" 45yersgfdxc onclick="slidetoggle('collapseAbandoned-ironcitygarage', 'collapseAbandoned-child')">Iron City Garage</button>
+          </div>
+          <div style="margin:auto">
+            <button class="btn btn-light" id="btn-collapseAbandoned-stpeterpaulelementary" 45yersgfdxc onclick="slidetoggle('collapseAbandoned-stpeterpaulelementary', 'collapseAbandoned-child')">St Peter & Paul Elementary School</button>
+          </div>
+          <div style="margin:auto">
+            <button class="btn btn-light" id="btn-collapseAbandoned-random" 45yersgfdxc onclick="slidetoggle('collapseAbandoned-random', 'collapseAbandoned-child')">Random</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="collapseAbandoned-child" id="collapseAbandoned-ironcitygarage" style="display: none;">
+        <div class="row">
+          <div class="col-6 col-md-6 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/junkyard.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Homewood</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-6 col-md-6 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/junkyard2.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Homewood</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-6 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/junkyard3.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Homewood</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      
+      </div>
+
+      <div class="collapseAbandoned-child" id="collapseAbandoned-stpeterpaulelementary" style="display: none;">
+        <div class="row">
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/abandoned_hanging_board.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>East Liberty</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="collapseAbandoned-child" id="collapseAbandoned-random" style="display: none;">
+        <div class="row">
+          <div class="col-6 col-md-6 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/homewood_fallen_basketball_rack.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Homewood</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/beltzhoover_backyard_shabby_cars.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Beltzhoover</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-3 col-lg-3">
+            <div class="media-1">
+              <a href="#" class="d-block mb-3"><img src="homepage_gallery/beltzhoover_abandoned_church.jpg" alt="Image" class="img-fluid"></a>
+              <div class="d-flex">
+                <div>
+                  <p>Beltzhoover</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+  </div>
+  </div>

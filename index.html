@@ -52,7 +52,7 @@
 						<header class="major">
 							<h2>About Me</h2>
 						</header>
-						<p>Greetings! I am a first-year PhD student from the Language Technology Institute at Carnegie Mellon University. I am very fortunate to be advised by Prof. Yonatan Bisk. I received my Bachelor's degree in Computer Science & Mathematics with first class honors from Hong Kong University of Science and Technology.<br />
+						<p>Greetings! I am a first-year PhD student from the <a href="https://lti.cs.cmu.edu/">Language Technology Institute</a> at Carnegie Mellon University. I am very fortunate to be advised by Prof. <a href="https://yonatanbisk.com/">Yonatan Bisk</a>. I received my Bachelor's degree in Computer Science & Mathematics with first class honors from Hong Kong University of Science and Technology.<br />
 						</p>
 						<p><strong>Research Keywords: </strong>Natural Language Processing, Reasoning, Compositionality, Multimodal Knowledge Aggregation</p>
 						Key to my research goal is answering the following questions: 
@@ -68,8 +68,7 @@
 								</li>
 							</ol>
 						
-						&#10024; I'm actively looking for the summer 2023 internships. I'm interesting in mechanistic interpretion of how neural networks perform multimodal reasoning/grounding. (Keywords: Transformer circuits, how composing circuits develop, multimodal neurons, modality gap) &#10024; <br>
-						&#10024; I'll begin my PhD at CMU in 2022Fall! &#10024;
+						&#10024; I'm actively looking for the summer 2023 internships. I'm interesting in mechanistic interpretability of how neural networks perform multimodal reasoning/grounding. (Keywords: Transformer circuits, how composing circuits develop, multimodal neurons, modality gap) &#10024; <br>
 						<br>
 						<br>
 
@@ -133,40 +132,61 @@
 
 					<div class="row">
 					<!-- Affinity maps -->		
-						<article class="col-6 col-12-xsmall work-item">
-							<a href="" class="image fit thumb"><img src="images/thumbs/push_alg.jpg" alt="" style="padding: 21px 0px;"/></a>
+						<article class="col-6 col-12-xsmall big-box work-item">
+							<a href="" class="image fit thumb"><img src="images/thumbs/push_alg.jpg" alt="" style="padding: 39px 0px;"/></a>
 							<h3>Efficient Visual Grounding via Patch Affinities</h3>
-							<p>Advised by Prof. Yonatan Bisk <span style="color:#49bf9d;">2022 </span></p>
-							<ul id="myUL">
-								<li><span id="btn_webqa" class="caret">Read more</span></li>
-							</ul>
-							<div id="myModal_webqa" class="modal">
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box"><p>Advised by Prof. Yonatan Bisk &emsp;</p></div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#49bf9d;">2022</span></p>
+							</div>
+
+							<div class="row">
+								<div class="col-12 mini-box">
+									<ul id="myUL">
+										<li><span id="btn_affinitymap" class="caret">Read more</span></li>
+									</ul>
+								</div>
+							</div>
+						
+							<div id="myModal_affinitymap" class="modal">
 								<ul class="modal-content">
-									<span id="close_webqa" class="close">&times;</span>
-									<li style="line-height:1.5">&#9656;&emsp;</li>
+									<span id="close_affinitymap" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp; We ask the research question: Are token and patch representations <i>alone</i> sufficient to perform visual reasoning?</li>
+									<li style="line-height:1.5">&#9656;&emsp; We show that a single Transformer backbone can <i>more efficiently</i> perform language-conditioned visual reasoning than bespoke architectures.</li>
+									<li style="line-height:1.5">&#9656;&emsp; We show that well-aligned patch-token representations naturally translate to downstream performance without unimodal backbones or output-specific components.</li>
+									<li style="line-height:1.5">&#9656;&emsp; We use Referring Expression Comprehension and Segmentation as case studies and demonstrate how patch affinity scores can be leveraged to achieve competitive recognition and segmentation <i>with an order to magnitude fewer parameters and inference time.</i></li>
 								</ul>
 							</div>
 							<script>
-								var btn_webqa = document.getElementById("btn_webqa");
-								var modal_webqa = document.getElementById("myModal_webqa");
-								var span_webqa = document.getElementById("close_webqa");
-								btn_webqa.onclick = function() {modal_webqa.style.display="block";}
-								span_webqa.onclick = function() {modal_webqa.style.display="none";}
+								var btn_affinitymap = document.getElementById("btn_affinitymap");
+								var modal_affinitymap = document.getElementById("myModal_affinitymap");
+								var span_affinitymap = document.getElementById("close_affinitymap");
+								btn_affinitymap.onclick = function() {modal_affinitymap.style.display="block";}
+								span_affinitymap.onclick = function() {modal_affinitymap.style.display="none";}
 							</script>
 						</article>
 
 					<!-- WebQA -->		
-					<article class="col-6 col-12-xsmall work-item">
+					<article class="col-6 col-12-xsmall big-box work-item">
 						<a href="https://webqna.github.io/" class="image fit thumb"><img src="images/thumbs/Webqa_logo_wide.jpg" alt="" /></a>
 						<h3>WebQA: Multihop and Multimodal QA</h3>
-						<p>Advised by Prof. Yonatan Bisk <span style="color:#49bf9d;">2020 - 2022 </span></p>
-						<ul id="myUL">
-							<li><span id="btn_webqa" class="caret">Read more</span></li>
-						</ul>
+						<div class="row">
+							<div class="col-8 col-sm-12 mini-box"><p>Advised by Prof. Yonatan Bisk &emsp;</p></div>
+							<div class="col-4 col-sm-12 mini-box"><p><span style="color:#49bf9d;">2020 - 2022</span></p>
+						</div>
+
+						<div class="row">
+							<div class="col-12 mini-box">
+								<ul id="myUL">
+									<li><span id="btn_webqa" class="caret">Read more</span></li>
+								</ul>
+							</div>
+						</div>
+						
 						<div id="myModal_webqa" class="modal">
 							<ul class="modal-content">
 								<span id="close_webqa" class="close">&times;</span>
-								<li style="line-height:1.5">I curated a dataset (as the first author) for open-domain, multihop and multimodal question answering. On WebQA, I evaluated the extent to which models can answer web search queries leveraging both explicit knowledge via retrieved sources and implicit knowledge stored in parameters.</li>
+								<li style="line-height:1.5">We curated a dataset for open-domain, multihop and multimodal question answering. <br>Then, We evaluated the extent to which models can answer open-domain web search queries leveraging both the explicit knowledge in retrieved sources and the implicit knowledge in pre-trained parameters.</li>
 								<li style="line-height:1.5">&#9656;&emsp;Crowdsourced a dataset with knowledge-seeking QA pairs and multimodal (image+snippets) knowledge sources.</li>
 								<li style="line-height:1.5">&#9656;&emsp;Mined hard negatives which have high lexical overlap with the question or positive sources, while lacking reference to the answer.</li>
 								<li style="line-height:1.5">&#9656;&emsp;Adversarially created the train/test split such that the majority answers concluded from the training set cannot carry over to testing, thus suppressing purely statistical approaches.</li>
@@ -189,20 +209,29 @@
 					</article>
 
 					<!-- Undergrad fyp -->		
-						<article class="col-6 col-12-xsmall work-item">
+					<article class="col-6 col-12-xsmall big-box work-item">
 							<a href="https://v.qq.com/x/page/a0969ywbcu5.html" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
 							<h3>Low-Light Video Enhancement Using Deep Learning</h3>
-							<p>Advised by Prof. Qifeng Chen <span style="color:#49bf9d;">2019 - 2020 </span></p>
-							<ul id="myUL">
-								<li><span id="btn_fyp" class="caret">Read more</span></li>
-							</ul>
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box"><p>Advised by Prof. Qifeng Chen &emsp;</p></div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#49bf9d;">2019 - 2020 </span></p>
+							</div>
+
+							<div class="row">
+								<div class="col-12 mini-box">
+									<ul id="myUL">
+										<li><span id="btn_fyp" class="caret">Read more</span></li>
+									</ul>
+								</div>
+							</div>
+							
 							<div id="myModal_fyp" class="modal">
 								<ul class="modal-content">
                                     <span id="close_fyp" class="close">&times;</span>
-                                    <li style="line-height:1.5">This project explored possibilities of reducing noises and motion blurs in low-light RGB video frames using deep learning. Our contributions are three-folds:</li>
-									<li style="line-height:1.5">&#9656;&emsp;A novel approach to collect data of dark and blurry video frames with corresponding bright and sharp ground-truth images. Video frames are collected in video mode with short exposure time while ground-truth images are collected in image mode with long exposure time.</li>
-                                    <li style="line-height:1.5">&#9656;&emsp;An end-to-end fully convolutional network pipeline with a fine-tuning strategy for low-light video enhancement.</li>
-                                    <li style="line-height:1.5">&#9656;&emsp;Experiments show that, on the newly-collected dataset, our proposed pipeline outperforms previous video enhancement methods in terms of both numerical evaluation metrics and human perceptual evaluation.</li>
+                                    <li style="line-height:1.5">This project explored possibilities of reducing noises and motion blurs in low-light RGB video frames using deep learning. <br>Our contributions are three-folds:</li>
+									<li style="line-height:1.5">1. &emsp; A novel approach to collect data of dark and blurry video frames with corresponding bright and sharp ground-truth images. Video frames are collected in video mode with short exposure time while ground-truth images are collected in image mode with long exposure time.</li>
+                                    <li style="line-height:1.5">2. &emsp; An end-to-end fully convolutional network pipeline with a fine-tuning strategy for low-light video enhancement.</li>
+                                    <li style="line-height:1.5">3. &emsp; Experiments show that, on the newly-collected dataset, our proposed pipeline outperforms previous video enhancement methods in terms of both numerical evaluation metrics and human perceptual evaluation.</li>
                                     <li><a href="https://v.qq.com/x/page/a0969ywbcu5.html">&#9656;&emsp;Project Video</a></li>
                                     <li><a href="files/HKUST_FYP_Report_Cys.pdf">&#9656;&emsp;Project Report</a></li>
                                     <li><a href="https://github.com/zdxdsw/FYP-git">&#9656;&emsp;View Github</a></li>
@@ -215,16 +244,24 @@
 								btn_fyp.onclick = function() {modal_fyp.style.display="block";}
 								span_fyp.onclick = function() {modal_fyp.style.display="none";}
 							</script>
-						</article>
+					</article>
 
 					<!-- bert -->
-						<article class="col-6 col-12-xsmall work-item">
+						<article class="col-6 col-12-xsmall big-box work-item">
 							<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/bert.jpg" alt="" /></a>
 							<h3>Event-to-Sentence Using BERT in Automated Story Generation</h3>
-							<p>Advised by Prof. Mark Riedl <span style="color:#49bf9d;">Summer 2019 </span></p>
-							<ul id="myUL">
-								<li><span id="btn_bert" class="caret">Read more</span></li>
-							</ul>
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box"><p>Advised by Prof. Mark Riedl &emsp;</p></div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#49bf9d;">Summer 2019 </span></p>
+							</div>
+							<div class="row">
+								<div class="col-12 mini-box">
+									<ul id="myUL">
+										<li><span id="btn_bert" class="caret">Read more</span></li>
+									</ul>
+								</div>
+							</div>
+							
 							<div id="myModal_bert" class="modal">
 								<ul class="modal-content">
 									<span id="close_bert" class="close">&times;</span>
@@ -244,13 +281,18 @@
 						</article>
 
 					<!-- scc -->
-						<article class="col-6 col-12-xsmall work-item">
+						<article class="col-6 col-12-xsmall big-box work-item">
 							<a class="image fit thumb"><img src="images/thumbs/scc.jpg" alt="" /></a>
-							<h3>Building a Blockchain and Smart Contract Application</h3>
-							<p>Advised by Prof. Shing-Chi Cheung <span style="color:#49bf9d;">&emsp;Fall 2018 </span></p>
-							<ul id="myUL">
-								<li><span id="btn_scc" class="caret">Read more</span></li>
-							</ul>
+							<h3>A Blockchain and Smart Contract Application</h3>
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box"><p>Advised by Prof. Shing-Chi Cheung &emsp;</p></div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#49bf9d;">Fall 2018 </span></p>
+							</div>
+							<div class="row">
+								<div class="col-12 mini-box">
+									<ul id="myUL"><li><span id="btn_scc" class="caret">Read more</span></li></ul>
+								</div>
+							</div>
 							<div id="myModal_scc" class="modal">
 								<ul class="modal-content">
 									<span id="close_scc" class="close">&times;</span>
@@ -281,22 +323,22 @@
 						<p>CMU 85707<span style="color:#49bf9d;"> &emsp;Spring 2022 </span></p>
 						
 						<ul id="myUL">
-							<li><span id="btn_4021" class="caret">Read more</span></li>
+							<li><span id="btn_85707" class="caret">Read more</span></li>
 						</ul>
-						<div id="myModal_4021" class="modal">
+						<div id="myModal_85707" class="modal">
 							<ul class="modal-content">
-								<span id="close_4021" class="close">&times;</span>
+								<span id="close_85707" class="close">&times;</span>
 								<li style="line-height:1.5">
 								</li>
 								
 								<li><a href="files/NeuroConcepts_Paper_ToM.pdf">&#9656;&emsp;Final Paper</a></li>							</ul>
 						</div>
 						<script>
-							var btn_4021 = document.getElementById("btn_4021");
-							var modal_4021 = document.getElementById("myModal_4021");
-							var span_4021 = document.getElementById("close_4021");
-							btn_4021.onclick = function() {modal_4021.style.display="block";}
-							span_4021.onclick = function() {modal_4021.style.display="none";}
+							var btn_85707 = document.getElementById("btn_85707");
+							var modal_85707 = document.getElementById("myModal_85707");
+							var span_85707 = document.getElementById("close_85707");
+							btn_85707.onclick = function() {modal_85707.style.display="block";}
+							span_85707.onclick = function() {modal_85707.style.display="none";}
 						</script>
 						
 					</article>
@@ -308,24 +350,24 @@
 						<p>CMU 11823<span style="color:#49bf9d;"> &emsp;Spring 2022 </span></p>
 						
 						<ul id="myUL">
-							<li><span id="btn_4021" class="caret">Read more</span></li>
+							<li><span id="btn_11823" class="caret">Read more</span></li>
 						</ul>
-						<div id="myModal_4021" class="modal">
+						<div id="myModal_11823" class="modal">
 							<ul class="modal-content">
-								<span id="close_4021" class="close">&times;</span>
+								<span id="close_11823" class="close">&times;</span>
 								<li style="line-height:1.5">
-									The project's name is "World Travel". It's a game that borrows some ideas from "monopoly". The player can select an icon on the menu page to represent the player. On the map page, the player rolls a die and then walks around a map according to the die outcome. Then a card will show up and describe about a destination (a city). Once a city is visited, the corresponding cell on the map will disappear. This means, the player cannot repeatly visit the same cell. The game is finished when all cities are visited. 
+									
 								</li>
 								
 								<li><a href="files/11823Grammar.pdf">&#9656;&emsp;Reference Grammar</a></li>
 							</ul>
 						</div>
 						<script>
-							var btn_4021 = document.getElementById("btn_4021");
-							var modal_4021 = document.getElementById("myModal_4021");
-							var span_4021 = document.getElementById("close_4021");
-							btn_4021.onclick = function() {modal_4021.style.display="block";}
-							span_4021.onclick = function() {modal_4021.style.display="none";}
+							var btn_11823 = document.getElementById("btn_11823");
+							var modal_11823 = document.getElementById("myModal_11823");
+							var span_11823 = document.getElementById("close_11823");
+							btn_11823.onclick = function() {modal_11823.style.display="block";}
+							span_11823.onclick = function() {modal_11823.style.display="none";}
 						</script>
 						
 					</article>
@@ -337,24 +379,24 @@
 						<p>CMU 11724<span style="color:#49bf9d;"> &emsp;Fall 2021 </span></p>
 						
 						<ul id="myUL">
-							<li><span id="btn_4021" class="caret">Read more</span></li>
+							<li><span id="btn_11724" class="caret">Read more</span></li>
 						</ul>
-						<div id="myModal_4021" class="modal">
+						<div id="myModal_11724" class="modal">
 							<ul class="modal-content">
-								<span id="close_4021" class="close">&times;</span>
+								<span id="close_11724" class="close">&times;</span>
 								<li style="line-height:1.5">
-									The project's name is "World Travel". It's a game that borrows some ideas from "monopoly". The player can select an icon on the menu page to represent the player. On the map page, the player rolls a die and then walks around a map according to the die outcome. Then a card will show up and describe about a destination (a city). Once a city is visited, the corresponding cell on the map will disappear. This means, the player cannot repeatly visit the same cell. The game is finished when all cities are visited. 
+									
 								</li>
 								
-								<li><a href="https://github.com/zdxdsw/COMP4021/tree/master/world-travel">&#9656;&emsp;View Github</a></li>
+								<li><a href="files/11724_hw6_sociolinguistics.pdf">&#9656;&emsp;Final Paper</a></li>
 							</ul>
 						</div>
 						<script>
-							var btn_4021 = document.getElementById("btn_4021");
-							var modal_4021 = document.getElementById("myModal_4021");
-							var span_4021 = document.getElementById("close_4021");
-							btn_4021.onclick = function() {modal_4021.style.display="block";}
-							span_4021.onclick = function() {modal_4021.style.display="none";}
+							var btn_11724 = document.getElementById("btn_11724");
+							var modal_11724 = document.getElementById("myModal_11724");
+							var span_11724 = document.getElementById("close_11724");
+							btn_11724.onclick = function() {modal_11724.style.display="block";}
+							span_11724.onclick = function() {modal_11724.style.display="none";}
 						</script>
 						
 					</article>
@@ -604,9 +646,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre> -->
 					<h2>Honors</h2>
 					<section>
 						<header>
-							<p style="line-height:1.8"><span style="color:#797979;">Hong Kong University of Science and Technology Academic Achievement Medal&emsp;&emsp;</span><span style="color:#49bf9d;">2020</span><br />
-								<span style="color:#797979;">Dean’s List - HKUST&emsp;&emsp;</span><span style="color:#49bf9d;">2016 - 2020</span><br />
-								<span style="color:#797979;">University’s Scholarship Scheme for Continuing Undergraduate Students - HKUST&emsp;&emsp;</span><span style="color:#49bf9d;">2016-2019</span><br />
+							<p style="line-height:1.8">
+								<span style="color:#797979;">Carnegie Mellon University Research Fellowship &emsp;&emsp;</span><span style="color:#49bf9d;">2020 - 2022</span><br />
+								<span style="color:#797979;">Academic Achievement Medal &emsp; <i>Hong Kong University of Science and Technology </i>&emsp;</span><span style="color:#49bf9d;">2020</span><br />
+								<span style="color:#797979;">Bachelor Degree First Class Honor &emsp; <i>Hong Kong University of Science and Technology </i>&emsp;</span><span style="color:#49bf9d;">2020</span><br />
+								<span style="color:#797979;">Dean’s List &emsp; <i>Hong Kong University of Science and Technology</i>&emsp;</span><span style="color:#49bf9d;">2016 - 2020</span><br />
+								<span style="color:#797979;">University’s Scholarship Scheme for Continuing Undergraduate Students &emsp;&emsp;</span><span style="color:#49bf9d;">2016-2019</span><br />
 								<span style="color:#797979;">The Cheng Foundation Scholarships for Chinese Mainland Undergraduate Students&emsp;&emsp;</span><span style="color:#49bf9d;">2018 - 2019</span><br />
 								<span style="color:#797979;">The Hong Kong Electric Co.Ltd. Scholarship&emsp;&emsp;</span><span style="color:#49bf9d;">2017 - 2018</span><br />
 								<span style="color:#797979;">Mingxi Youth Award Scheme&emsp;&emsp;</span><span style="color:#49bf9d;">2017 - 2018</span></p>
@@ -679,12 +724,12 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre> -->
 						<h2>Hobbies</h2>
 						<section>
 								<ul class="icons">
+									<li><a class="fa fa-camera" style="font-size:24px"></a></li>
 									<li><a class="fas fa-hiking" style="font-size:24px"></a></li>
-									<li><a class="fas fa-running" style="font-size:24px"></a></li>
 									<li><a class="fas fa-film" style="font-size:24px"></a></li>
-									<li><a class="fas fa-skiing" style="font-size:24px"></a></li>
+									<li><a class="fa fa-train" style="font-size:24px"></a></li>
+									<li><a class="fa fa-plane" style="font-size:24px"></a></li>
 									
-									<!-- <li><a href="#" class="icon brands fa-tumblr"><span class="label">Tumblr</span></a></li> -->
 								</ul>
 						</section>
 					</section>
@@ -981,7 +1026,7 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre> -->
 				<div class="inner">
 					
 					<ul class="copyright">
-						<li>Last Update</li><li>2022 Mar 31</li>
+						<li>Last Update</li><li>2022 Dec 24</li>
 					</ul> 
 				</div>
 			</footer>

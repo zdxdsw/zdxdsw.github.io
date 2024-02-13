@@ -50,29 +50,32 @@
 						<header class="major">
 							<h2>About Me</h2>
 						</header>
-						<p>Greetings! I am a first-year PhD student from the <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technology Institute</a> at Carnegie Mellon University. I am very fortunate to be advised by Prof. <a href="https://yonatanbisk.com/" target="_blank">Yonatan Bisk</a>. I received my Bachelor's degree in Computer Science & Mathematics with first class honors from Hong Kong University of Science and Technology.<br />
+						<p>Greetings! I am a second-year PhD student from the <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technology Institute</a> at Carnegie Mellon University. I am very fortunate to be advised by Prof. <a href="https://yonatanbisk.com/" target="_blank">Yonatan Bisk</a>. I received my Bachelor's degree in Computer Science & Mathematics with first class honors from Hong Kong University of Science and Technology.<br />
 						</p>
-						<p><strong>Research Keywords: </strong>Natural Language Processing, Reasoning, Compositionality, Multimodal Knowledge Aggregation</p>
-						Key to my research goal is answering the following questions: 
+						<p><strong>Research Keywords: </strong>Reasoning, Mechanistic Interpretability, Compositionality, Generalization</p>
 							<ol>
-								<li><strong>How to endow machines with reusable skills that can be compositionally built up to achieve systematic generalization?</strong></li>
-								<li><strong>What appropriate roles can language play in the first question</strong>, drawing inspiration from how humans use language as a medium to:
+								<li><strong>Mathematically understand machine reasoning</strong></li>
 									<ul>
-										<li>Acquire knowledge (language as <strong>instruction</strong>, human-->computer);</li>
-										<li>Externalize thoughts (language as <strong>explanation</strong>, computer-->human);</li>
-										<li>Exchange information (language as <strong>communication</strong>, computer-->computer).</li>
+										<li>Role-filler binding with learned roles in neural networks.</li>
+										<li>Function induction from input-output pairs.</li>
+									</ul>
+								<li><strong>Mechanistically understand machine reasoning</strong></li>
+									<ul>
+										<li>How Transformers form circuits that accomplish tasks sequentially or in parallel</li>
+										<li>How Transformers (approximately) implement and execute memory.</li>
+										<li>How Transformers treat functions differently from handling primitive concepts.</li>
 									</ul>
 								
 								</li>
 							</ol>
 						
-						&#10024; I'm actively looking for the summer 2023 internships. I'm interested in mechanistic interpretability of how neural networks perform multimodal reasoning/grounding. (Keywords: Transformer circuits, how composing circuits develop, multimodal neurons, modality gap) &#10024; <br>
+						&#10024; I'm actively looking for the summer 2024 internships.  &#10024; <br>
 						<br>
 						<br>
 
 						<ul class="actions">
 							<!-- <li><a href="#research" class="button">Learn More</a></li> -->
-							<li><span><a href="#research">Research</a></span></li>
+							<li><span><a href="#publications">Research</a></span></li>
 							<li><span><a href="#project">Projects</a></span></li>
 							<li><span><a href="#edu">Education</a></span></li>
 							<li><span><a href="#hobby">Hobbies</a></span></li>
@@ -82,22 +85,30 @@
 					</section>
 
 
-				<section id="paper">
-					<h2>Paper</h2>
+				<section id="publications">
+					<h2>Publications</h2>
 					<div class="row">
 						<article class="col-12 col-12-xsmall work-item">
-							<strong>Chang, Y.</strong>, Narang, M., Suzuki, H., Cao, G., Gao, J., & Bisk, Y. (2021). <a href="https://arxiv.org/abs/2109.00590" target="_blank">WebQA: Multihop and Multimodal QA</a>. CVPR2022(Oral)
+							1. Liangke Gui, <strong>Yingshan Chang</strong>, Qiuyuan Huang, Subhojit Som, Alexander G Hauptmann, Jianfeng Gao and Yonatan Bisk. “Training Vision-Language Transformers from Captions” In Transactions on Machine Learning Research, pp. 2835-8856. 2023 (to appear).
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							2. <strong>Yingshan Chang</strong>, Mridu Narang, Hisami Suzuki, Guihong Cao, Jianfeng Gao, and Yonatan Bisk. “Webqa: Multihop and multimodal qa.” In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 16495-16504. 2022. <strong>Oral</strong>.
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							3. <strong>Yingshan Chang</strong>, and Yonatan Bisk. “WebQA: A Multimodal Multihop NeurIPS Challenge.” In NeurIPS 2021 Competitions and Demonstrations Track, pp. 232-245. PMLR, 2022.
 						</article>
 					</div>
 
 				</section>
 
+				<!--
 				<section id="news">
 					<h2>News</h2>
 					<div class="row">
 					<article class="col-12 col-12-xsmall work-item">
 						<div class="scroll">
 							<table class="newTable" style="background-color: rgba(0, 0, 0, 0);">
+								
 								<tr>
 									<td width="20%"><b>Mar 28, 2022</b></td>
 									<td width="80%">My 1st paper has been selected for an ORAL presentation at CVPR2022!</td>
@@ -123,10 +134,25 @@
 					</article>
 					</div>
 				</section>
+				-->
 				
-				<section id="research">
+				<section id="current-research">
+					<h2>Current Research</h2>
+					<div class="row">
+						<article class="col-12 col-12-xsmall work-item">
+							1. What enables the learning of abstract relations in text-to-image generative models? <br>
+							<!--&emsp; We describe a suite of conditions in terms of mathematical properties of the training distribution, which contribute towards successful learning of abstract relations. -->
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							2. How LLMs manage to model theoretically hard (context-free and above) tasks by approximating a (regular) subset of the task domain.
+						</article>
+					</div>
+
+				</section>
+
+				<section id="previous-research">
 					
-					<h2>Research</h2>
+					<h2>Previous Research</h2>
 
 					<div class="row">
 					<!-- Affinity maps -->		
@@ -153,6 +179,9 @@
 									<li style="line-height:1.5">&#9656;&emsp; We show that a single Transformer backbone can <i>more efficiently</i> perform language-conditioned visual reasoning than bespoke architectures.</li>
 									<li style="line-height:1.5">&#9656;&emsp; We show that well-aligned patch-token representations naturally translate to downstream performance without unimodal backbones or output-specific components.</li>
 									<li style="line-height:1.5">&#9656;&emsp; We use Referring Expression Comprehension & Segmentation as case studies and demonstrate how patch affinity scores can be leveraged to achieve competitive recognition and segmentation <i>with an order to magnitude fewer parameters and inference time.</i></li>
+									<li style="line-height:1.5">&#9656;&emsp; Joint work with Liangke Gui on efficient vision-language pretraining.</li>
+									<li style="line-height:1.5">&#9656;&emsp; Accepted to TMLR 2023</li>
+								<li><a href="https://openreview.net/forum?id=xLnbSpozWS" target="_blank">&#9656;&emsp;Paper</a></li>
 								</ul>
 							</div>
 							<script>

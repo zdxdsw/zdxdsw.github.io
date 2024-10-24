@@ -42,12 +42,13 @@ body {
           align-items: flex-start;
 }
 
-.heading_container h2 {
+.container h2 {
   font-family: "AR PL UKai CN", "regular script", "kaiti", "kaishu", "zhengshu", "zhengkai", cursive;
   position: relative;
   font-weight: bold;
   font-size: 1.5rem;
   margin-bottom: 2rem;
+  padding: 18px;
 }
 
 @font-face {

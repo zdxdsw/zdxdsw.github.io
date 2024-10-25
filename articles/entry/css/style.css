@@ -6,7 +6,7 @@ body {
 }
 
 .layout_padding {
-  padding: 90px 0;
+  padding: 75px 0;
 }
 
 .layout_padding2 {
@@ -247,12 +247,16 @@ a:focus {
 }
 
 /*end header section*/
-
-
+.about_section .container {
+  background-color: #e5fdfe; 
+  padding: 18px;
+  border-radius: 10px;
+}
 .about_section .detail-box p {
-  color: #6c6c6c;
+  color: #f5b3b3; /*#6c6c6c;*/
   font-family: "AR PL UKai CN", "regular script", "kaiti", "kaishu", "zhengshu", "zhengkai", cursive;
   font-size: 1.2rem;
+  padding: 18px;
 }
 
 .about_section .detail-box a {

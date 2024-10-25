@@ -42,12 +42,13 @@ body {
           align-items: flex-start;
 }
 
-.heading_container h2 {
+.container h2 {
   font-family: "AR PL UKai CN", "regular script", "kaiti", "kaishu", "zhengshu", "zhengkai", cursive;
   position: relative;
   font-weight: bold;
   font-size: 1.5rem;
   margin-bottom: 2rem;
+  padding: 18px;
 }
 
 @font-face {
@@ -275,10 +276,8 @@ a:focus {
   left: 0;
   width: 75%;
   height: 100%;
-  background-image: url(../images/goleta_point.png);
+  background-image: url(../images/slider-bg1.png);
   background-size: 100% 100%;
-  -webkit-clip-path: url(#dripping_mask);
-  clip-path: url(#dripping_mask);
   z-index: 2;
 }
 
@@ -289,9 +288,7 @@ a:focus {
   right: 45px;
   width: 550px;
   height: 550px;
-  background-image: url(../images/blue_heart.jpg);
-  /* transform: rotate(10deg); */
-  opacity: 0.15;
+  background-image: url(../images/slider-bg2.png);
   background-size: cover;
   background-position: bottom right;
   z-index: 1;
@@ -302,13 +299,10 @@ a:focus {
 }
 
 .slider_section .detail_box h1 {
-  font-size: 1.5rem;
+  font-size: 3rem;
   font-weight: bold;
   margin-bottom: 30px;
-  background-color: rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  font-family: "AR PL UKai CN", "regular script", "kaiti", "kaishu", "zhengshu", "zhengkai", cursive;
-  line-height: 200%;
+  font-family: "SnellBT Regular", sans-serif;
 }
 
 .slider_section .detail_box h1 span {
@@ -339,9 +333,6 @@ a:focus {
 
 .slider_section .img-box img {
   width: 100%;
-  object-fit: cover;
-  -webkit-clip-path: url(#mask);
-  clip-path: url(#mask);
 }
 
 .slider_section #customCarousel1 {
@@ -374,13 +365,13 @@ a:focus {
   font-size: 12px;
   background-color: #ffffff;
   opacity: 1;
-  color: #3d8baa;
+  color: #a04120;
   margin: 2.5px 0;
 }
 
 .slider_section .carousel_btn-box .carousel-control-prev:hover,
 .slider_section .carousel_btn-box .carousel-control-next:hover {
-  color: #016389;
+  color: #46200b;
 }
 
 .about_section .detail-box p {
@@ -409,22 +400,8 @@ a:focus {
   width: 65px;
 }
 
-.about_section .img-box-right img {
+.about_section .img-box img {
   width: 100%;
-  margin-top: 10%;
-  margin-left: 10%;
-  /* object-fit: cover;
-  -webkit-clip-path: url(#vertical_dripping_mask);
-  clip-path: url(#vertical_dripping_mask); */
-}
-
-.about_section .img-box-left img {
-  width: 100%;
-  margin-top: 10%;
-  margin-right: 10%;
-  /* object-fit: cover;
-  -webkit-clip-path: url(#vertical_dripping_mask);
-  clip-path: url(#vertical_dripping_mask); */
 }
 
 .chocolate_section .heading_container {
@@ -859,7 +836,7 @@ a:focus {
 }
 
 .info_section {
-  background-color: #7fc5e8;
+  background-color: #def5fb;
   color: #ffffff;
 }
 
@@ -871,8 +848,7 @@ a:focus {
 }
 
 .info_section .info_form {
-  width: 70%;
-  margin-left: 30%
+  width: 100%;
 }
 
 .info_section .info_form form {
@@ -940,7 +916,7 @@ a:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding:5px;
+  padding: 5px;
   justify-content: right;
 }
 
@@ -956,6 +932,8 @@ a:focus {
           align-items: center;
   width: 65px;
   height: 65px;
+  border: 1px solid #ffffff;
+  color: #ffffff;
   margin-right: 10px;
 }
 

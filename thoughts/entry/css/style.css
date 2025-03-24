@@ -44,7 +44,7 @@ body {
 
 
 .container h2 {
-    font-family: "Times New Roman", Times, serif, cursive;
+    font-family: "AR PL UKai CN", "regular script", "kaiti", "kaishu", "zhengshu", "zhengkai", cursive;
     position: relative;
     font-weight: bold;
     font-size: 1.5rem;
@@ -179,7 +179,7 @@ a:focus {
   display: block;
   width: 35px;
   height: 4px;
-  background-color: #fefce5;
+  background-color: #dcfbfe;
   border-radius: 5px;
   margin: 7px 0;
   -webkit-transition: all 0.3s;
@@ -248,32 +248,31 @@ a:focus {
 
 /*end header section*/
 .about_section .container {
-  background-color: #fefce5; 
+  background-color: #e5fdfe; 
   padding: 18px;
   border-radius: 10px;
-  box-shadow: 0px 0px 6px 6px #fefce5;
+  box-shadow: 0px 0px 6px 6px #e5fdfe;
 }
 .about_section .detail-box p {
-  color: #000000; /*#6c6c6c;*/
-  font-family: "Times New Roman", Times, serif, cursive;
+  color: #f5b3b3; /*#6c6c6c;*/
+  font-family: "AR PL UKai CN", "regular script", "kaiti", "kaishu", "zhengshu", "zhengkai", cursive;
   font-size: 1.2rem;
-  padding: 0 18px; 
-  text-align: justify;
+  padding: 18px;
 }
 
 .about_section .detail-box a {
-  /* display: -webkit-box;
+  display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
-          align-items: center; */
-  color: #e5a3a3; /*#6c6c6c;*/
-  font-family: "Times New Roman", Times, serif, cursive;
-  font-size: 1.2rem;
-  /* font-weight: bold;
-  margin-top: 25px; */
-} 
+          align-items: center;
+  font-family: "SnellBT Regular", sans-serif;
+  color: #46200b;
+  font-weight: bold;
+  margin-top: 25px;
+  font-size: 20px;
+}
 
 .about_section .detail-box a span {
   margin-right: 5px;
@@ -297,7 +296,7 @@ a:focus {
 }
 
 .client_section .client_container {
-  background-color: #fefee5;
+  background-color: #e5fdfe;
   background-size: 90% 100%;
   border-radius: 6px;
   background-position: bottom right;

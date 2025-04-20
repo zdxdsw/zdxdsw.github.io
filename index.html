@@ -52,15 +52,16 @@
 					</header>
 					<p>Greetings! I am a 5th year PhD student at the <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technology Institute</a> of Carnegie Mellon University. 
 						I am very fortunate to be advised by Professor <a href="https://yonatanbisk.com/" target="_blank">Yonatan Bisk</a>. 
-						I received my Bachelor's degree in Computer Science & Mathematics with first class honors from Hong Kong University of Science and Technology.<br />
-						<a href="files/Yingshan_resume_Mar2025.pdf" target="_blank">curriculum vitae</a>
+						I received my Bachelor's degree in Computer Science & Mathematics with first class honors from Hong Kong University of Science and Technology.
+						I love trees and nature documentaries. I get along with people who write or will write 
+						good <a href="https://www.goodreads.com/review/list/188931609?page=1&shelf=" target="_blank">books</a>. <br />
+						<a href="files/Yingshan_resume_Mar2025.pdf" target="_blank">Curriculum Vitae</a>
 					</p>
-
 					<p>Big questions that puzzle me:</p>
 					<ol>
 						<li>What are hard to learn?</li>
 						<li>Why are they hard? (quantify their complexity)</li>
-						<li>To what extent "learning = computation" is true?</li>
+						<li><a href="thoughts/2025/what_is_learning.html" target="_blank">To what extent "learning = computation" is true?</a></li>
 						<li>To what extent "cognition = computation" is true?</li>
 					</ol>
 					   
@@ -73,27 +74,11 @@
 						The research landscape on the <i>nature</i> of these concepts tends to be tightly interwoven. 
 						What further complicates the picture is the <i>learning</i> component: generalization, abstraction and reasoning are not enough.
 						I tend to focus on <i>learning to generalize</i>, <i>learning to abstract</i>, and <i>learning to reason</i>. 
-						Understanding the computational aspects of each one of them depends on one another.
-						Substantial effort on formalization, quantification, categorization and unification is needed, because we are living in a nascent stage of this field.
+						The challenge lies in that building the computational foundation of each one of them depends on one another.
+						Because we are living in a nascent stage of this field, substantial effort on formalization, quantification, categorization and unification is needed.
 						This is exactly why I find these areas deeply intriguing and want to devote a career to them &#10024;.
 					</p>
-						
-						<!-- <ol>
-							<li><strong>Mathematically understand machine reasoning</strong></li>
-								<ul>
-									<li>Role-filler binding with learned roles in neural networks.</li>
-									<li>Algorithm induction from input-output pairs.</li>
-								</ul>
-							<li><strong>Mechanistically understand machine reasoning</strong></li>
-								<ul>
-									<li>How Transformers form circuits that accomplish tasks sequentially or in parallel</li>
-									<li>How Transformers (approximately) implement and execute memory.</li>
-									<li>How Transformers treat functions differently from handling primitive concepts.</li>
-								</ul>
-							
-							</li>
-						</ol> -->
-					
+
 					<!-- &#10024; I'm actively looking for collaborators on mechanistically understanding Transformers' expressivity and their limits.  &#10024; <br> -->
 					
 
@@ -105,6 +90,35 @@
 						<li><span><a href="#community">Community Services</a></span></li>
 						<li><a href="files/Yingshan_resume_Mar2025.pdf" target="_blank">CV</a></li>
 					</ul> -->
+				</section>
+
+				<section id="current-research">
+					<h2 >Current Research</h2>
+					<p>
+						My PhD work studies <b>generalization to unseen domains</b> in deep learning, 
+						where an unseen domain is a collection of instances <b>systematically unsupported</b> by training data.
+						I contribute to an expanding collection of insights on this subject from multiple angles: 
+						categorization, formalization, and identification of performance indicators.
+						My work is structured around three concepts: <b style="color:#49bf9d">Composition</b>, <b style="color:#49bf9d;">Cardinality</b>, and <b style="color:#49bf9d;">Frame</b>. 
+						A series of investigations uncovered three factors that shape generalization in deep learning: 
+						<b>data</b>, <b>architectural bias</b>, and the<b> learning paradigm</b>. 
+					</p>
+						
+					<!-- <span style="text-align: right;"id="button-current-research-body">&#128315; show</span>
+					<script>
+						var button = document.getElementById("button-current-research-body")
+						button.onclick = function() {
+							var x = document.getElementById("current-research-body");
+							if (x.style.display === "none") {
+								x.style.display = "block";
+								document.getElementById("button-current-research-body").innerHTML="&#128314; hide"
+							} else {
+								x.style.display = "none";
+								document.getElementById("button-current-research-body").innerHTML="&#128315; show"
+							}
+						}
+					</script> -->
+
 				</section>
 
 				<!-- Publications -->
@@ -177,35 +191,7 @@
 				</section>
 				-->
 				
-				<!-- <section id="current-research">
-					<h2 >Current Research</h2>
-					
-
-					
-					<div class="row collapse" id="current-research-body" style="display:none;">
-						<article class="col-12 col-12-xsmall work-item">
-							1. What architectural innovations address the dispersion effect of softmax in self-attention, making it friendlier to length extrapolation? <br>
-						</article>
-						<article class="col-12 col-12-xsmall work-item">
-							2. Can we enable extrapolation by letting the model "adjust its reference frame" dynamically? Taking reference from adaptive contrast in the retina.
-						</article>
-					</div>
-					<span style="text-align: right;"id="button-current-research-body">&#128315; show</span>
-					<script>
-						var button = document.getElementById("button-current-research-body")
-						button.onclick = function() {
-							var x = document.getElementById("current-research-body");
-							if (x.style.display === "none") {
-								x.style.display = "block";
-								document.getElementById("button-current-research-body").innerHTML="&#128314; hide"
-							} else {
-								x.style.display = "none";
-								document.getElementById("button-current-research-body").innerHTML="&#128315; show"
-							}
-						}
-					</script>
-
-				</section> -->
+				
 
 				<!-- writings_photography -->
 				<section id="writings_photography">
@@ -216,6 +202,7 @@
 							&emsp;<a href="gallery.html" target="_blank">&#127794;Gallery</a>
 							&emsp;<a href="articles/entry/index.html" target="_blank">&#127956;Journal</a>
 						</h1>
+
 						<!-- <ul class="icons">
 							<li><a class="fa fa-camera" style="font-size:24px"></a></li>
 							<li><a class="fas fa-hiking" style="font-size:24px"></a></li>
@@ -936,7 +923,7 @@
 			<div class="inner">
 				
 				<ul class="copyright">
-					<li>Last Update</li><li>2025 Apr 18</li>
+					<li>Last Update</li><li>2025 Apr 20</li>
 				</ul> 
 			</div>
 		</footer>

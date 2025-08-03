@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>There Is A Crack In Everything</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!--slick slider stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+  <!-- slick slider -->
+
+  <link rel="stylesheet" href="css/slick-theme.css" />
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<script>
+  function resizeIframe() {
+    const iframe = document.getElementById('myIframe');
+    console.log(iframe.contentDocument)
+    console.log(iframe.contentWindow)
+    console.log(iframe)
+    // output contentWindow height
+    console.log(iframe.contentWindow.document.body.scrollHeight);
+    if (iframe && iframe.contentWindow && iframe.contentDocument) {
+      iframe.style.height = iframe.contentDocument.body.scrollHeight + 'px';
+    }
+  }
+
+  // Derive a key from the passphrase and salt using PBKDF2
+  // salt is simply hashed passphrase
+  async function deriveKey(passphrase) {
+    const encoder = new TextEncoder();
+    const passphraseKey = encoder.encode("ruins");
+    const salt = await crypto.subtle.digest('SHA-256', encoder.encode(passphrase));
+
+    const keyMaterial = await window.crypto.subtle.importKey(
+      'raw',
+      passphraseKey,
+      { name: 'PBKDF2' },
+      false,
+      ['deriveKey']
+    );
+
+    const key = await window.crypto.subtle.deriveKey(
+      {
+        name: 'PBKDF2',
+        salt: salt,
+        iterations: 100000,
+        hash: 'SHA-256'
+      },
+      keyMaterial,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['decrypt']
+    );
+    console.log(key);
+    return key;
+  }
+
+  async function decrypt(encryptedB64, key) {
+    const encryptedBytes = Uint8Array.from(atob(encryptedB64), c => c.charCodeAt(0));
+    const iv = encryptedBytes.slice(0, 12);
+    const ciphertext = encryptedBytes.slice(12);
+
+    const decrypted = await window.crypto.subtle.decrypt(
+      { name: 'AES-GCM', iv },
+      key,
+      ciphertext
+    );
+
+    return new TextDecoder().decode(decrypted);
+  }
+
+  function validatePassword() {
+    const passphrase = document.getElementById('password').value;
+    loadHTMLIntoDiv('crack_encrypted.html', 'content', passphrase);
+  }
+</script>
+
+<body class="sub_page">
+
+    <section class="about_section layout_padding ">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-md-12">
+            <h2 style='font-family: "AR PL UKai CN", "regular script", "kaiti", "kaishu", "zhengshu", "zhengkai", cursive; font-size: 1.5rem;'>
+              There Is A Crack In Everything
+            </h2>
+
+            <div class="detail-box" id="content">
+              
+              <p>This page is password-protected simply because I don’t want it to be public. <br>But I encourage you to try one of the following:</p>
+              <p>1. Hack it based on the html source code, and proudly email me the result showing that you’ve cracked it!</p>
+              <p>2. Ask me for the key via email or whatever, and I’ll probably give it to you!</p>
+              <br><div id="password-form" >
+                <input type="password" class="form-control" id="password" placeholder="The following content is password protected.">
+                <br>
+                <button class="btn btn-outline-warning" onclick="validatePassword()">Decrypt</button>
+              </div>
+            </div>
+            
+              
+            <script>
+              function base64ToUtf8(base64Str) {
+                const binaryStr = atob(base64Str);
+                const bytes = Uint8Array.from(binaryStr, c => c.charCodeAt(0));
+                const decoder = new TextDecoder('utf-8');
+                return decoder.decode(bytes);
+              }
+              async function loadHTMLIntoDiv(url, targetDivId, passphrase) {
+                try {
+                  const response = await fetch(url);
+                  if (!response.ok) throw new Error('Failed to load HTML');
+
+                  const encryptedB64 = await response.text();
+                  key = await deriveKey(passphrase);
+                  decryptedB64 = await decrypt(encryptedB64, key);
+                  decoded = base64ToUtf8(decryptedB64);
+                  document.getElementById(targetDivId).innerHTML = decoded;
+                } catch (error) {
+                  console.error('Error loading HTML:', error);
+                }
+              }
+
+            </script>
+            
+          </div>
+          <div class="col-md-3 offset-md-3 col-sm-4 offset-sm-2">
+            <div class="img-box">
+              
+              <br><img src="images/crack1.jpg" alt=""><br>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-sm-4">
+            <div class="img-box">
+              <br><img src="images/crack2.jpg" alt=""><br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+
+  </div>
+
+  <!-- footer section -->
+  <footer class="container-fluid footer_section">
+    <div class="container">
+      <div class="col-md-11 col-lg-8 mx-auto">
+        <p>First written: Aug 3, 2025
+          &copy; <span id="displayYear"></span> @whimsicalyingshan</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script  src="js/jquery-3.4.1.min.js"></script>
+  <!-- bootstrap js -->
+  <script  src="js/bootstrap.js"></script>
+  <!-- slick slider -->
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+  <!-- custom js -->
+  <script  src="js/custom.js"></script>
+
+</body>
+
+
+
+</html>

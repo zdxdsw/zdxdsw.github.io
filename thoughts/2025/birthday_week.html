@@ -36,59 +36,133 @@
 </head>
 
 <script>
-    // Function to hash the password using SHA-256
-    async function hashPassword(password) {
-        const encoder = new TextEncoder();
-        const data = encoder.encode(password);
-        const hash = await crypto.subtle.digest('SHA-256', data);
-        return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+  function resizeIframe() {
+    const iframe = document.getElementById('myIframe');
+    console.log(iframe.contentDocument)
+    console.log(iframe.contentWindow)
+    console.log(iframe)
+    // output contentWindow height
+    console.log(iframe.contentWindow.document.body.scrollHeight);
+    if (iframe && iframe.contentWindow && iframe.contentDocument) {
+      iframe.style.height = iframe.contentDocument.body.scrollHeight + 'px';
     }
+  }
 
-    // Function to validate the password
-    async function validatePassword() {
-        const inputPassword = document.getElementById('password').value;
-        const hashedInputPassword = await hashPassword(inputPassword);
-        // Replace this hashed value with your own pre-generated hash of the correct password
-        const magicInt = parseInt(`${hashedInputPassword.slice(-5,-4)}${hashedInputPassword.slice(-1)}`);
-        const part1 = hashedInputPassword.substring(0, magicInt);
-        const part2 = hashedInputPassword.substring(magicInt);
-        const Hashedpart1 = await hashPassword(part1); 
-        const Hashedpart2 = await hashPassword(part2);
-        const correctHashedpart1 = '047f3ab32317c71b43af7a4773c121022adc100f1867fc3eaf24d7eb77a6df4c';
+  // Derive a key from the passphrase and salt using PBKDF2
+  // salt is simply hashed passphrase
+  async function deriveKey(passphrase) {
+    const encoder = new TextEncoder();
+    const passphraseKey = encoder.encode(passphrase);
+    const salt = await crypto.subtle.digest('SHA-256', encoder.encode(passphrase));
 
-        if (Hashedpart1 === correctHashedpart1) {
-            window.location.href = `./birthday_week${Hashedpart2}.html`;
-        } else {
-            alert('Incorrect password!');
-        }
-    }
+    const keyMaterial = await window.crypto.subtle.importKey(
+      'raw',
+      passphraseKey,
+      { name: 'PBKDF2' },
+      false,
+      ['deriveKey']
+    );
+
+    const key = await window.crypto.subtle.deriveKey(
+      {
+        name: 'PBKDF2',
+        salt: salt,
+        iterations: 100000,
+        hash: 'SHA-256'
+      },
+      keyMaterial,
+      { name: 'AES-GCM', length: 256 },
+      false,
+      ['decrypt']
+    );
+    console.log(key);
+    return key;
+  }
+
+  async function decrypt(encryptedB64, key) {
+    const encryptedBytes = Uint8Array.from(atob(encryptedB64), c => c.charCodeAt(0));
+    const iv = encryptedBytes.slice(0, 12);
+    const ciphertext = encryptedBytes.slice(12);
+
+    const decrypted = await window.crypto.subtle.decrypt(
+      { name: 'AES-GCM', iv },
+      key,
+      ciphertext
+    );
+
+    return new TextDecoder().decode(decrypted);
+  }
+
+  function validatePassword() {
+    const passphrase = document.getElementById('password').value;
+    loadHTMLIntoDiv('birthday_week_encrypted.html', 'content', passphrase);
+  }
 </script>
 
 <body class="sub_page">
-
-  
 
     <section class="about_section layout_padding ">
       <div class="container">
         
         <div class="row">
           <div class="col-md-12">
-            <div id="password-form" >
+            <h2 style='font-family: "AR PL UKai CN", "regular script", "kaiti", "kaishu", "zhengshu", "zhengkai", cursive; font-size: 1.5rem;'>
+              An Emotional Birthday Week
+            </h2>
+
+            <div class="detail-box" id="content">
+              
+              <p>This page is password-protected simply because I don’t want it to be public. <br>But I encourage you to try one of the following:</p>
+              <p>1. Hack it based on the html source code, and proudly email me the result showing that you’ve cracked it!</p>
+              <p>2. Ask me for the key via email or whatever, and I’ll probably give it to you!</p>
+              <br><div id="password-form" >
                 <input type="password" class="form-control" id="password" placeholder="The following content is password protected.">
                 <br>
-                <button class="btn btn-outline-warning" onclick="validatePassword()">Submit</button>
+                <button class="btn btn-outline-warning" onclick="validatePassword()">Decrypt</button>
+              </div>
+            </div>
+            
+              
+            <script>
+              function base64ToUtf8(base64Str) {
+                const binaryStr = atob(base64Str);
+                const bytes = Uint8Array.from(binaryStr, c => c.charCodeAt(0));
+                const decoder = new TextDecoder('utf-8');
+                return decoder.decode(bytes);
+              }
+              async function loadHTMLIntoDiv(url, targetDivId, passphrase) {
+                try {
+                  const response = await fetch(url);
+                  if (!response.ok) throw new Error('Failed to load HTML');
+
+                  const encryptedB64 = await response.text();
+                  key = await deriveKey(passphrase);
+                  decryptedB64 = await decrypt(encryptedB64, key);
+                  decoded = base64ToUtf8(decryptedB64);
+                  document.getElementById(targetDivId).innerHTML = decoded;
+                } catch (error) {
+                  console.error('Error loading HTML:', error);
+                }
+              }
+
+            </script>
+            
+          </div>
+          
+          <div class="col-md-3 offset-md-3 col-sm-4 offset-sm-2">
+            <div class="img-box">
+              
+              <br><img src="images/cheetah3.jpg" alt=""><br>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div  class="col-md-10 offset-md-1">
-            <br><br><p>This page is password-protected simply because I don’t want it to be public. <br>But I encourage you to try one of the following:</p>
-            <p>1. Hack it based on the html source code, and proudly email me the result showing that you’ve cracked it!</p>
-            <p>2. Ask me for the key via email or whatever, and I’ll probably give it to you!</p>
+          
+          <div class="col-md-3 col-sm-4">
+            <div class="img-box">
+              <br><img src="images/artmuseum3.jpg" alt=""><br>
+            </div>
           </div>
-        </div>
 
-        
+        </div>
       </div>
     </section>
 
@@ -100,7 +174,7 @@
   <footer class="container-fluid footer_section">
     <div class="container">
       <div class="col-md-11 col-lg-8 mx-auto">
-        <p> 
+        <p>First written: Mar 21, 2025
           &copy; <span id="displayYear"></span> @whimsicalyingshan</a>
         </p>
       </div>
@@ -116,10 +190,9 @@
   <script  src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
   <!-- custom js -->
   <script  src="js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
-  <!-- End Google Map -->
 
 </body>
+
+
 
 </html>

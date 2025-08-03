@@ -52,7 +52,7 @@
   // salt is simply hashed passphrase
   async function deriveKey(passphrase) {
     const encoder = new TextEncoder();
-    const passphraseKey = encoder.encode("ruins");
+    const passphraseKey = encoder.encode(passphrase);
     const salt = await crypto.subtle.digest('SHA-256', encoder.encode(passphrase));
 
     const keyMaterial = await window.crypto.subtle.importKey(

@@ -1,0 +1,245 @@
+
+<!-- For the full list of available Crowd HTML Elements and their input/output documentation,
+      please refer to https://docs.aws.amazon.com/sagemaker/latest/dg/sms-ui-template-reference.html -->
+
+<!-- You must include crowd-form so that your task submits answers to MTurk -->
+<crowd-form answer-format="flatten-objects">
+
+    <link crossorigin="anonymous" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet" />
+    <section class="container">
+        <!-- Instructions -->
+        <script
+                src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous">
+        </script>
+        <script
+                src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous">
+        </script>
+        <script
+                src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous">
+        </script>
+    </section>
+    
+
+    <section class="row" id="hit">
+        <div class="col-12">
+        <br>
+        <center>
+        <p style="font-weight: bold; background-color:rgba(253, 251, 107, 0.863);">Common mistakes in the first round of qualification are summarized below: </p>
+        </center>
+        <table class="table table-striped table-responsive px-0" style="table-layout: fixed; width: 100%; word-break:break-word">
+            <thead>
+                <tr>
+                We <strong>don't</strong> allow:
+                <ul>
+                    <li>"Fake multi-img question" which actually contains <strong>two separate questions</strong> and requires two separate answers.</li>
+                    <li>"Fake multi-img question" where the two <strong>images are not complementary</strong>. This means actually a single image is necessary to get the answer. The question would simply boil down to a single-img one in this case.</li>
+                    <li><strong>Answer cannot be inferred from visual clues</strong>. The answer should be provided by the visual content rather than textual metadata on Wikipedia pages. Please see FAQ #6 for further details.</li>
+                    <li>Question contains <strong>referential phrases that are img-specific</strong>. Here is a detailed clarification of this requirement: 
+                        In our downstream task, we will let a model see the question first and then let it select images that may provide useful clues from a large image pool. 
+                        Thus, the question should be understandable without any image pairing with it.</li>
+                </ul>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <tr>
+                <td width="5%">1.</td>
+                <td width="25%">
+                    <a href="https://commons.wikimedia.org/wiki/File:Great_Mosque_of_Kairouan_prayer_hall.jpg" target="_blank">
+                    <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Great_Mosque_of_Kairouan_prayer_hall.jpg/994px-Great_Mosque_of_Kairouan_prayer_hall.jpg">
+                    </a>
+                </td>
+                <td width="25%">
+                    <a href="https://commons.wikimedia.org/wiki/File:Great_Mosque_of_Kairouan%2C_prayer_hall.jpg" target="_blank">
+                    <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Great_Mosque_of_Kairouan%2C_prayer_hall.jpg/800px-Great_Mosque_of_Kairouan%2C_prayer_hall.jpg">
+                    </a>
+                </td>
+                <td width="20%">What type of flooring can be found at the prayer hall of the Great Mosque of Kairouan?
+                </td>
+                <td width="25%">
+                    <p>Is this a good question?</p>
+                    <div style="border: solid 1px black; padding:0px 10px; width: 55px; color: red; font-weight: bold;">Bad</div><br>
+                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd"><strong>Images are not complementary</strong>. Only one image is enough to answer this question.</div>
+                </td>
+                </tr>
+
+                <tr>
+                <td width="5%">2.</td>
+                <td width="25%">
+                    <a href="https://commons.wikimedia.org/wiki/File:Badshahi_Mosque_Prayer_Hall_Entrance.JPG" target="_blank">
+                    <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Badshahi_Mosque_Prayer_Hall_Entrance.JPG/800px-Badshahi_Mosque_Prayer_Hall_Entrance.JPG">
+                    </a>
+                </td>
+                <td width="25%">
+                    <a href="https://commons.wikimedia.org/wiki/File:Main_door_of_the_prayer_hall_of_the_Great_Mosque_of_Kairouan.jpg" target="_blank">
+                    <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Main_door_of_the_prayer_hall_of_the_Great_Mosque_of_Kairouan.jpg/800px-Main_door_of_the_prayer_hall_of_the_Great_Mosque_of_Kairouan.jpg">
+                    </a>
+                </td>
+                <td width="20%">Do prayer halls of both the Great Mosque of Kairounan and the Badshahi Mosque use a flooring pattern with dark grid lines at their entrances?</td>
+                <td width="25%">
+                    <p>Is this a good question?</p>
+                    <div style="border: solid 1px black; padding:0px 10px; width: 65px; color: green; font-weight: bold;">Good</div><br>
+                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">The images are complementary because they focus on different aspects.</div>
+                </td>
+                </tr>
+
+                <tr>
+                <td width="5%">3.</td>
+                <td width="25%">
+                    <a href="https://commons.wikimedia.org/wiki/File:Nadur_Basilica.jpg" target="_blank">
+                    <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Nadur_Basilica.jpg/800px-Nadur_Basilica.jpg">
+                    </a>
+                </td>
+                <td width="25%">
+                    <a href="https://commons.wikimedia.org/wiki/File:St._Peter's_Basilica_in_Vatican_City.jpg" target="_blank">
+                    <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/St._Peter%27s_Basilica_in_Vatican_City.jpg/942px-St._Peter%27s_Basilica_in_Vatican_City.jpg">
+                    </a>
+                </td>
+                <td width="20%">Are there humanoid statues on the roof of St. Peter's Basilica in Vatican City and can a clock be found on the front exterior of Nadur Basilica?
+                </td>
+                <td width="25%">
+                    <p>Is this a good question?</p>
+                    <div style="border: solid 1px black; padding:0px 10px; width: 55px; color: red; font-weight: bold;">Bad</div><br>
+                    <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">This consists of <strong>two separate questions</strong>.</div>
+                </td>
+                </tr>
+
+                <tr>
+                    <td width="5%">4.</td>
+                    <td width="25%">
+                        <a href="https://commons.wikimedia.org/wiki/File:Nadur_Basilica.jpg" target="_blank">
+                        <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Nadur_Basilica.jpg/800px-Nadur_Basilica.jpg">
+                        </a>
+                    </td>
+                    <td width="25%">
+                        <a href="https://commons.wikimedia.org/wiki/File:St._Peter's_Basilica_in_Vatican_City.jpg" target="_blank">
+                        <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/St._Peter%27s_Basilica_in_Vatican_City.jpg/942px-St._Peter%27s_Basilica_in_Vatican_City.jpg">
+                        </a>
+                    </td>
+                    <td width="20%">Can a clock be found on the vertical central axis of both St. Peter's Basilica in Vatican City and Nadur Basilica?
+                    </td>
+                    <td width="25%">
+                        <p>Is this a good question?</p>
+                        <div style="border: solid 1px black; padding:0px 10px; width: 65px; color: green; font-weight: bold;">Good</div><br>
+                        <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">One coherent question is able to link two images!</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="5%">5.</td>
+                    <td width="50%" colspan=2>
+                        <center>
+                        <a href="https://commons.wikimedia.org/wiki/File:2012_torch_relay_day_3_DSC_0025_(7241109216).jpg" target="_blank">
+                        <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/2012_torch_relay_day_3_DSC_0025_%287241109216%29.jpg/515px-2012_torch_relay_day_3_DSC_0025_%287241109216%29.jpg">
+                        </a>
+                        </center>
+                    </td>
+                    <td width="20%">During the Olympic Torch Relay held by which country was there a Coke Cola themed vehicle?</td>
+                    <td width="25%">
+                        <p>Is this a good question?</p>
+                        <div style="border: solid 1px black; padding:0px 10px; width: 55px; color: red; font-weight: bold;">Bad</div><br>
+                        <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd"><strong>Answer cannot be inferred from the image</strong>. It is from the Wikipedia page that we know the answer should be the 2012 Olympic Torch Relay held by Britain.</div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td width="5%">6.</td>
+                    <td width="50%" colspan=2>
+                        <center>
+                            <a href="https://commons.wikimedia.org/wiki/File:2012_torch_relay_day_3_DSC_0025_(7241109216).jpg" target="_blank">
+                                <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/2012_torch_relay_day_3_DSC_0025_%287241109216%29.jpg/515px-2012_torch_relay_day_3_DSC_0025_%287241109216%29.jpg">
+                                </a>
+                        </center>
+                    </td>
+                    <td width="20%">During the 2012 Olympic Torch Relay, where is the Olympic ring logo in front of the Coke Cola themed vehicle relative to a torch logo?</td>
+                    <td width="25%">
+                        <p>Is this a good question?</p>
+                        <div style="border: solid 1px black; padding:0px 10px; width: 65px; color: green; font-weight: bold;">Good</div><br>
+                        <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">The answer can be inferred from visual clues!</div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width="5%">7.</td>
+                    <td width="50%" colspan=2>
+                        <center>
+                            <a href="https://commons.wikimedia.org/wiki/File:2020-01-13_Mascot_Ceremony_Men's_Giant_Slalom_(2020_Winter_Youth_Olympics)_by_Sandro_Halank%E2%80%93040.jpg" target="_blank">
+                                <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/2020-01-13_Mascot_Ceremony_Men%27s_Giant_Slalom_%282020_Winter_Youth_Olympics%29_by_Sandro_Halank%E2%80%93040.jpg/800px-2020-01-13_Mascot_Ceremony_Men%27s_Giant_Slalom_%282020_Winter_Youth_Olympics%29_by_Sandro_Halank%E2%80%93040.jpg">
+                                </a>
+                        </center>
+                    </td>
+                    <td width="20%">Were all three men wearing hats of the same color?</td>
+                    <td width="25%">
+                        <p>Is this a good question?</p>
+                        <div style="border: solid 1px black; padding:0px 10px; width: 55px; color: red; font-weight: bold;">Bad</div><br>
+                        <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">"All three men" is a <strong>bad referential phrase</strong>. It is meaningless when no image is provided.</div>
+                    </td>
+                </tr>
+    
+                <tr>
+                    <td width="5%">8.</td>
+                    <td width="50%" colspan=2>
+                        <center>
+                            <a href="https://commons.wikimedia.org/wiki/File:2020-01-13_Mascot_Ceremony_Men's_Giant_Slalom_(2020_Winter_Youth_Olympics)_by_Sandro_Halank%E2%80%93040.jpg" target="_blank">
+                                <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/2020-01-13_Mascot_Ceremony_Men%27s_Giant_Slalom_%282020_Winter_Youth_Olympics%29_by_Sandro_Halank%E2%80%93040.jpg/800px-2020-01-13_Mascot_Ceremony_Men%27s_Giant_Slalom_%282020_Winter_Youth_Olympics%29_by_Sandro_Halank%E2%80%93040.jpg">
+                            </a>
+                        </center>
+                    </td>
+                    <td width="20%">Were all three men wearing hats of the same color when they were being photographed at the Mascot Ceremony at the Men's Giant Slalom in the 2020 Winter Youth Olympics?</td>
+                    <td width="25%">
+                        <p>Is this a good question?</p>
+                        <div style="border: solid 1px black; padding:0px 10px; width: 65px; color: green; font-weight: bold;">Good</div><br>
+                        <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">Explicitly specifying the location/time/event makes a lot more sense!</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <br>
+        <table class="table table-striped table-responsive px-0" style="table-layout: fixed; width: 100%; word-break:break-word">
+            <thead>
+                <tr>
+                We <strong>do</strong> allow:
+                <ul>
+                    <li>Open-domain questions with <strong>more than one correct answer</strong>. 
+                        It is acceptable for a multi-img question that it has multiple correct answers while the images only provide clues to a subset of correct answers.
+                        If you find this confusing since we also require a question to have a 'definitive answer', please see FAQ #5 for further explanation.
+                    </li>
+                    <li><strong>Binary questions</strong>: Although we encourage more non-binary questions, binary questions are still acceptable if it meets all other requirements.</li>
+                </ul>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td width="5%">14.</td>
+                    <td width="25%">
+                        <a href="https://commons.wikimedia.org/wiki/File:Korean-Olympic-Games-1988-mascot.jpg" target="_blank">
+                        <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Korean-Olympic-Games-1988-mascot.jpg">
+                        </a>
+                    </td>
+                    <td width="25%">
+                        <a href="https://commons.wikimedia.org/wiki/File:2018_Winter_Olympic_Mascot_Soohorang.jpg" target="_blank">
+                        <img style="display:block; max-height:300px; max-width:100%;" src="https://upload.wikimedia.org/wikipedia/commons/9/96/2018_Winter_Olympic_Mascot_Soohorang.jpg">
+                        </a>
+                    </td>
+                    <td width="20%">Which Olympic mascots would be predators if they were real animals?
+                    </td>
+                    <td width="25%">
+                        <p>Is this a good question?</p>
+                        <div style="border: solid 1px black; padding:0px 10px; width: 65px; color: green; font-weight: bold;">Good</div><br>
+                        <div class="alert alert-light" role="alert" style="margin-top: 20px; border-color:#ddd">The number of correct answers might be more than two but this is acceptable because the images do provide clues to a subset of correct answers!</div>
+                    </td>
+                    </tr>
+        
+                    
+            </tbody>
+        </table>
+    </section>
+</crowd-form>

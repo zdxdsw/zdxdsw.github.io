@@ -1,0 +1,941 @@
+<!DOCTYPE HTML>
+<!--
+	Strata by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Yingshan's Homepage</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		
+		<style>
+		div.scroll {
+                padding:0;
+                width: 100%;
+                overflow-x: hidden;
+                overflow-y: auto;
+                text-align:left;
+            }
+		</style>
+	</head>
+	<body class="is-preload"> 
+		
+
+		<!-- Header -->
+		<header id="header">
+			<div class="inner">
+				<a href="#" class="image avatar"><img src="images/avatar.jpg" alt="" /></a>
+				<ul class="icons">
+						<li><a href="https://github.com/zdxdsw" target="_blank" class="icon brands fa-github"><span class="label">Github</span></a></li>
+						<li><a href="https://twitter.com/_Yingshan" target="_blank" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.linkedin.com/in/yingshanchang/" target="_blank" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://www.instagram.com/whimsicalyingshan/?hl=en" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="mailto:yingshac@cs.cmu.edu" target="_blank" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+				</ul>
+				
+				<!-- <h1 style="line-height:2.5; font-size:20px;"><a href="gallery.html" target="_blank">Gallery</a></h1>
+				<h1 style="line-height:2.5; font-size:20px;"><a href="articles/entry/index.html" target="_blank">Journal</a></h1> -->
+			</div>
+		</header>
+
+		<!-- Main -->
+			<div id="main">
+
+				<!-- One -->
+				<section id="one">
+					<header class="major">
+						<h2 style='font-family: "AR PL UKai CN", "regular script", "kaiti", "kaishu", "zhengshu", "zhengkai", cursive; font-size: 2.5rem;'>Yingshan Chang</h2>
+					</header>
+					<p>Greetings! I am a 6th year PhD student at the <a href="https://lti.cs.cmu.edu/" target="_blank">Language Technology Institute</a> of Carnegie Mellon University. 
+						I am very fortunate to be advised by Professor <a href="https://yonatanbisk.com/" target="_blank">Yonatan Bisk</a>. 
+						I received my Bachelor's degree in Computer Science & Mathematics with first class honors from Hong Kong University of Science and Technology.
+						I love trees and nature documentaries. I get along with people who write or will write 
+						good <a href="https://www.goodreads.com/review/list/188931609?page=1&shelf=" target="_blank">books</a>. <br />
+						<a href="files/Yingshan_resume_Sep2025.pdf" target="_blank">Curriculum Vitae</a>
+					</p>
+					<p>Big questions that puzzle me:</p>
+					<ol>
+						<li>What are hard to learn?</li>
+						<li>Why are they hard? (quantify their complexity)</li>
+						<li><a href="thoughts/2025/what_is_learning.html" target="_blank">To what extent "learning = computation" is true?</a></li>
+						<li>To what extent "cognition = computation" is true?</li>
+					</ol>
+					   
+					
+					<p>
+						My research, in broad terms, engages with concepts that defy easy definition but 
+						embody the shared struggle of these large communities: <strong>Computation, Learning, and Cognition</strong>.
+					</p><p>
+						Examples of "elusive concepts" include: <strong>Generalization, Abstraction, and Reasoning</strong>.
+						The research landscape on the <i>nature</i> of these concepts tends to be tightly interwoven. 
+						What further complicates the picture is the <i>learning</i> component: generalization, abstraction and reasoning are not enough.
+						I tend to focus on <i>learning to generalize</i>, <i>learning to abstract</i>, and <i>learning to reason</i>. 
+						The challenge lies in that building the computational foundation of each one of them depends on one another.
+						Because we are living in a nascent stage of this field, substantial effort on formalization, quantification, categorization and unification is needed.
+						This is why I'm so intellectually invested in these areas and want to dedicate a career to them &#x1F31F;.
+					</p>
+
+					&#10024; I'm actively exploring postdoc / research-fellow opportunities starting in Fall 2026, and would sincerely appreciate any advice or pointers.  &#10024; <br>
+					
+
+					<!-- <ul class="actions">
+						<li><span><a href="#publications">Research</a></span></li>
+						<li><span><a href="#project">Projects</a></span></li>
+						<li><span><a href="#edu">Education</a></span></li>
+						<li><span><a href="#hobby">Hobbies</a></span></li>
+						<li><span><a href="#community">Community Services</a></span></li>
+						<li><a href="files/Yingshan_resume_Mar2025.pdf" target="_blank">CV</a></li>
+					</ul> -->
+				</section>
+
+				<section id="current-research">
+					<h2 >Current Research</h2>
+					<p>
+						My PhD work studies <b>generalization to unseen domains</b> in deep learning, 
+						where an unseen domain is a collection of instances <b>systematically unsupported</b> by training data.
+						I contribute to an expanding collection of insights on this subject from multiple angles: 
+						categorization, formalization, and identification of performance indicators.
+						My work is structured around three concepts: <b style="color:#49bf9d">Composition</b>, <b style="color:#49bf9d;">Cardinality</b>, and <b style="color:#49bf9d;">Frame</b>. 
+						A series of investigations uncovered three factors that shape generalization in deep learning: 
+						<b>data</b>, <b>architectural bias</b>, and the<b> learning paradigm</b>. 
+					</p>
+						
+					<!-- <span style="text-align: right;"id="button-current-research-body">&#128315; show</span>
+					<script>
+						var button = document.getElementById("button-current-research-body")
+						button.onclick = function() {
+							var x = document.getElementById("current-research-body");
+							if (x.style.display === "none") {
+								x.style.display = "block";
+								document.getElementById("button-current-research-body").innerHTML="&#128314; hide"
+							} else {
+								x.style.display = "none";
+								document.getElementById("button-current-research-body").innerHTML="&#128315; show"
+							}
+						}
+					</script> -->
+
+				</section>
+
+				<!-- Publications -->
+				<section id="publications">
+					<h2>Publications</h2>
+					<div class="row">
+						<article class="col-12 col-12-xsmall work-item">
+							<strong>Yingshan Chang</strong> and Yonatan Bisk. "<i>Learning Model Successors</i>" arXiv:2502.00197
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							<strong>Yingshan Chang</strong> and Yonatan Bisk. "<i>Language Models Need Inductive Biases to Count Inductively</i>" ICLR 2025
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							Jimin Sun, So Yeon Min, <strong>Yingshan Chang</strong>, Yonatan Bisk "<i>Tools Fail: Detecting Silent Errors in Faulty Tools</i>" EMNLP 2024
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							Shaurya Dewan, Rushikesh Zawar, Prakanshul Saxena, <strong>Yingshan Chang</strong>, Andrew Luo, Yonatan Bisk. "<i>DiffusionPID: Interpreting Diffusion via Partial Information Decomposition</i>" Neurips 2024
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							<strong>Yingshan Chang</strong>, Yasi Zhang, Zhiyuan Fang, Yingnian Wu, Yonatan Bisk, Feng Gao. "<i>Skews in the Phenomenon Space Hinder Generalization in Text-to-Image Generation</i>" European Conference on Computer Vision (ECCV) 2024.
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							Akter, Syeda Nahida, Sangwu Lee, <strong>Yingshan Chang</strong>, Yonatan Bisk and Eric Nyberg. “<i>VISREAS: Complex Visual Reasoning with Unanswerable Questions</i>” In Findings of the Association for Computational Linguistics: ACL 2024.
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							Liangke Gui*, <strong>Yingshan Chang</strong>*, Qiuyuan Huang, Subhojit Som, Alexander G Hauptmann, Jianfeng Gao and Yonatan Bisk. “<i>Training Vision-Language Transformers from Captions</i>” In Transactions on Machine Learning Research, pp. 2835-8856. 2023.
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							<strong>Yingshan Chang</strong>, Mridu Narang, Hisami Suzuki, Guihong Cao, Jianfeng Gao, and Yonatan Bisk. “<i>Webqa: Multihop and Multimodal QA</i>” In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, pp. 16495-16504. 2022. <strong>Oral</strong>.
+						</article>
+						<article class="col-12 col-12-xsmall work-item">
+							<strong>Yingshan Chang</strong>, and Yonatan Bisk. “<i>WebQA: A Multimodal Multihop NeurIPS Challenge</i>” In NeurIPS 2021 Competitions and Demonstrations Track, pp. 232-245. PMLR, 2022.
+						</article>
+					</div>
+
+				</section>
+
+				<!--
+				<section id="news">
+					<h2>News</h2>
+					<div class="row">
+					<article class="col-12 col-12-xsmall work-item">
+						<div class="scroll">
+							<table class="newTable" style="background-color: rgba(0, 0, 0, 0);">
+								
+								<tr>
+									<td width="20%"><b>Mar 28, 2022</b></td>
+									<td width="80%">My 1st paper has been selected for an ORAL presentation at CVPR2022!</td>
+								</tr>
+								<tr>
+									<td width="20%"><b>Dec 10, 2021</b></td>
+									<td width="80%">WebQA Winners Announced! <br>Congratulations to all our participants and special cheers to the winners!</td>
+									
+								</tr>
+								<tr>
+									<td><b>Dec 7, 2021</b></td>
+									<td>WebQA NeurIPS2021 Challenge! Talk & Breakout</td>
+									
+								</tr>
+								<tr>
+									<td><b>Sep 16, 2021</b></td>
+									<td><a href="https://webqna.github.io/" target="_blank">WebQA</a> Dataset & Leaderboard are live!</td>
+									
+								</tr>
+							</table>
+	
+						</div>
+					</article>
+					</div>
+				</section>
+				-->
+				
+				
+
+				<!-- writings_photography -->
+				<section id="writings_photography">
+					<h2>Writings and Photography</h2>
+					<section>
+						<h1 style="line-height:2.5; font-size:20px;">
+							&emsp;<a href="thoughts/entry/index.html" target="_blank">&#127775;Thoughts</a>
+							&emsp;<a href="gallery.html" target="_blank">&#127794;Gallery</a>
+							&emsp;<a href="articles/entry/index.html" target="_blank">&#127956;Journal</a>
+						</h1>
+
+						<!-- <ul class="icons">
+							<li><a class="fa fa-camera" style="font-size:24px"></a></li>
+							<li><a class="fas fa-hiking" style="font-size:24px"></a></li>
+							<li><a class="fas fa-film" style="font-size:24px"></a></li>
+							<li><a class="fa fa-train" style="font-size:24px"></a></li>
+							<li><a class="fa fa-plane" style="font-size:24px"></a></li>
+							
+						</ul> -->
+					</section>
+				</section>
+
+				<!-- Education -->
+				<section id="edu">
+					<h2>Education</h2>
+					<section>
+						<header>
+							<h4>Carnegie Mellon University</h4>
+							<p><span style="color:#797979;">PhD in Language Technologies&emsp;&emsp;</span><span style="color:#49bf9d;">2022 - </span></p>
+						</header>
+						<header>
+							<h4>Carnegie Mellon University</h4>
+							<p><span style="color:#797979;">MS in Language Technologies&emsp;&emsp;</span><span style="color:#49bf9d;">2020 - 2022</span></p>
+						</header>
+						<header>
+							<h4>Hong Kong University of Science and Technology</h4>
+							<p><span style="color:#797979;">BS in Computer Science & Mathematics&emsp;&emsp;</span><span style="color:#49bf9d;">2016 - 2020</span></p>
+						</header>
+						<header>
+							<h4>Georgia Institute of Technology</h4>
+							<p><span style="color:#797979;">Exchange&emsp;&emsp;</span><span style="color:#49bf9d;">Spring 2019</span></p>
+						</header>
+						<header>
+							<h4>Peking University</h4>
+							<p><span style="color:#797979;">AEARU Summer Camp&emsp;&emsp;</span><span style="color:#49bf9d;">Summer 2018</span></p>
+						</header>
+					</section>
+				</section>
+
+				<!-- <section id="previous-research">
+					
+					<h2>Previous Research</h2>
+					<div class="row">
+
+						<article class="col-6 col-12-xsmall big-box work-item">
+							<a href="" class="image fit thumb"><img src="images/thumbs/counting_fruits.jpg" alt="" style="padding: 0 56px; opacity:0.85;"/></a>
+							<h3>Language Models Need Inductive Biases to Count Inductively</h3>
+
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box">
+									<ul id="myUL">
+										<li><span id="btn_counting" class="caret">Read more</span></li>
+									</ul>
+								</div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#fba06f; font-weight: bold;">2024</span></p>
+							</div>
+						
+							<div id="myModal_counting" class="modal">
+								<ul class="modal-content">
+									<span id="close_counting" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp; We define counting as the ability to map a number word to the cardinality of a set containing a corresponding number of items. </li>
+									<li style="line-height:1.5">&#9656;&emsp; The inductive counting principle: If a word in an ordered number word list refers to sets with cardinality n, then the next word refers to sets with cardinality n + 1.</li>
+									<li style="line-height:1.5">&#9656;&emsp; This work provides extensive empirical results on training language models to count. We experiment with architectures ranging from RNNs, Transformers, State-Space Models and RWKV.</li>
+									<li style="line-height:1.5">&#9656;&emsp; Transformers have to rely on positional embeddings (PEs) to count out-of-domain. </li>
+									<li style="line-height:1.5">&#9656;&emsp; Detailed analysis isolates the inductive biases useful for counting that are enabled by PEs and not otherwise encoded in self-attention. </li>
+									<li style="line-height:1.5">&#9656;&emsp; Modern RNNs largely underperform traditional RNNs in generalizing counting inductively, revealing a potential downside of their lauded parallel training.</li>
+									<li style="line-height:1.5">&#9656;&emsp; Under review</li>
+								<li><a href="https://arxiv.org/abs/2405.20131" target="_blank">&#9656;&emsp;Paper</a></li>
+								<li><a href="https://www.youtube.com/watch?v=tTcUX2LgZDo" target="_blank">&#9656;&emsp;Talk (@FlaNN)</a></li>
+								<li><a href="https://github.com/zdxdsw/inductive_counting_with_LMs" target="_blank">&#9656;&emsp;Github</a></li>
+								
+								</ul>
+							</div>
+							<script>
+								var btn_counting = document.getElementById("btn_counting");
+								var modal_counting = document.getElementById("myModal_counting");
+								var span_counting = document.getElementById("close_counting");
+								btn_counting.onclick = function() {modal_counting.style.display="block";}
+								span_counting.onclick = function() {modal_counting.style.display="none";}
+							</script>
+						</article>
+
+						<article class="col-6 col-12-xsmall big-box work-item">
+							<a href="" class="image fit thumb"><img src="images/thumbs/skew_illustration.png" alt="" style="padding: 0;"/></a>
+							<h3>Skews in the Phenomenon Space Hinder Generalization in Text-to-Image Generation</h3>
+
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box">
+									<ul id="myUL">
+										<li><span id="btn_skew" class="caret">Read more</span></li>
+									</ul>
+								</div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#fba06f; font-weight: bold;">2023-2024</span></p>
+							</div>
+						
+							<div id="myModal_skew" class="modal">
+								<ul class="modal-content">
+									<span id="close_skew" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp; Why do text-to-image models fail to learn entity-relation compositions effectively?</li>
+									<li style="line-height:1.5">&#9656;&emsp; We conceptualize the text-to-image generation pipeline into three stages and examine the potential sources of error at each stage.</li>
+									<li style="line-height:1.5">&#9656;&emsp; We argue that the middle stage -- communication channel -- is the most error-prone, leading to issues of faithfully composing entities with relations.</li>
+									<li style="line-height:1.5">&#9656;&emsp; We believe a less performant communication channel is caused by skews in the underlying phenomenological coverage presented by the training data.</li>
+									<li style="line-height:1.5">&#9656;&emsp; We propose two statistical metrics to quantify such phenomenological skews, under the formal framework of role-filler bindings.</li>
+										<li style="line-height:1.5">&#9656;&emsp; We conduct experiments showing that our metrics are predictive of generalization performance.</li>
+									<li style="line-height:1.5">&#9656;&emsp; Accepted to Eccv 2024</li>
+								<li><a href="https://arxiv.org/abs/2403.16394" target="_blank">&#9656;&emsp;Paper</a></li>
+								<li><a href="files/Yingshan_eccv_slides_compact.pdf" target="_blank">&#9656;&emsp;Slides</a></li>
+								<li><a href="https://youtu.be/fE5TCdEhNVA" target="_blank">&#9656;&emsp;Video</a></li>
+								<li><a href="https://github.com/zdxdsw/skewed_relations_T2I" target="_blank">&#9656;&emsp;Github</a></li>
+								</ul>
+							</div>
+							<script>
+								var btn_skew = document.getElementById("btn_skew");
+								var modal_skew = document.getElementById("myModal_skew");
+								var span_skew = document.getElementById("close_skew");
+								btn_skew.onclick = function() {modal_skew.style.display="block";}
+								span_skew.onclick = function() {modal_skew.style.display="none";}
+							</script>
+						</article>
+
+						<article class="col-6 col-12-xsmall big-box work-item">
+							<a href="" class="image fit thumb"><img src="images/thumbs/push_alg.jpg" alt="" style="padding: 39px 0px;"/></a>
+							<h3>Efficient Visual Grounding via Patch Affinities</h3>
+
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box">
+									<ul id="myUL">
+										<li><span id="btn_affinitymap" class="caret">Read more</span></li>
+									</ul>
+								</div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#fba06f; font-weight: bold;">2022</span></p>
+							</div>
+						
+							<div id="myModal_affinitymap" class="modal">
+								<ul class="modal-content">
+									<span id="close_affinitymap" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp; We ask the research question: Are token and patch representations <i>alone</i> sufficient to perform visual reasoning?</li>
+									<li style="line-height:1.5">&#9656;&emsp; We show that a single Transformer backbone can <i>more efficiently</i> perform language-conditioned visual reasoning than bespoke architectures.</li>
+									<li style="line-height:1.5">&#9656;&emsp; We show that well-aligned patch-token representations naturally translate to downstream performance without unimodal backbones or output-specific components.</li>
+									<li style="line-height:1.5">&#9656;&emsp; We use Referring Expression Comprehension & Segmentation as case studies and demonstrate how patch affinity scores can be leveraged to achieve competitive recognition and segmentation <i>with an order to magnitude fewer parameters and inference time.</i></li>
+									<li style="line-height:1.5">&#9656;&emsp; Joint work with Liangke Gui on efficient vision-language pretraining.</li>
+									<li style="line-height:1.5">&#9656;&emsp; Accepted to TMLR 2023</li>
+								<li><a href="https://openreview.net/pdf?id=xLnbSpozWS" target="_blank">&#9656;&emsp;Paper</a></li>
+								</ul>
+							</div>
+							<script>
+								var btn_affinitymap = document.getElementById("btn_affinitymap");
+								var modal_affinitymap = document.getElementById("myModal_affinitymap");
+								var span_affinitymap = document.getElementById("close_affinitymap");
+								btn_affinitymap.onclick = function() {modal_affinitymap.style.display="block";}
+								span_affinitymap.onclick = function() {modal_affinitymap.style.display="none";}
+							</script>
+						</article>
+
+						<article class="col-6 col-12-xsmall big-box work-item">
+							<a href="https://webqna.github.io/" target="_blank" class="image fit thumb"><img src="images/thumbs/Webqa_logo_wide.jpg" alt="" /></a>
+							<h3>WebQA: Multihop and Multimodal QA</h3>
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box">
+									<ul id="myUL">
+										<li><span id="btn_webqa" class="caret">Read more</span></li>
+									</ul>
+								</div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#fba06f; font-weight: bold;">2020-2022</span></p>
+							</div>
+							
+							<div id="myModal_webqa" class="modal">
+								<ul class="modal-content">
+									<span id="close_webqa" class="close">&times;</span>
+									<li style="line-height:1.5">We curated a dataset for open-domain, multihop and multimodal question answering. <br>Then, We evaluated the extent to which models can answer open-domain web search queries leveraging both the explicit knowledge in retrieved sources and the implicit knowledge in pre-trained parameters.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Crowdsourced a dataset with knowledge-seeking QA pairs and multimodal (image+snippets) knowledge sources.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Mined hard negatives which have high lexical overlap with the question or positive sources, while lacking reference to the answer.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Adversarially created the train/test split such that the majority answers concluded from the training set cannot carry over to testing, thus suppressing purely statistical approaches.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Implemented baseline models for WebQA under both fine-tuning (finetune a vision-and-language Transformer) and few-shot (prompt GPT-3 with engineered prefixes) settings.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Designed a metric for WebQA that measures both fluency and accuracy, and is hard to game by guessing a long list of entities.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Accepted to <a href="https://neurips.cc/Conferences/2021/CompetitionTrack"></a>NeurIPS 2021 Competition Track</a>.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Accepted to CVPR2022 (Oral)</li>
+									<li><a href="https://arxiv.org/abs/2109.00590" target="_blank">&#9656;&emsp;Paper</a></li>
+									<li><a href="https://eval.ai/web/challenges/challenge-page/1255/overview" target="_blank">&#9656;&emsp;Leaderboard</a></li>
+									<li><a href="https://webqna.github.io/" target="_blank">&#9656;&emsp;Website</a></li>
+								</ul>
+							</div>
+							<script>
+								var btn_webqa = document.getElementById("btn_webqa");
+								var modal_webqa = document.getElementById("myModal_webqa");
+								var span_webqa = document.getElementById("close_webqa");
+								btn_webqa.onclick = function() {modal_webqa.style.display="block";}
+								span_webqa.onclick = function() {modal_webqa.style.display="none";}
+							</script>
+						</article>
+
+					</div>
+				</section> -->
+
+				
+
+				
+
+				<!-- Honors -->
+				<!-- <section id="honor">
+					<h2>Honors</h2>
+					<section>
+						<header>
+							<p style="line-height:1.8">
+								<span style="color:#797979;">Carnegie Mellon University Research Fellowship &emsp;&emsp;</span><span style="color:#49bf9d;">2020 - 2022</span><br />
+								<span style="color:#797979;">Academic Achievement Medal &emsp; <i>Hong Kong University of Science and Technology </i>&emsp;</span><span style="color:#49bf9d;">2020</span><br />
+								<span style="color:#797979;">Bachelor Degree First Class Honor &emsp; <i>Hong Kong University of Science and Technology </i>&emsp;</span><span style="color:#49bf9d;">2020</span><br />
+								<span style="color:#797979;">Dean’s List &emsp; <i>Hong Kong University of Science and Technology</i>&emsp;</span><span style="color:#49bf9d;">2016 - 2020</span><br />
+								<span style="color:#797979;">University’s Scholarship Scheme for Continuing Undergraduate Students &emsp;&emsp;</span><span style="color:#49bf9d;">2016-2019</span><br />
+								<span style="color:#797979;">The Cheng Foundation Scholarships for Chinese Mainland Undergraduate Students&emsp;&emsp;</span><span style="color:#49bf9d;">2018 - 2019</span><br />
+								<span style="color:#797979;">The Hong Kong Electric Co.Ltd. Scholarship&emsp;&emsp;</span><span style="color:#49bf9d;">2017 - 2018</span><br />
+								<span style="color:#797979;">Mingxi Youth Award Scheme&emsp;&emsp;</span><span style="color:#49bf9d;">2017 - 2018</span></p>
+						</header>
+					</section>
+				</section> -->
+
+				<!-- Contact -->
+				<!-- <section id="contact">
+					
+					<h2>Contact</h2>
+					<div class="row">
+						<article class="col-6 col-12-xsmall work-item">
+							<ul id="myUL">
+								<li>	
+									<h3 class="icon solid fa-school"><span class="label">Study Address</span></h3>
+										Carnegie Mellon University<br />
+										5000 Forbes Ave, Pittsburgh, PA<br />
+										USA
+								</li>
+							</ul>
+						</article>
+						<article class="col-6 col-12-xsmall work-item">
+							<ul id="myUL">
+								<li>	
+									<h3 class="icon solid fa-home"><span class="label">Home Address</span></h3>
+									Beijing, China
+								</li>
+							</ul>
+						</article>
+						<article class="col-6 col-12-xsmall work-item">
+							<ul id="myUL">
+								<li>	
+									<h3 class="icon solid fa-mobile-alt"><span class="label">Phone</span></h3>
+									+1 4128070419<br />+86 18600230728
+								</li>
+							</ul>
+						</article>
+						<article class="col-6 col-12-xsmall work-item">
+							<ul id="myUL">
+								<li>	
+									<h3 class="icon solid fa-envelope"><span class="label">Email</span></h3>
+									<a>yingshac@andrew.cmu.edu</a>
+									<a>ychangad@connect.ust.hk</a>
+								</li>
+							</ul>
+						</article>
+				
+					</div>
+				</section>-->
+
+				
+
+				<!-- Volunteer -->
+				<!-- <section id="community">
+					<h2>Community Services</h2>
+					<div class="table-wrapper">
+						<table class="activities">
+							<thead>
+								<tr>
+									<th>Date</th>
+									<th>Activity & Organizer</th>
+									<th>Duration</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Apr 2018&emsp;</td>
+									<td>Volunteering @Fung Yuen Butterfly Reserve - Tai Po Environment Association</td>
+									<td>5 hrs</td>
+								</tr>
+								<tr>
+									<td>Jan 2018&emsp;</td>
+									<td>Teaching & Community Project, Galle - Sri Lanka Diriya Sahana Foundation</td>
+									<td>30 hrs</td>
+								</tr>
+								<tr>
+									<td>Nov 2017&emsp;</td>
+									<td>Volunteering @Peak to Fong - Hong Kong Dog Rescue</td>
+									<td>4.5 hrs</td>
+								</tr>
+								<tr>
+									<td>Nov 2017&emsp;</td>
+									<td>HKUST Bread Run - Feeding Hong Kong</td>
+									<td>3 hrs</td>
+								</tr>
+								<tr>
+									<td>Sep 2017&emsp;</td>
+									<td>Blood Donation Promotion Campaign - Hong Kong Red Cross Blood Transfusion Service</td>
+									<td>3 hrs</td>
+								</tr>
+								<tr>
+									<td>Sep 2017&emsp;</td>
+									<td>Playright Game Day - Playright Children’s Play Association</td>
+									<td>7 hrs</td>
+								</tr>
+								<tr>
+									<td>Apr 2017</td>
+									<td>The Salvation Army Flag Day - The Salvation Army</td>
+									<td>3 hrs</td>
+								</tr>
+							</tbody>
+							
+						</table>
+					</div>
+				</section> -->
+
+				<!-- Old Projects -->
+				<section id="old_project">
+					<h2>Old Projects</h2>
+					<div class="row">
+						<!-- Neuroconcepts -->		
+						<article class="col-6 col-12-xsmall work-item">
+							<a class="image fit thumb"><img src="images/NeuroConcepts.svg" alt="" /></a>
+							<h3>Neuro-Concepts</h3>
+							<p>CMU 85707<span style="color:#49bf9d;"> &emsp;Spring 2022 </span></p>
+							
+							<ul id="myUL">
+								<li><span id="btn_85707" class="caret">Read more</span></li>
+							</ul>
+							<div id="myModal_85707" class="modal">
+								<ul class="modal-content">
+									<span id="close_85707" class="close">&times;</span>
+									
+									<li style="line-height:1.5">
+										The False Belief (FB) task was originally proposed to testify the Theory-of-Mind (ToM) competence in young children. It was believed that kids younger than 3 tend to fail the FB task because they have not yet developed ToM, i.e. a representational conception of mental states that entail beliefs, desires, emotions and intentions.
+									</li>
+									<li style="line-height:1.5">
+										However, as investigations go deeper, the field starts to observe conflicting results. Researchers have found indirect ways to verify that kids much younger than 3 should in theory already be competent enough to pass the FB task, yet on the surface they somehow don't seem to show the competence. 
+									</li>
+									<li style="line-height:1.5">
+										&#9656;&emsp;This paper makes an argument: Researchers might have been mistaking a 3-year-old's difficulty in <i>understanding</i> the task for a lack of the ability to <i>accomplish</i> the task. 
+									</li>
+									<li style="line-height:1.5">
+										&#9656;&emsp;This paper proposes a new testing approach to disentangle two possible reasons for the failure of typically-developing 3-year-olds on the FB task: difficulty in understanding the task vs. insufficient competence to succeed at the task.
+									</li>
+									
+									<li><a href="files/NeuroConcepts_Paper_ToM.pdf" target="_blank">&#9656;&emsp;Final Paper</a></li>
+								</ul>
+							</div>
+							<script>
+								var btn_85707 = document.getElementById("btn_85707");
+								var modal_85707 = document.getElementById("myModal_85707");
+								var span_85707 = document.getElementById("close_85707");
+								btn_85707.onclick = function() {modal_85707.style.display="block";}
+								span_85707.onclick = function() {modal_85707.style.display="none";}
+							</script>
+							
+						</article>
+	
+						<!-- Conlanging -->		
+						<article class="col-6 col-12-xsmall work-item">
+							<a class="image fit thumb"><img src="images/Conlanging.svg" alt="" /></a>
+							<h3>Conlanging</h3>
+							<p>CMU 11823<span style="color:#49bf9d;"> &emsp;Spring 2022 </span></p>
+							
+							<ul id="myUL">
+								<li><span id="btn_11823" class="caret">Read more</span></li>
+							</ul>
+							<div id="myModal_11823" class="modal">
+								<ul class="modal-content">
+									<span id="close_11823" class="close">&times;</span>
+									<li style="line-height:1.5">
+										<i>Skyming</i> is a conlang (constructed language) that I created throughout the course. <i>Skyming</i> is designed to be spoken by human beings living on a spaceship drifting in the outer space after the destruction of the Earth.
+									</li>
+									<li style="line-height:1.5">
+										&#9656;&emsp;The pronoun and time systems are designed based on important cultural concepts among <i>Skyming</i>'s speakers.
+									</li>
+									<li style="line-height:1.5">
+										&#9656;&emsp;An intersting part of creating my conlang is that I've decided to get rid of verbs. However, I did not completely get rid of verbs. I managed to devise the syntax using four "dummy verbs": 1) <i>"Dzaeki"</i> denoting the Agent-Patient relationship, 2) <i>"Oto"</i> denoting the Figure-on-the-Ground relationship, 3) <i>"Iminna"</i> denoting Equivalence, and 4) <i>"Ati"</i> denoting the Causatives.
+									</li>
+									
+									<li><a href="files/11823Grammar.pdf" target="_blank">&#9656;&emsp;Reference Grammar</a></li>
+									<li><a href="files/Skyming_slides.pdf" target="_blank">&#9656;&emsp;Slides</a></li>
+									<li><a href="https://docs.google.com/spreadsheets/d/1h6aSU3kB1VzZWMlKJ4Ds7gX0diyPsnIm4mC69Z0w2sk/edit?usp=sharing" target="_blank">&#9656;&emsp;Vocabulary</a></li>
+								
+								</ul>
+							</div>
+							<script>
+								var btn_11823 = document.getElementById("btn_11823");
+								var modal_11823 = document.getElementById("myModal_11823");
+								var span_11823 = document.getElementById("close_11823");
+								btn_11823.onclick = function() {modal_11823.style.display="block";}
+								span_11823.onclick = function() {modal_11823.style.display="none";}
+							</script>
+							
+						</article>
+	
+						<!-- Sociolinguistics -->		
+						<article class="col-6 col-12-xsmall work-item">
+							<a class="image fit thumb"><img src="images/sociolinguistics.jpg" alt="" /></a>
+							<h3>Sociolinguistics</h3>
+							<p>CMU 11724<span style="color:#49bf9d;"> &emsp;Fall 2021 </span></p>
+							
+							<ul id="myUL">
+								<li><span id="btn_11724" class="caret">Read more</span></li>
+							</ul>
+							<div id="myModal_11724" class="modal">
+								<ul class="modal-content">
+									<span id="close_11724" class="close">&times;</span>
+									<li style="line-height:1.5">
+										Biber introduced five major dimensions of variation in English in his <i></i>. This paper takes the first dimension --- <i>Involved vs. Informational</i> --- as the linguistic variable of interest, and studies its relationship with the social variable: <i>age</i>.
+									</li>
+									<li style="line-height:1.5">
+										The <i>Involved</i> style is marked by features which typically show interactions between the writer and the reader. On the other hand, the <i>Informational</i> style usually goes hand-in-hand with formalness.
+									</li>
+									<li style="line-height:1.5">
+										&#9656;&emsp;I hypothesize that the degree of involvedness linearly increases as age grows.
+									</li>
+									<li style="line-height:1.5">
+										&#9656;&emsp;I use computational methods to quantify the strength of the <i>Involvedness</i> for blog articles in the <i>Blog Authorship Corpus</i>. 
+										The strength of Involvedness can be signified by twelve low-level linguistic features, namely 1) Nouns, 2) Attributive adjectives, 3) Private verbs, 4) Contractions, 5) Analytic negation, 6) Pronoun 'it', 7) Causative subordination, 8) Present tense verbs, 9) First pronouns, 10) Second pronouns, 11) Indefinite pronouns, 12) Amplifiers.
+									</li>
+									<li style="line-height:1.5">
+										&#9656;&emsp;I fit a linear regression model between age and each involvedness-signifying linguistic feature. Eleven out of those twelve linguistic features have statistically significant anti-correlations with age.
+									</li>
+									<li style="line-height:1.5">	
+										&#9656;&emsp;The results strongly support my hypothesis that English writings authored by elder people are more informational and less involved than those by younger people.
+									</li>
+									
+									<li><a href="files/11724_hw6_sociolinguistics.pdf" target="_blank">&#9656;&emsp;Final Paper</a></li>
+								</ul>
+							</div>
+							<script>
+								var btn_11724 = document.getElementById("btn_11724");
+								var modal_11724 = document.getElementById("myModal_11724");
+								var span_11724 = document.getElementById("close_11724");
+								btn_11724.onclick = function() {modal_11724.style.display="block";}
+								span_11724.onclick = function() {modal_11724.style.display="none";}
+							</script>
+							
+						</article>
+	
+						<!-- Undergrad fyp -->		
+						<article class="col-6 col-12-xsmall big-box work-item">
+							<a href="https://v.qq.com/x/page/a0969ywbcu5.html" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>
+							<h3>Low-Light Video Enhancement Using Deep Learning</h3>
+							
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box">
+									<ul id="myUL">
+										<li><span id="btn_fyp" class="caret">Read more</span></li>
+									</ul>
+								</div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#fba06f; font-weight: bold;">2019-2020</span></p>
+							</div>
+							
+							<div id="myModal_fyp" class="modal">
+								<ul class="modal-content">
+									<span id="close_fyp" class="close">&times;</span>
+									<li style="line-height:1.5">This project explored possibilities of reducing noises and motion blurs in low-light RGB video frames using deep learning. <br>Our contributions are three-folds:</li>
+									<li style="line-height:1.5">1. &emsp; A novel approach to collect data of dark and blurry video frames with corresponding bright and sharp ground-truth images. Video frames are collected in video mode with short exposure time while ground-truth images are collected in image mode with long exposure time.</li>
+									<li style="line-height:1.5">2. &emsp; An end-to-end fully convolutional network pipeline with a fine-tuning strategy for low-light video enhancement.</li>
+									<li style="line-height:1.5">3. &emsp; Experiments show that, on the newly-collected dataset, our proposed pipeline outperforms previous video enhancement methods in terms of both numerical evaluation metrics and human perceptual evaluation.</li>
+									<li><a href="https://v.qq.com/x/page/a0969ywbcu5.html" target="_blank">&#9656;&emsp;Project Video</a></li>
+									<li><a href="files/HKUST_FYP_Report_Cys.pdf" target="_blank">&#9656;&emsp;Project Report</a></li>
+									<li><a href="https://github.com/zdxdsw/FYP-git" target="_blank">&#9656;&emsp;View Github</a></li>
+								</ul>
+							</div>
+							<script>
+								var btn_fyp = document.getElementById("btn_fyp");
+								var modal_fyp = document.getElementById("myModal_fyp");
+								var span_fyp = document.getElementById("close_fyp");
+								btn_fyp.onclick = function() {modal_fyp.style.display="block";}
+								span_fyp.onclick = function() {modal_fyp.style.display="none";}
+							</script>
+						</article>
+	
+						<!-- Internet Computing -->		
+						<article class="col-6 col-12-xsmall work-item">
+							<a class="image fit thumb"><img src="images/thumbs/4021.jpg" alt="" /></a>
+							<h3>Internet Computing</h3>
+							<p>HKUST COMP4021<span style="color:#49bf9d;"> &emsp;Fall 2019 </span></p>
+							
+							<ul id="myUL">
+								<li><span id="btn_4021" class="caret">Read more</span></li>
+							</ul>
+							<div id="myModal_4021" class="modal">
+								<ul class="modal-content">
+									<span id="close_4021" class="close">&times;</span>
+									<li style="line-height:1.5">
+										The project's name is "World Travel". It's a game that borrows some ideas from "monopoly". The player can select an icon on the menu page to represent the player. On the map page, the player rolls a die and then walks around a map according to the die outcome. Then a card will show up and describe about a destination (a city). Once a city is visited, the corresponding cell on the map will disappear. This means, the player cannot repeatly visit the same cell. The game is finished when all cities are visited. 
+									</li>
+									<li style="line-height:1.5">&#9656;&emsp;Client Side Techniques: 
+										<span style="color:#49bf9d;">HTML, Javascript, jQuery, timer, bootstrap, animation</span>
+									</li>
+									<li style="line-height:1.5">&#9656;&emsp;Server Side Techniques: 
+										<span style="color:#49bf9d;">PHP, jQuery ajax, XML & TXT file for storage and "memory"</span>
+									</li>
+									<li style="line-height:1.5">&#9656;&emsp;Client Side Functions: 
+										<span style="color:#49bf9d;">Choose player icon, play the game, switch between menu page and map page, reload unfinished trip</span>
+									</li>
+									<li style="line-height:1.5">&#9656;&emsp;Server Side Functions: 
+										<span style="color:#49bf9d;">Store game status, check game status upon page reloading</span>
+									</li>
+									<li><a href="https://github.com/zdxdsw/COMP4021/tree/master/world-travel" target="_blank">&#9656;&emsp;View Github</a></li>
+								</ul>
+							</div>
+							<script>
+								var btn_4021 = document.getElementById("btn_4021");
+								var modal_4021 = document.getElementById("myModal_4021");
+								var span_4021 = document.getElementById("close_4021");
+								btn_4021.onclick = function() {modal_4021.style.display="block";}
+								span_4021.onclick = function() {modal_4021.style.display="none";}
+							</script>
+							
+						</article>
+	
+						<!-- bert -->
+						<article class="col-6 col-12-xsmall big-box work-item">
+							<a href="images/fulls/02.jpg" class="image fit thumb"><img src="images/thumbs/bert.jpg" alt="" /></a>
+							<h3>Event-to-Sentence Using BERT in Automated Story Generation</h3>
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box">
+									<ul id="myUL">
+										<li><span id="btn_bert" class="caret">Read more</span></li>
+									</ul>
+								</div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#fba06f; font-weight: bold;">Summer 2019</span></p>
+							</div>
+							
+							<div id="myModal_bert" class="modal">
+								<ul class="modal-content">
+									<span id="close_bert" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp;Proposed an event-to-sentence method based on pre-trained BERT by inserting words between event tokens.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Designed and Implemented an Editing-Writing Network consisting of a BERT encoder and an RNN decoder, which iteratively generates sentences and revises its own output.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Demonstrated the extent to which the general linguistic knowledge acquired through unsupervised training can be applied to the particular task of story generation, with appropriate adjustment.</li>
+									<li><a href="https://github.com/zdxdsw/Automated-Story-Generation-with-BERT" target="_blank">&#9656;&emsp;View Github</a></li>
+								</ul>
+							</div>
+							<script>
+								var btn_bert = document.getElementById("btn_bert");
+								var modal_bert = document.getElementById("myModal_bert");
+								var span_bert = document.getElementById("close_bert");
+								btn_bert.onclick = function() {modal_bert.style.display="block";}
+								span_bert.onclick = function() {modal_bert.style.display="none";}
+							</script>
+						</article>
+						
+						<!-- ML -->		
+						<article class="col-6 col-12-xsmall work-item">
+							<a class="image fit thumb"><img src="images/thumbs/ml.jpg" alt="" /></a>
+							<h3>Machine Learning</h3>
+							<p>Georgia Tech CS4641<span style="color:#49bf9d;"> &emsp;Spring 2019 </span></p>
+							
+							<ul id="myUL">
+								<li><span id="btn_ml" class="caret">Read more</span></li>
+							</ul>
+							<div id="myModal_ml" class="modal">
+								<ul class="modal-content">
+									<span id="close_ml" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp;Supervised Learning:
+										This project explored multiple techniques 
+										<span style="color:#49bf9d;"> (knn, svm, dt, gbdt, mlp) </span>in supervised learning tasks
+										<span style="color:#49bf9d;"> (binary classification, multi-class classification)</span>.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Randomized Optimization:
+										This project gave a comparative analysis of four RO algorithms
+										<span style="color:#49bf9d;"> (hill climbing, simulated annealing, genetic algorithm, MIMIC) </span>
+										and discussed how they behave on three search problems
+										<span style="color:#49bf9d;"> (traveling salesman problem, multiple-optimum problem, single-optima problem)</span>.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Unsupervised Learning:
+										This project used some of the clustering
+										<span style="color:#49bf9d;"> (k-means, expected maximization) </span>
+										and dimentionality reduction algorithms
+										<span style="color:#49bf9d;"> (PCA, ICA, randomized projection, info gain) </span>
+										on datasets I had previously analyzed in Supervised Learning and discussed how they affect the classification results.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Markov Decision Process:
+										This project explored Markov Decision Process by designing maze problems, and solving them using Value Iteration, Policy Iteration and Reinforcement Learning.</li>
+									<li><a href="https://github.com/zdxdsw/GT-CS4641" target="_blank">&#9656;&emsp;View Github</a></li>
+								</ul>
+							</div>
+							<script>
+								var btn_ml = document.getElementById("btn_ml");
+								var modal_ml = document.getElementById("myModal_ml");
+								var span_ml = document.getElementById("close_ml");
+								btn_ml.onclick = function() {modal_ml.style.display="block";}
+								span_ml.onclick = function() {modal_ml.style.display="none";}
+							</script>
+							
+						</article>
+						
+						<!-- INFO VIS -->
+						<article class="col-6 col-12-xsmall work-item">
+							<a href="images/fulls/4460.jpg" class="image fit thumb"><img src="images/thumbs/4460.jpg" alt="" /></a>
+							<h3>Information Visualization</h3>
+							<p>Georgia Tech CS4460<span style="color:#49bf9d;"> &emsp;Spring 2019 </span></p>
+							<ul id="myUL">
+								<li><span id="btn_vis" class="caret">Read more</span></li>
+							</ul>
+							<div id="myModal_vis" class="modal">
+							<ul class="modal-content">
+								<span id="close_vis" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp;This project implemented an interactive visualization of data for the web, using D3 and Javascript.</li>
+									<li style="line-height:1.5">&#9656;&emsp;We implemented a multiple view visualization consisting of a scattermatrix and a bar chart, showing the financial status and ethic distributions of college students in US.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Our design supports overview & detail, burshing & linking and real-time filtering.</li>
+									<li><a href="https://github.com/zdxdsw/GT-CS4460" target="_blank">&#9656;&emsp;View Github</a></li>
+							</ul>
+							</div>
+							<script>
+								var btn_vis = document.getElementById("btn_vis");
+								var modal_vis = document.getElementById("myModal_vis");
+								var span_vis = document.getElementById("close_vis");
+								btn_vis.onclick = function() {modal_vis.style.display="block";}
+								span_vis.onclick = function() {modal_vis.style.display="none";}
+							</script>
+						</article>
+	
+						<!-- Language Model -->
+						<article class="col-6 col-12-xsmall work-item">
+							<a href="images/fulls/nlp.jpg" class="image fit thumb"><img src="images/thumbs/nlp.jpg" alt="" /></a>
+							<h3>Language Modelling</h3>
+							<p>HKUST COMP4901K<span style="color:#49bf9d;"> &emsp;Fall 2018 </span></p>
+							<ul id="myUL">
+								<li><span id="btn_nlp" class="caret">Read more</span></li>
+							</ul>
+							<div id="myModal_nlp" class="modal">
+							<ul class="modal-content">
+								<span id="close_nlp" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp;This project aims at building a neural network language model, which, given the previous words in a sentence, is capable of predicting the last word.</li>
+									<li style="line-height:1.5">&#9656;&emsp;I explored various techniques to boost performance, including hyperparameter tuning and better architecture design
+										<span style="color:#49bf9d;"> (Skip connections, CNN, Bi-LSTM) </span>
+										and attention mechanism.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Finally, an RNN model with skip-connections produced the best result. Hyperparameter tuning and pre-training methods such as Word-to-Vec also added to further improvement. Neverthelss, I found that Bi-LSTM and attention mechanisms easily caused overfitting in this particular problem.</li>
+									<li><a href="https://github.com/zdxdsw/HKUST-COMP4901K-Project3" target="_blank">&#9656;&emsp;View Github</a></li>
+							</ul>
+							</div>
+							<script>
+								var btn_nlp = document.getElementById("btn_nlp");
+								var modal_nlp = document.getElementById("myModal_nlp");
+								var span_nlp = document.getElementById("close_nlp");
+								btn_nlp.onclick = function() {modal_nlp.style.display="block";}
+								span_nlp.onclick = function() {modal_nlp.style.display="none";}
+								window.onclick = function(event) {
+									if (event.target.className == "modal") {
+										var coll = document.getElementsByClassName("modal");
+										for (i = 0; i < coll.length; i++) {
+											coll[i].style.display = "none";
+										}
+									}
+								}
+							</script>
+						</article>
+	
+						<!-- spark -->
+						<article class="col-6 col-12-xsmall work-item">
+							<a class="image fit thumb"><img src="images/thumbs/spark.jpg" alt="" /></a>
+							<h3>Customer Revenue Prediction with Spark</h3>
+							<p>HKUST COMP4651<span style="color:#49bf9d;"> &emsp;Fall 2018 </span></p>
+							<ul id="myUL">
+								<li><span id="btn_4651" class="caret">Read more</span></li>
+							</ul>
+							<div id="myModal_4651" class="modal">
+							<ul class="modal-content">
+								<span id="close_4651" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp;This project aims at a Kaggle challenge for predicting the amount of money spent by a GStore customer. We explored visualization, data processing and machine learning tools on Spark platform.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Since this is a Cloud Computing course project, we utlized Intel DevCloud for big data cleaning and Amazon S3 for data storage </li>
+									<li style="line-height:1.5">&#9656;&emsp;We built three machine learning models, namely GBT regressor, RandomForest regressor and Linear Regression, among which RandomForest regressor produced the lowest RMSE (0.07) on validation data.</li>
+									<li><a href="https://github.com/zdxdsw/HKUST-COMP4651-Course-Project" target="_blank">&#9656;&emsp;View Github</a></li>
+							</ul>
+							</div>
+							<script>
+								var btn_4651 = document.getElementById("btn_4651");
+								var modal_4651 = document.getElementById("myModal_4651");
+								var span_4651 = document.getElementById("close_4651");
+								btn_4651.onclick = function() {modal_4651.style.display="block";}
+								span_4651.onclick = function() {modal_4651.style.display="none";}
+								window.onclick = function(event) {
+									if (event.target.className == "modal") {
+										var coll = document.getElementsByClassName("modal");
+										for (i = 0; i < coll.length; i++) {
+											coll[i].style.display = "none";
+										}
+									}
+								}
+							</script>
+						</article>
+	
+						<!-- scc -->
+						<article class="col-6 col-12-xsmall big-box work-item">
+							<a class="image fit thumb"><img src="images/thumbs/scc.jpg" alt="" /></a>
+							<h3>A Blockchain and Smart Contract Application</h3>
+							<div class="row">
+								<div class="col-8 col-sm-12 mini-box">
+									<ul id="myUL"><li><span id="btn_scc" class="caret">Read more</span></li></ul>
+								</div>
+								<div class="col-4 col-sm-12 mini-box"><p><span style="color:#fba06f; font-weight: bold;">Fall 2018</span></p>
+							</div>
+							<div id="myModal_scc" class="modal">
+								<ul class="modal-content">
+									<span id="close_scc" class="close">&times;</span>
+									<li style="line-height:1.5">&#9656;&emsp;Implemented a smart contract based on Ethereum framework.</li>
+									<li style="line-height:1.5">&#9656;&emsp;Developed a web-based interface for transaction creation, manipulation and approval.</li>
+								</ul>
+							</div>
+							<script>
+								var btn_scc = document.getElementById("btn_scc");
+								var modal_scc = document.getElementById("myModal_scc");
+								var span_scc = document.getElementById("close_scc");
+								btn_scc.onclick = function() {modal_scc.style.display="block";}
+								span_scc.onclick = function() {modal_scc.style.display="none";}
+							</script>
+						</article>
+					</div>
+					
+				</section>
+			</div>
+
+		<!-- Footer -->
+		<footer id="footer">
+			<div class="inner">
+				
+				<ul class="copyright">
+					<li>Last Update</li><li>2025 Sep 18</li>
+				</ul> 
+			</div>
+		</footer>
+
+		<!-- Scripts -->
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.poptrox.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+
+
+	</body>
+</html>

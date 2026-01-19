@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>Birthday Week Reflections</title>
+
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!--slick slider stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick-theme.min.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet" />
+  <!-- slick slider -->
+
+  <link rel="stylesheet" href="css/slick-theme.css" />
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+
+</head>
+
+<script>
+    // Function to hash the password using SHA-256
+    async function hashPassword(password) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(password);
+        const hash = await crypto.subtle.digest('SHA-256', data);
+        return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+    }
+
+    // Function to validate the password
+    async function validatePassword() {
+        const inputPassword = document.getElementById('password').value;
+        const hashedInputPassword = await hashPassword(inputPassword);
+        // Replace this hashed value with your own pre-generated hash of the correct password
+        const magicInt = parseInt(`${hashedInputPassword.slice(-5,-4)}${hashedInputPassword.slice(-1)}`);
+        const part1 = hashedInputPassword.substring(0, magicInt);
+        const part2 = hashedInputPassword.substring(magicInt);
+        const Hashedpart1 = await hashPassword(part1); 
+        const Hashedpart2 = await hashPassword(part2);
+        const correctHashedpart1 = '047f3ab32317c71b43af7a4773c121022adc100f1867fc3eaf24d7eb77a6df4c';
+
+        if (Hashedpart1 === correctHashedpart1) {
+            window.location.href = `./birthday_week${Hashedpart2}.html`;
+        } else {
+            alert('Incorrect password!');
+        }
+    }
+</script>
+
+<body class="sub_page">
+
+  
+
+    <section class="about_section layout_padding ">
+      <div class="container">
+        
+        <div class="row">
+          <div class="col-md-12">
+            <div id="password-form" >
+                <input type="password" class="form-control" id="password" placeholder="The following content is password protected.">
+                <br>
+                <button class="btn btn-outline-warning" onclick="validatePassword()">Submit</button>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div  class="col-md-10 offset-md-1">
+            <br><br><p>This page is password-protected simply because I don’t want it to be public. <br>But I encourage you to try one of the following:</p>
+            <p>1. Hack it based on the html source code, and proudly email me the result showing that you’ve cracked it!</p>
+            <p>2. Ask me for the key via email or whatever, and I’ll probably give it to you!</p>
+          </div>
+        </div>
+
+        
+      </div>
+    </section>
+
+    
+
+  </div>
+
+  <!-- footer section -->
+  <footer class="container-fluid footer_section">
+    <div class="container">
+      <div class="col-md-11 col-lg-8 mx-auto">
+        <p> 
+          &copy; <span id="displayYear"></span> @whimsicalyingshan</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+  <!-- jQery -->
+  <script  src="js/jquery-3.4.1.min.js"></script>
+  <!-- bootstrap js -->
+  <script  src="js/bootstrap.js"></script>
+  <!-- slick slider -->
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.js"></script>
+  <!-- custom js -->
+  <script  src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+  <!-- End Google Map -->
+
+</body>
+
+</html>

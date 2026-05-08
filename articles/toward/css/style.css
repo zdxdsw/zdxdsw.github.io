@@ -836,18 +836,18 @@ a:focus {
 }
 
 .info_section {
-  background-color: #EDF9E0;
-  color: #ffffff;
+  background-color: #e2efe9;
+  color: #e2efe9;
 }
 
 .btn {
-  background-color: #e6ebfb;
-  border-color: #e6ebfb;
+  background-color: #80b39d;
+  border-color: #80b39d;
 }
 
 .btn:hover {
-  background-color: #D7DDF5;
-  border-color: #D7DDF5;
+  background-color: #499274;
+  border-color: #499274;
 }
 
 .info_section .info_form_social_row {
